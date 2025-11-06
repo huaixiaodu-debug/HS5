@@ -1,82 +1,67 @@
-// 获取 DOM 元素
-const statusEl = document.getElementById('status');
-const countdownEl = document.getElementById('countdown');
-
-// 模拟倒计时（真实项目可替换为信号机 API）
-let countdown = 30;
-let timer = null;
-
-// 初始化
-function init() {
-  if (navigator.geolocation) {
-    statusEl.textContent = '正在定位...';
-    navigator.geolocation.getCurrentPosition(
-      success,
-      error,
-      { enableHighAccuracy: true }
-    );
-  } else {
-    statusEl.textContent = '浏览器不支持定位';
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-// 定位成功
-function success(position) {
-  const { latitude, longitude } = position.coords;
-  statusEl.textContent = '定位成功，查询路口...';
-
-  // 调用高德逆地理编码 API 查路口
-  fetch(`https://restapi.amap.com/v3/geocode/regeo?key=${AMAP_KEY}&location=${longitude},${latitude}`)
-    .then(res => res.json())
-    .then(data => {
-      if (data.regeocode && data.regeocode.roadster) {
-        const road = data.regeocode.roadster[0];
-        statusEl.textContent = `当前路口：${road.name}`;
-        startCountdown();
-      } else {
-        statusEl.textContent = '未检测到路口';
-      }
-    })
-    .catch(() => {
-      statusEl.textContent = 'API 请求失败';
-      startCountdown(); // 模拟测试
-    });
+body {
+  background: transparent;
+  font-family: 'Arial', sans-serif;
 }
 
-// 定位失败
-function error() {
-  statusEl.textContent = '定位失败，启用模拟模式';
-  startCountdown();
+.hud {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 180px;
+  height: 180px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 16px;
+  color: white;
+  text-align: center;
+  backdrop-filter: blur(5px);
+  border: 1px solid #444;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-// 开始倒计时
-function startCountdown() {
-  countdown = 30;
-  countdownEl.textContent = countdown;
-
-  timer = setInterval(() => {
-    countdown--;
-    countdownEl.textContent = countdown;
-
-    if (countdown <= 10 && ENABLE_VOICE) {
-      speak(`还剩${countdown}秒`);
-    }
-
-    if (countdown <= 0) {
-      clearInterval(timer);
-      speak('绿灯亮了');
-      countdown = 30;
-      setTimeout(startCountdown, 1000);
-    }
-  }, 1000);
+#status {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 12px;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-// 语音播报
-function speak(text) {
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = 'zh-CN';
-  speechSynthesis.speak(utterance);
+#countdown {
+  font-size: 48px;
+  font-weight: bold;
+  color: #ff3333;
+  text-shadow: 0 0 10px rgba(255, 50, 50, 0.8);
 }
 
-// 页面加载完成后启动
-window.onload = init;
+/* 模式切换按钮 */
+.mode-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: 1px solid #666;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 9998;
+  backdrop-filter: blur(5px);
+}
+
+.mode-btn:hover {
+  background: rgba(50, 50, 50, 0.8);
+}
