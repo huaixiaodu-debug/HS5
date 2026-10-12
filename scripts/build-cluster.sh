@@ -22,7 +22,7 @@ KS="${KS:-C:/Users/Administrator/WorkBuddy/2026-10-12-10-22-24/fawplay/build/faw
 KS_ALIAS="${KS_ALIAS:-fawplay}"
 KS_PASS="${KS_PASS:-fawplay123}"
 KEY_PASS="${KEY_PASS:-fawplay123}"
-OUT_APK="${OUT_APK:-C:/Users/Administrator/Desktop/FAW Play-patched-clustermap-v2.apk}"
+OUT_APK="${OUT_APK:-C:/Users/Administrator/Desktop/FAW Play-patched-clustermap-v3.apk}"
 
 mkdir -p "$WORK"
 
@@ -74,8 +74,8 @@ echo "-- u11.smali 中 e 读取点（期望 4：a()/b()/l()/i()）--"
 grep -c "sget-object v[0-9]*, Lu11;->e:Li00;" "$VU11" || true
 echo "-- u11.i() 放行分支（i() 方法体内的 e 读取，期望 1）--"
 awk '/^\.method public static i\(Landroid\/content\/Context;\)Z/,/^\.end method/' "$VU11" | grep -c "Lu11;->e:Li00;" || true
-echo "-- u11.i() 开关默认值 false（期望 1）--"
-grep -A6 'const-string v0, "hongqi_cluster_visible"' "$VU11" | grep -c "const/4 v1, 0x0" || true
+echo "-- u11.i() 开关默认值 true（期望 1，v3 保持原版）--"
+grep -A6 'const-string v0, "hongqi_cluster_visible"' "$VU11" | grep -c "const/4 v1, 0x1" || true
 echo "-- u11.r() 的 e 读取（期望 0）--"
 grep -c "sget-object v6, Lu11;->e:Li00;" "$VU11" || true
 echo "-- 「e==null 早退」残留（期望 0）--"
