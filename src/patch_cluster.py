@@ -27,28 +27,22 @@
     4. u11.r()  : 去掉 Presentation 可见性判定里的 ``e != null``
     5. CarPlayHostActivity: 三指手势判定不再要求正在导航（只要求车型匹配）
 
-    开关重接（7）：只做 1~5 会让仪表地图「只开不关」—— 导航结束后
+    开关重接（7~8）：只做 1~5 会让仪表地图「只开不关」—— 导航结束后
     没有任何路径下发 ``instrument map cleared``，仪表盘停在最后一帧，
     表现为花屏 / 卡死。这里把开关本身接回来。
 
     7. u11.i(ctx): ``e != null`` 时直接放行，与偏好项构成 OR ——
        ``i(ctx) = (e != null) || hongqi_cluster_visible``
-       偏好项 ``hongqi_cluster_visible`` **保持原版默认值 true**（不修改）。
+    8. u11.i(ctx): 开关默认值 true → false，避免「一连接 CarPlay 就投屏」
 
-    改完的行为矩阵（v3）：
+    改完的行为矩阵：
 
-      高德导航（不推 iAP2） → 开关默认 true，自动出图；导航结束需三指右滑关
-      Apple 地图导航        → e != null，自动出图；导航结束 e 变 null 且开关
-                             为 true …… 若未手动关过则维持投屏
-      未导航                → 默认投屏（开关默认 true）
-      三指右滑              → 写 ``hongqi_cluster_visible = false``，关闭并还原
+      Apple 地图导航        → e != null，自动出图；导航结束 e 变 null，
+                              开关为 false，自动还原（与改动前一致）
+      高德导航（不推 iAP2） → 三指左滑开，出图；三指右滑关，还原
+      未导航                → 不投屏，仪表盘保持原厂画面
 
 HUD 分支（n14）保持原样，仍只在真正有导航时下发，不受影响。
-
-历史：v2 曾把 ``hongqi_cluster_visible`` 默认值改成 false，用于解决
-「导航结束后仪表盘卡死在最后一帧」。副作用是高德导航时 ``e`` 恒为 null、
-``i(ctx)`` 恒为 false，仪表盘反而不出图了（用户实测反馈）。v3 恢复默认 true。
-
 
 用法：
     python src/patch_cluster.py --decode-dir decompile/apktool-out
@@ -194,20 +188,25 @@ def patch_u11(path, dry_run):
         done,
     )
 
-    # --- 8. i(ctx)：仪表地图开关默认值 保持 true（原版默认）--------------
-    #        v2 曾把它改成 false，结果是「高德导航时仪表盘不出图」—— 因为
-    #        高德不推 iAP2 导航消息，e 恒为 null，i(ctx) 就恒为 false。
-    #        v3 改回 true，让 i(ctx) 默认放行：
-    #          · 高德导航        → 自动出图（无需手势）
-    #          · Apple 地图导航  → 自动出图，导航结束自动还原
-    #          · 三指右滑        → 手动关闭并还原
-    #        这里只做校验，不修改该指令。
-    _keep_default = (
+    # --- 8. i(ctx)：仪表地图开关默认值 true → false ----------------------
+    #        默认 true + 上面的「常开」= 只要 CarPlay 连着就投屏，
+    #        这正是用户看到「关掉导航仍卡在导航页」的原因。
+    #        默认改成 false 后：
+    #          · Apple 地图导航  → e != null 放行，结束自动还原（原行为）
+    #          · 高德导航        → 三指左滑手动开，右滑关
+    text = _apply(
+        text,
         '    const-string v0, "hongqi_cluster_visible"\n\n'
-        "    .line 26\n    .line 27\n    const/4 v1, 0x1\n"
+        "    .line 26\n"
+        "    .line 27\n"
+        "    const/4 v1, 0x1\n",
+        '    const-string v0, "hongqi_cluster_visible"\n\n'
+        "    .line 26\n"
+        "    .line 27\n"
+        "    const/4 v1, 0x0\n",
+        "u11.i(): 仪表地图开关默认值改为关闭",
+        done,
     )
-    if _keep_default not in text:
-        die("u11.i() 的仪表地图开关默认值不是预期的 const/4 v1, 0x1")
 
     if not dry_run:
         write(path, text)
@@ -271,16 +270,12 @@ def self_check(u11_path, host_path, u11_text, host_text):
     else:
         log("check", "u11.i() 的「正在导航放行」分支已注入")
 
-    # i() 的开关默认值必须保持原版 true
-    _keep_default = (
-        'const-string v0, "hongqi_cluster_visible"\n\n'
-        "    .line 26\n    .line 27\n    const/4 v1, 0x1\n"
-    )
-    if _keep_default not in u11_text:
-        log("check", "!! u11.i() 仪表地图开关默认值不是 true（v3 应保持原版）")
+    # i() 的开关默认值必须是 false
+    if 'const-string v0, "hongqi_cluster_visible"\n\n    .line 26\n    .line 27\n    const/4 v1, 0x0\n' not in u11_text:
+        log("check", "!! u11.i() 仪表地图开关默认值未改为 false")
         ok = False
     else:
-        log("check", "u11.i() 仪表地图开关默认值保持 true")
+        log("check", "u11.i() 仪表地图开关默认值为 false")
 
     if "sget-object v6, Lu11;->e:Li00;" in u11_text:
         log("check", "!! u11.r() 中 `e` 读取仍然存在")

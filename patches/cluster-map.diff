@@ -29,7 +29,7 @@ index 64c8927..5b0c1c7 100644
      .line 137
      move v5, v11
 diff --git a/smali/u11.smali b/smali/u11.smali
-index bcfcda7..490c63d 100644
+index bcfcda7..86a31a3 100644
 --- a/smali/u11.smali
 +++ b/smali/u11.smali
 @@ -386,7 +386,6 @@
@@ -113,6 +113,15 @@ index bcfcda7..490c63d 100644
      const-string v1, "diplay_byd_outputs"
  
      .line 20
+@@ -1890,7 +1855,7 @@
+ 
+     .line 26
+     .line 27
+-    const/4 v1, 0x1
++    const/4 v1, 0x0
+ 
+     .line 28
+     invoke-interface {p0, v0, v1}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
 @@ -3559,12 +3524,6 @@
  
      .line 71

@@ -139,40 +139,22 @@
 - 本次交付产物：`FAW Play-patched-clustermap-v2.apk`，
   sha256 `43cf75a71a7bea49416210e7aa0e849603aecfe152ade8b187a23b6b2a4e2255`。
 
-## [1.5.0] - 2026-10-12
+## [1.5.0] - 2026-10-12（已回退，勿使用）
 
-### Fixed
+> **本节已于同日整体回退**：仪表地图补丁回到 `1.4.0` 的逻辑，
+> 仓库当前代码、脚本、`patches/cluster-map.diff` 与交付产物**均以 `1.4.0` 为准**。
+> 本节保留仅为记录曾评估过的方案与回退原因。
 
-- **恢复「高德导航自动出图」**（`src/patch_cluster.py`）
-  - 现象：1.4.0 打完后开高德导航，仪表盘**不再出图**（用户实测反馈）
-  - 根因：1.4.0 把 `hongqi_cluster_visible` 默认值改成 `false`，而高德不推 iAP2
-    导航消息、`u11.e` 恒为 null，两者叠加使 `i(ctx)` 恒为 false
-  - `u11.i(ctx)`：`hongqi_cluster_visible` 读取默认值**恢复为原版 `true`**
-    —— 让「默认放行」这一侧兜住高德 ×
+### Added
 
-### Changed
+- （曾）`u11.i(ctx)` 的 `hongqi_cluster_visible` 读取默认值恢复为原版 `true`，
+  使高德导航也能自动出图
+- （曾）`docs/CLUSTER-MAP.md` 增加 v1 / v2 / v3 版本演进对照表
 
-- `patches/cluster-map.diff` 由 8 处改动回到 7 处
-- `docs/CLUSTER-MAP.md` 补「版本演进」表，说明默认值 v1 → v2 → v3 的取舍由来
-- `scripts/build-cluster.sh` 第 8 步断言改为「开关默认值 = true」
+### Reverted
 
-### Notes
-
-- 三版取舍一览：
-
-  | 版本 | `i(ctx)` | 实测 |
-  |---|---|---|
-  | v1 | 原版（默认 `true`） | 高德出图 ✔ / 导航结束不还原 ✘ |
-  | v2 | `(e != null) \|\| 开关`，默认 `false` | Apple 地图完美 ✔ / 高德不出图 ✘ |
-  | **v3** | `(e != null) \|\| 开关`，默认 `true` | 高德自动出图 ✔ / 导航结束需三指右滑关 |
-
-- **HUD（抬头显示）分支自始至终未被改动**：`u11.a()` 里 HUD 的判定
-  `v3 = (e != null) && (d != null) && h("hud") && navigation_enabled` 与下发段
-  （`ICarHUDManager` 三条指令）在 v1/v2/v3 中逐字与原版一致。
-- 本次交付产物：`FAW Play-patched-clustermap-v3.apk`，
-  sha256 `ef6681e499c0fea2665047a2e920f7875f6ab0721ba95bb5a13cb84db4ac44fa`，
-  基线 `0.2.48-FAW-DEFAULT1`（versionCode 122）。
-- 注意：桌面上的 `FAW Play.apk` 现为 **`0.2.45-FAW-MAP3`**（versionCode 119），
-  与本补丁的基线 **不是同一版本**，不能用作重建容器 —— 用它会因类结构不同
-  导致授权补丁的 `e(Context)` 匹配失败。重建请用 `DECODE_SRC=apk-source`。
+- 回退原因：HUD（风挡抬头显示）走的是 iAP2 导航数据通道，与仪表地图投屏
+  （CarPlay 画面）**通路独立**，改车机端无法让 HUD 在高德下工作。
+  而「不导航也默认投屏」在 Apple 地图场景下反而多余（Apple 地图本就能自动开 / 自动关）。
+  方案收益不足，回退到 `1.4.0` 的行为。
 
