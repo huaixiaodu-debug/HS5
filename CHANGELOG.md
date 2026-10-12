@@ -102,3 +102,40 @@
 - 补丁后：CarPlay 一连上、仪表地图开关打开（`hongqi_cluster_visible`）、原厂 binder 就绪即出图。
 - 副作用：仪表盘不再「导航结束后自动还原厂画面」，改用三指右滑手动关闭。
 - HUD 分支（n14）保持原样，仍只在真正有导航时下发。
+
+## [1.4.0] - 2026-10-12
+
+### Fixed
+
+- **修复仪表地图「只开不关」导致的仪表盘花屏 / 卡死**（`src/patch_cluster.py`）
+  - 现象：1.3.0 打完后开高德导航仪表盘能直接出图，但**关掉导航后仪表盘花屏、
+    卡在最后一帧的导航页**
+  - 根因：1.3.0 把 `u11.e` 从各处判定里摘掉后，`u11.a()` 里两条清除路径
+    （`v9 == false` 的 n15 清除、`v12 == false` 的 stream 清除）恒不成立，
+    导航结束后没有任何代码下发 `instrument map cleared`
+  - `u11.i(ctx)`：`e != null` 时直接放行，即 `i(ctx) = (e != null) || 偏好开关`
+    —— 把「正在导航」重新接进仪表地图的总闸
+  - `u11.i(ctx)`：`hongqi_cluster_visible` 读取默认值 `true` → `false`
+    —— 避免「一连接 CarPlay 就投屏」
+
+### Changed
+
+- `scripts/build-cluster.sh` 支持两个新环境变量，用于原始 APK 已不在的场景：
+  - `DECODE_SRC`：跳过 apktool 解码，直接复制一份现成解码目录（如 `apk-source/`）
+  - `CONTAINER`：指定最小改动重打包用的容器 APK，可用任意「由同一原始 APK
+    重打包出来的产物」代替原始 APK（签名条目会被自动剔除，dex 会被本次回编译结果替换）
+- `scripts/build-cluster.sh` 第 8 步复核改用「方法体内的特征」做断言，
+  不再依赖 smali 标签名 —— apktool 回编译会重新编号标签（`:cond_map_manual` → `:cond_1`）
+- `patches/cluster-map.diff` 更新为 8 处改动
+- `docs/CLUSTER-MAP.md` 补上「第二组：把开关接回来」与新的行为矩阵
+
+### Notes
+
+- 修完后的行为：Apple 地图自动开 / 自动关；高德三指左滑开、三指右滑关；
+  不导航时仪表盘保持原厂画面。
+- 高德导航结束**仍不会自动关** —— iOS 只为系统地图走 iAP2 RouteGuidance 通道，
+  车机拿不到高德「导航结束」的信号。若在 iPhone 上把高德设为 CarPlay 默认导航 App，
+  让 iOS 转发其导航信息，即可与 Apple 地图行为一致。
+- 本次交付产物：`FAW Play-patched-clustermap-v2.apk`，
+  sha256 `43cf75a71a7bea49416210e7aa0e849603aecfe152ade8b187a23b6b2a4e2255`。
+

@@ -17,12 +17,30 @@
 
     就激活仪表地图流，不再要求 ``u11.e != null``。
 
-改动点（全部是「条件删除」，不新增指令、不改寄存器数量）
+改动点
+    条件删除（1~5）：解除「必须正在导航」的绑定，让高德这类不推 iAP2
+    导航消息的 App 也能点亮仪表地图。
+
     1. u11.a()  : 去掉 n15（instrument-map 基础通道）判定里的 ``e != null``
     2. u11.a()  : 去掉 bl4（instrument map stream）判定里的 ``e != null``
     3. u11.a()  : 去掉「e == null 直接 return-void」的提前退出
-    4. u11.r()  : 去掉 Presentation alpha 判定里的 ``e != null``
+    4. u11.r()  : 去掉 Presentation 可见性判定里的 ``e != null``
     5. CarPlayHostActivity: 三指手势判定不再要求正在导航（只要求车型匹配）
+
+    开关重接（7~8）：只做 1~5 会让仪表地图「只开不关」—— 导航结束后
+    没有任何路径下发 ``instrument map cleared``，仪表盘停在最后一帧，
+    表现为花屏 / 卡死。这里把开关本身接回来。
+
+    7. u11.i(ctx): ``e != null`` 时直接放行，与偏好项构成 OR ——
+       ``i(ctx) = (e != null) || hongqi_cluster_visible``
+    8. u11.i(ctx): 开关默认值 true → false，避免「一连接 CarPlay 就投屏」
+
+    改完的行为矩阵：
+
+      Apple 地图导航        → e != null，自动出图；导航结束 e 变 null，
+                              开关为 false，自动还原（与改动前一致）
+      高德导航（不推 iAP2） → 三指左滑开，出图；三指右滑关，还原
+      未导航                → 不投屏，仪表盘保持原厂画面
 
 HUD 分支（n14）保持原样，仍只在真正有导航时下发，不受影响。
 
@@ -150,6 +168,46 @@ def patch_u11(path, dry_run):
         done,
     )
 
+    # --- 7. i(ctx)：正在导航时直接放行 -----------------------------------
+    #        原实现只看偏好项 hongqi_cluster_visible。补丁 1~4 把「导航态」
+    #        从各处判定里摘掉后，开关一旦为 true 就再也关不掉（导航结束也
+    #        不会走 cleared），仪表盘停在最后一帧 —— 花屏 / 卡死。
+    #        这里把「正在导航」重新接回来：e != null 时直接放行，
+    #        与偏好项构成 OR 关系，即 i(ctx) = (e != null) || 手动开关。
+    text = _apply(
+        text,
+        '    :cond_0\n    const-string v1, "diplay_byd_outputs"\n',
+        "    :cond_0\n"
+        "    sget-object v1, Lu11;->e:Li00;\n\n"
+        "    if-eqz v1, :cond_map_manual\n\n"
+        "    const/4 v0, 0x1\n\n"
+        "    return v0\n\n"
+        "    :cond_map_manual\n"
+        '    const-string v1, "diplay_byd_outputs"\n',
+        "u11.i(): 有导航时直接放行（与手动开关构成 OR）",
+        done,
+    )
+
+    # --- 8. i(ctx)：仪表地图开关默认值 true → false ----------------------
+    #        默认 true + 上面的「常开」= 只要 CarPlay 连着就投屏，
+    #        这正是用户看到「关掉导航仍卡在导航页」的原因。
+    #        默认改成 false 后：
+    #          · Apple 地图导航  → e != null 放行，结束自动还原（原行为）
+    #          · 高德导航        → 三指左滑手动开，右滑关
+    text = _apply(
+        text,
+        '    const-string v0, "hongqi_cluster_visible"\n\n'
+        "    .line 26\n"
+        "    .line 27\n"
+        "    const/4 v1, 0x1\n",
+        '    const-string v0, "hongqi_cluster_visible"\n\n'
+        "    .line 26\n"
+        "    .line 27\n"
+        "    const/4 v1, 0x0\n",
+        "u11.i(): 仪表地图开关默认值改为关闭",
+        done,
+    )
+
     if not dry_run:
         write(path, text)
     return done, text
@@ -196,13 +254,28 @@ def patch_host(path, dry_run):
 def self_check(u11_path, host_path, u11_text, host_text):
     ok = True
 
-    # u11.smali 里「正常」的 e 读取点共 3 处：
-    #   a() 入口读取  /  b() 判断是否需要 bind 服务  /  l() 读旧值做日志比较
+    # u11.smali 里「正常」的 e 读取点共 4 处：
+    #   a() 入口 / b() 判断是否需要 bind 服务 / l() 读旧值做日志比较 /
+    #   i() 新增的「正在导航则放行」放行点
     # 补丁只需保证 r() 里那处（Presentation alpha 判定）消失。
     n_e = len(re.findall(r"sget-object \w+, Lu11;->e:Li00;", u11_text))
-    log("check", "u11.smali 中 `e` 读取点：%d 处（期望 3：a()入口 / b()bind判断 / l()日志）" % n_e)
-    if n_e != 3:
+    log("check", "u11.smali 中 `e` 读取点：%d 处（期望 4：a()入口 / b()bind判断 / l()日志 / i()放行）" % n_e)
+    if n_e != 4:
         ok = False
+
+    # i() 的放行点必须真的插进去了
+    if "    :cond_map_manual\n" not in u11_text:
+        log("check", "!! u11.i() 的「正在导航放行」分支缺失")
+        ok = False
+    else:
+        log("check", "u11.i() 的「正在导航放行」分支已注入")
+
+    # i() 的开关默认值必须是 false
+    if 'const-string v0, "hongqi_cluster_visible"\n\n    .line 26\n    .line 27\n    const/4 v1, 0x0\n' not in u11_text:
+        log("check", "!! u11.i() 仪表地图开关默认值未改为 false")
+        ok = False
+    else:
+        log("check", "u11.i() 仪表地图开关默认值为 false")
 
     if "sget-object v6, Lu11;->e:Li00;" in u11_text:
         log("check", "!! u11.r() 中 `e` 读取仍然存在")

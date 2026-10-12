@@ -8,6 +8,13 @@ REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$REPO_ROOT"
 
 ORIGINAL="${ORIGINAL:-C:/Users/Administrator/Desktop/FAW Play.apk}"
+# 容器 APK：最小改动重打包只取它的「非 classes.dex 条目结构」，dex 由本次
+# apktool b 的结果替换。所以原始 APK 不在时，可用任意「同一原始 APK 重打包
+# 出来的产物」代替，结果等价（脚本会自动剔除其中的签名条目）。
+CONTAINER="${CONTAINER:-$ORIGINAL}"
+# 解码源：留空则用 apktool 现场解码 ORIGINAL；指定后直接复制该目录
+# （用于原始 APK 已丢失、只剩 apk-source 的场景）
+DECODE_SRC="${DECODE_SRC:-}"
 WORK="${WORK:-build-cluster}"
 JAVA="${JAVA:-C:/Users/Administrator/WorkBuddy/2026-10-12-10-22-24/fawplay/tools/jdk-17.0.2/bin/java.exe}"
 PY="${PY:-C:/Users/Administrator/.workbuddy/binaries/python/versions/3.13.12/python.exe}"
@@ -15,12 +22,17 @@ KS="${KS:-C:/Users/Administrator/WorkBuddy/2026-10-12-10-22-24/fawplay/build/faw
 KS_ALIAS="${KS_ALIAS:-fawplay}"
 KS_PASS="${KS_PASS:-fawplay123}"
 KEY_PASS="${KEY_PASS:-fawplay123}"
-OUT_APK="${OUT_APK:-C:/Users/Administrator/Desktop/FAW Play-patched-clustermap.apk}"
+OUT_APK="${OUT_APK:-C:/Users/Administrator/Desktop/FAW Play-patched-clustermap-v2.apk}"
 
 mkdir -p "$WORK"
 
-echo "=========== [1/8] apktool 反编译 ==========="
-"$JAVA" -jar tools/apktool.jar d -f -o "$WORK/decode" "$ORIGINAL"
+echo "=========== [1/8] 准备解码目录 ==========="
+if [ -n "$DECODE_SRC" ]; then
+  echo "-- 使用现成解码目录：$DECODE_SRC --"
+  cp -r "$DECODE_SRC" "$WORK/decode"
+else
+  "$JAVA" -jar tools/apktool.jar d -f -o "$WORK/decode" "$ORIGINAL"
+fi
 
 echo
 echo "=========== [2/8] 授权补丁（去混淆 + 恒授权） ==========="
@@ -36,7 +48,7 @@ echo "=========== [4/8] apktool 回编译 ==========="
 
 echo
 echo "=========== [5/8] 最小改动重打包 + 4KB 对齐 ==========="
-"$PY" src/repack_apk.py --original "$ORIGINAL" --built "$WORK/unsigned.apk" --out "$WORK/aligned.apk"
+"$PY" src/repack_apk.py --original "$CONTAINER" --built "$WORK/unsigned.apk" --out "$WORK/aligned.apk"
 
 echo
 echo "=========== [6/8] 签名（v1 + v2 + v3） ==========="
@@ -58,8 +70,12 @@ rm -rf "$WORK/verify"
 "$JAVA" -jar tools/apktool.jar d -f -o "$WORK/verify" "$OUT_APK" >/dev/null
 VU11="$WORK/verify/smali/u11.smali"
 [ -f "$VU11" ] || VU11="$(find "$WORK/verify" -name u11.smali | head -1)"
-echo "-- u11.smali 中 e 读取点（期望 3：a()/b()/l()）--"
+echo "-- u11.smali 中 e 读取点（期望 4：a()/b()/l()/i()）--"
 grep -c "sget-object v[0-9]*, Lu11;->e:Li00;" "$VU11" || true
+echo "-- u11.i() 放行分支（i() 方法体内的 e 读取，期望 1）--"
+awk '/^\.method public static i\(Landroid\/content\/Context;\)Z/,/^\.end method/' "$VU11" | grep -c "Lu11;->e:Li00;" || true
+echo "-- u11.i() 开关默认值 false（期望 1）--"
+grep -A6 'const-string v0, "hongqi_cluster_visible"' "$VU11" | grep -c "const/4 v1, 0x0" || true
 echo "-- u11.r() 的 e 读取（期望 0）--"
 grep -c "sget-object v6, Lu11;->e:Li00;" "$VU11" || true
 echo "-- 「e==null 早退」残留（期望 0）--"

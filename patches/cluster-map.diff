@@ -29,7 +29,7 @@ index 64c8927..5b0c1c7 100644
      .line 137
      move v5, v11
 diff --git a/smali/u11.smali b/smali/u11.smali
-index bcfcda7..0d0390c 100644
+index bcfcda7..86a31a3 100644
 --- a/smali/u11.smali
 +++ b/smali/u11.smali
 @@ -386,7 +386,6 @@
@@ -97,7 +97,32 @@ index bcfcda7..0d0390c 100644
  
      .line 213
      :cond_8
-@@ -3559,12 +3515,6 @@
+@@ -1874,6 +1830,15 @@
+ 
+     .line 19
+     :cond_0
++    sget-object v1, Lu11;->e:Li00;
++
++    if-eqz v1, :cond_map_manual
++
++    const/4 v0, 0x1
++
++    return v0
++
++    :cond_map_manual
+     const-string v1, "diplay_byd_outputs"
+ 
+     .line 20
+@@ -1890,7 +1855,7 @@
+ 
+     .line 26
+     .line 27
+-    const/4 v1, 0x1
++    const/4 v1, 0x0
+ 
+     .line 28
+     invoke-interface {p0, v0, v1}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
+@@ -3559,12 +3524,6 @@
  
      .line 71
      .line 72
