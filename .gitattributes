@@ -18,3 +18,14 @@
 # 让 GitHub 语言统计不要把这些算进去
 *.md            linguist-documentation
 docs/**         linguist-documentation
+
+# ---- APK 反编译源码树（apk-source/）----
+# .smali / .xml 按文本存储（LF），GitHub 可正常浏览与 diff；
+# 原生库与二进制资源显式声明为二进制，避免被换行符转换破坏。
+*.so            binary
+*.bin           binary
+*.kotlin_builtins binary
+*.arsc          binary
+*.pcm           binary
+*.p7b           binary
+*.pk8           binary

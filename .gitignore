@@ -4,12 +4,16 @@ tools/
 *.zip
 *.tar.gz
 
-# ---- 反编译产物 ----
+# ---- 反编译产物（工作目录里的一律忽略）----
 decompile/
 verify-*/
 *-out/
 *.smali
 !src/**/*.smali
+
+# 例外：仓库随附的 APK 反编译源码树要提交
+!apk-source/**
+!apk-source/**/*.smali
 
 # ---- 构建产物 ----
 build/

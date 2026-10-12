@@ -182,6 +182,15 @@ dex 里 4,227 个类被 R8 压进默认包（`a`、`a0`、`a1` …），业务�
 
 ```
 .
+├── apk-source/            ★ APK 反编译源码树（4588 个 smali + 资源 + 原生库）
+│   ├── README.md          #   源码树说明：目标包信息 / 结构 / 改了什么 / 回编译
+│   ├── AndroidManifest.xml
+│   ├── apktool.yml
+│   ├── smali/             #   com/shilapi/ 39 个业务类 + 4218 个 R8 混淆类 + 框架类
+│   ├── res/ assets/ lib/ kotlin/ unknown/ original/ META-INF/
+├── patches/
+│   ├── README.md          #   补丁差异说明（47 个文件的变化清单）
+│   └── license-removal.diff  # 原始 → 补丁后完整 diff，可 git apply -p1
 ├── src/
 │   ├── common.py          # Java 定位 / 签名条目判定 / 对齐规则 / DOS 时间
 │   ├── patch_smali.py     # 补丁 + 去混淆（幂等，支持 --dry-run / --features）
@@ -205,7 +214,36 @@ dex 里 4,227 个类被 R8 压进默认包（`a`、`a0`、`a1` …），业务�
 
 ---
 
-## 五、快速开始
+## 五、源码树说明（apk-source/）
+
+`apk-source/` 是**完整的 APK 反编译源码**——用 apktool 解出的全部 4588 个 smali、解码后的资源、
+原生库与 assets，已应用本仓库的补丁。回编译它就能得到 `dist/` 里那个可安装的产物。
+
+想看清「改了什么」而不想翻整棵树，看 [`patches/license-removal.diff`](patches/license-removal.diff)：
+4588 个 smali 中只有 **47 个**发生变化（修改 29 / 新增 9 / 删除 9）。
+
+```bash
+cd apk-source
+head -5 README.md                    # 目标包信息 + 目录结构 + 回编译方式
+wc -l ../patches/license-removal.diff
+```
+
+被识别出的业务入口（`smali/com/shilapi/xcertplay/`，共 39 个类）：
+
+| 类 | 作用 |
+|---|---|
+| `DiPlayActivity` | 主界面 |
+| `CarPlayHostActivity` | CarPlay 会话宿主，HUD / 仪表投屏入口 |
+| `LicenseActivity` | 授权激活界面 |
+| `AppUpdateActivity` | 应用自更新 |
+| `license/*` | 授权子系统 9 个类（本仓库重命名产物） |
+
+其余 4218 个类落在默认包（`a.smali`、`a0.smali` …），是 R8 全量混淆 + 大量内联的结果，
+名称无意义，需结合调用关系阅读。详见 [`apk-source/README.md`](apk-source/README.md)。
+
+---
+
+## 六、快速开始
 
 ```bash
 # 0) 准备工具链（JDK 17 + apktool + uber-apk-signer + jadx）
@@ -270,7 +308,7 @@ adb install dist/FAW-Play-patched.apk
 
 ---
 
-## 六、可调参数
+## 七、可调参数
 
 `src/patch_smali.py` 支持改授权状态的内容：
 
@@ -289,7 +327,7 @@ python3 src/patch_smali.py --decode-dir decompile/apktool-out \
 
 ---
 
-## 七、环境要求
+## 八、环境要求
 
 - **Python 3.8+**，只用标准库，无第三方依赖
 - **JDK 17**（apktool 2.9.x 与 uber-apk-signer 需要）
@@ -298,7 +336,7 @@ python3 src/patch_smali.py --decode-dir decompile/apktool-out \
 
 ---
 
-## 八、已知限制
+## 九、已知限制
 
 - 本项目只做了**静态验证**与**端到端回解码验证**，没有在真机上跑过。
 - 若车机对安装包做**系统级签名白名单**校验（部分车机预装应用会做），换签名会安装失败。
@@ -308,7 +346,7 @@ python3 src/patch_smali.py --decode-dir decompile/apktool-out \
 
 ---
 
-## 九、上传到 GitHub
+## 十、上传到 GitHub
 
 仓库已经在本地初始化好结构，`.gitignore` 已排除 `tools/`、`decompile/`、`build/`、
 `dist/`、`*.apk`、`*.jks` 等不该进仓库的内容。直接推：
@@ -345,7 +383,7 @@ gh release create v1.0.0 dist/FAW-Play-patched.apk \
 
 ---
 
-## 十、第三方说明
+## 十一、第三方说明
 
 本项目包含的代码为独立实现，不含原应用任何代码或资源。分析对象 `com.shihab.diplay`
 及其商标、代码、资源版权归其权利人所有。使用者需自行确认在其所在法域内使用本项目的合法性，
