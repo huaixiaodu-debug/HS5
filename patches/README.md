@@ -1,6 +1,26 @@
 # 补丁差异文件
 
-`license-removal.diff` —— 原始 APK 反编译结果 → 去授权补丁后的**完整差异**（仅 smali 层）。
+本目录有两个**互相独立**的补丁差异，可单独应用 / 回滚。
+
+## cluster-map.diff —— 仪表地图常开（补丁 B）
+
+解除仪表地图「必须正在导航」的绑定，详见 [`../docs/CLUSTER-MAP.md`](../docs/CLUSTER-MAP.md)。
+
+| 项 | 值 |
+|---|---|
+| 对比基线 | 已打授权补丁的 smali 树（= `apk-source/`） |
+| 对比目标 | 再打仪表地图补丁 |
+| 发生变化 | **2** 个文件、**6** 处改动（全部为条件删除） |
+| 补丁文件大小 | 约 1.9 KB |
+
+应用与回滚（在 apktool 解码目录里执行）：
+
+    git apply -p1 <repo>/patches/cluster-map.diff      # 应用
+    git apply -R -p1 <repo>/patches/cluster-map.diff   # 回滚
+
+## license-removal.diff —— 授权去除（补丁 A）
+
+原始 APK 反编译结果 → 去授权补丁后的**完整差异**（仅 smali 层）。
 
 | 项 | 值 |
 |---|---|

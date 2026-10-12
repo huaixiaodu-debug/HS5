@@ -1,0 +1,112 @@
+diff --git a/smali/com/shilapi/xcertplay/CarPlayHostActivity.smali b/smali/com/shilapi/xcertplay/CarPlayHostActivity.smali
+index 64c8927..5b0c1c7 100644
+--- a/smali/com/shilapi/xcertplay/CarPlayHostActivity.smali
++++ b/smali/com/shilapi/xcertplay/CarPlayHostActivity.smali
+@@ -1575,12 +1575,6 @@
+ 
+     .line 98
+     .line 99
+-    sget-object v14, Lu11;->e:Li00;
+-
+-    .line 100
+-    .line 101
+-    if-eqz v14, :cond_3
+-
+     .line 102
+     .line 103
+     move v14, v11
+@@ -1647,12 +1641,6 @@
+ 
+     .line 132
+     .line 133
+-    sget-object v5, Lu11;->e:Li00;
+-
+-    .line 134
+-    .line 135
+-    if-eqz v5, :cond_4
+-
+     .line 136
+     .line 137
+     move v5, v11
+diff --git a/smali/u11.smali b/smali/u11.smali
+index bcfcda7..0d0390c 100644
+--- a/smali/u11.smali
++++ b/smali/u11.smali
+@@ -386,7 +386,6 @@
+     .line 85
+     .line 86
+     :cond_1
+-    if-eqz v0, :cond_2
+ 
+     .line 87
+     .line 88
+@@ -479,7 +478,6 @@
+     .line 129
+     .line 130
+     :cond_3
+-    if-eqz v0, :cond_4
+ 
+     .line 131
+     .line 132
+@@ -610,48 +608,6 @@
+     .line 193
+     .line 194
+     :cond_5
+-    if-nez v0, :cond_8
+-
+-    .line 195
+-    .line 196
+-    sget-boolean v0, Lu11;->p:Z
+-
+-    .line 197
+-    .line 198
+-    if-nez v0, :cond_7
+-
+-    .line 199
+-    .line 200
+-    sget-boolean v0, Lu11;->q:Z
+-
+-    .line 201
+-    .line 202
+-    if-nez v0, :cond_7
+-
+-    .line 203
+-    .line 204
+-    sget-boolean v0, Lu11;->s:Z
+-
+-    .line 205
+-    .line 206
+-    if-eqz v0, :cond_6
+-
+-    .line 207
+-    .line 208
+-    goto :goto_3
+-
+-    .line 209
+-    :cond_6
+-    move v1, v2
+-
+-    .line 210
+-    :cond_7
+-    :goto_3
+-    sput-boolean v1, Lu11;->h:Z
+-
+-    .line 211
+-    .line 212
+-    return-void
+ 
+     .line 213
+     :cond_8
+@@ -3559,12 +3515,6 @@
+ 
+     .line 71
+     .line 72
+-    sget-object v6, Lu11;->e:Li00;
+-
+-    .line 73
+-    .line 74
+-    if-eqz v6, :cond_1
+-
+     .line 75
+     .line 76
+     if-eqz v4, :cond_1

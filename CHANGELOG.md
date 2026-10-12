@@ -77,3 +77,28 @@
 
 - 反编译产物**不可直接编译**（混淆名保留、部分控制流被 CFR 等价改写）。
   读代码用 `java/`，改代码重打包用 `apk-source/`（smali 是字节码的权威表示，可无损回编译）。
+
+## [1.3.0] - 2026-10-12
+
+### Added
+
+- **`src/patch_cluster.py` —— 仪表地图常开补丁**（解除「必须正在导航」绑定）
+  - `u11.a()`：n15（instrument-map 基础通道）与 bl4（instrument map stream）判定去掉 `u11.e != null`
+  - `u11.a()`：删除 `u11.e == null` 时的 `return-void` 提前退出，让无导航时也继续走激活流程
+  - `u11.r()`：Presentation alpha 判定去掉 `u11.e != null`
+  - `CarPlayHostActivity`：三指手势识别不再要求正在导航（只要求车型匹配）
+  - 自检：`e` 读取点计数、`r()` 中读取必须消失、HUD(n14) 判定必须保持原样
+- **`scripts/build-cluster.sh` —— 双补丁一键构建**
+  - 反编译 → 授权补丁 → 仪表地图补丁 → 回编译 → 最小改动重打包 → 签名 → 校验 → 回读复核
+  - 第 8 步「回读复核」：重新反编译产物 APK，逐项确认补丁已进入 dex
+- `patches/cluster-map.diff` —— 仪表地图补丁的独立差异（2 个文件，6 处改动）
+- `docs/CLUSTER-MAP.md` —— 仪表地图链路分析与补丁说明
+
+### Notes
+
+- 根因：仪表地图的导航态 `u11.e` 只由 iAP2 RouteGuidance 消息
+  （`20993` / `20994` / `20996`）驱动 —— 那是 Apple 系统地图专有通道。
+  高德 CarPlay 版不推该通道，`u11.e` 恒为 null，所以必须先跑一次 Apple 地图才能激活仪表地图。
+- 补丁后：CarPlay 一连上、仪表地图开关打开（`hongqi_cluster_visible`）、原厂 binder 就绪即出图。
+- 副作用：仪表盘不再「导航结束后自动还原厂画面」，改用三指右滑手动关闭。
+- HUD 分支（n14）保持原样，仍只在真正有导航时下发。

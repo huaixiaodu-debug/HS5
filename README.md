@@ -137,6 +137,23 @@ dex 里 4,227 个类被 R8 压进默认包（`a`、`a0`、`a1` …），业务�
 | `ah1` | `license.LicenseCrypto` | 凭证验签（EC P-256 / SHA） |
 | `rg0` | `license.ActivationRequest` | 在线激活请求体 |
 
+### 5. 仪表地图常开（补丁 B，v1.3.0）
+
+除授权外，本仓库还提供一个**独立**的车机行为补丁：解除仪表地图「必须正在导航」的绑定。
+
+`u11.a()` 里仪表地图流的激活条件是
+`bl4 = (u11.e != null) && u11.i(d) && u11.f && u11.g`，
+而导航态 `u11.e` **只由 iAP2 的 Navigation 组件消息**（`20993` / `20994` / `20996`）驱动 ——
+那是 Apple 系统地图专有的通道。高德 CarPlay 版不推这条通道，`u11.e` 恒为 null，
+于是必须先跑一次 Apple 地图，仪表盘才出图。
+
+补丁把这 6 处判定里的 `e != null` 去掉（含一处提前 `return-void`、一处循环依赖、
+两处三指手势门控），激活条件简化为
+`bl4 = u11.i(d) && u11.f && u11.g` —— CarPlay 一连接即可出图。
+**HUD 分支（n14）刻意不动**，抬头显示行为与原来一致。
+
+完整链路分析见 [`docs/CLUSTER-MAP.md`](docs/CLUSTER-MAP.md)，独立差异见 `patches/cluster-map.diff`。
+
 ---
 
 ## 三、重打包（这套工具链最值钱的部分）
@@ -195,20 +212,24 @@ dex 里 4,227 个类被 R8 压进默认包（`a`、`a0`、`a1` …），业务�
 │   └── *.java             #   4216 个默认包混淆类
 ├── patches/
 │   ├── README.md          #   补丁差异说明（47 个文件的变化清单）
-│   └── license-removal.diff  # 原始 → 补丁后完整 diff，可 git apply -p1
+│   ├── license-removal.diff  # 原始 → 补丁后完整 diff，可 git apply -p1
+│   └── cluster-map.diff      # 仪表地图常开补丁 diff（2 文件 / 6 处改动）
 ├── src/
 │   ├── common.py          # Java 定位 / 签名条目判定 / 对齐规则 / DOS 时间
-│   ├── patch_smali.py     # 补丁 + 去混淆（幂等，支持 --dry-run / --features）
+│   ├── patch_smali.py     # 授权补丁 + 去混淆（幂等，支持 --dry-run / --features）
+│   ├── patch_cluster.py   # 仪表地图常开补丁（解除「必须正在导航」绑定）
 │   ├── repack_apk.py      # 最小改动重打包 + CRC + 4 KB 对齐
 │   ├── sign_apk.py        # 生成密钥库 + v1/v2/v3 签名
 │   └── verify_apk.py      # 产物体检（CRC / 对齐 / 签名 / 签名块 / dex 特征串）
 ├── scripts/
 │   ├── setup_tools.sh     # 下载 JDK + apktool + uber-apk-signer + jadx
-│   └── build.sh           # 一键全流程
+│   ├── build.sh           # 一键全流程（授权补丁）
+│   └── build-cluster.sh   # 一键全流程（授权 + 仪表地图，含第 8 步回读复核）
 ├── tests/
 │   └── selftest_repack.py # 合成 APK 往返测试（不需要真实 APK / JDK）
 ├── docs/
 │   ├── ANALYSIS.md        # 授权体系完整分析（数据流 / 门控点 / 类名对照）
+│   ├── CLUSTER-MAP.md     # 仪表地图投屏链路分析与常开补丁
 │   ├── PACKAGING.md       # 重打包与签名细节、踩坑记录
 │   └── REPORT.md          # 本次逆向的完整报告（含哈希）
 ├── .github/workflows/ci.yml

@@ -17,6 +17,8 @@ verify-*/
 
 # ---- 构建产物 ----
 build/
+build-cluster/
+build-cluster.log
 dist/
 out/
 *.apk
