@@ -1,0 +1,10 @@
+/*
+ * Decompiled with CFR 0.152.
+ */
+import java.util.ArrayList;
+
+public final class os2 {
+    public final ArrayList a = new ArrayList();
+    public final ArrayList b = new ArrayList();
+}
+

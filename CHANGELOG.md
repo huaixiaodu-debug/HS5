@@ -55,3 +55,25 @@
 - `.gitignore` 增加否定规则 `!apk-source/**`，放行随附源码树（原先 `*.smali` 会被整体忽略）
 - `.gitattributes` 显式声明 `*.so` / `*.bin` / `*.kotlin_builtins` / `*.arsc` / `*.pcm` / `*.p7b` / `*.pk8`
   为二进制，避免本机 `core.autocrlf=true` 破坏原生库与二进制资源
+
+## [1.2.0] - 2026-10-12
+
+### Added
+
+- **`java/` —— 补丁后 APK 的完整 Java 反编译源码**（4487 个 `.java`）
+  - 工具链：`dex2jar 2.4`（dex → jar，约 17 秒）+ `CFR 0.152`（jar → java，约 4.5 分钟）
+  - `com/shilapi/xcertplay/` 30 个业务类 + `license/` 9 个类（含补丁点 `LicenseManager.java`）
+  - `androidx/` 197 个、`android/` 35 个、默认包 4216 个 R8 混淆类
+  - `java/README.md` —— 目录构成、反编译链路、产物质量说明、与原版差异
+
+### Changed
+
+- `README.md` 新增「六、Java 反编译源码（java/）」，结构树补入 `java/`，章节重编号
+- `README.md`「二、4 关于去除混淆」把「jadx Java 源码」更正为 CFR 反编译产物
+- `README.md`「十、已知限制」更正 jadx 说明：jadx 1.5.0 在该包上会卡死在 `loading` 阶段
+  （实测 7 分钟无产出，缩小输入到 39 个类仍卡住，与输入大小无关），已改用 CFR 链路
+
+### Notes
+
+- 反编译产物**不可直接编译**（混淆名保留、部分控制流被 CFR 等价改写）。
+  读代码用 `java/`，改代码重打包用 `apk-source/`（smali 是字节码的权威表示，可无损回编译）。

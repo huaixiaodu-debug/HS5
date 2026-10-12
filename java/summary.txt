@@ -1,0 +1,3477 @@
+Summary for decompile/fawplay-patched.jar
+Decompiled with CFR 0.152
+
+
+a21
+----------------------------
+
+run()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 2[TRYBLOCK] [5 : 226->334)] java.lang.Throwable
+
+
+cq1
+----------------------------
+
+o(ju0 )
+  Unable to fully structure code
+  Could not resolve type clashes
+q(o60 )
+  Unable to fully structure code
+
+
+a2
+----------------------------
+
+a()
+  Unable to fully structure code
+
+
+a83
+----------------------------
+
+I(int )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Extractable last case doesn't follow previous, and can't clone.
+U(int int java.lang.String )
+  Unable to fully structure code
+k(int long tw0 f0 )
+  Loose catch block
+s0(md )
+  Unable to fully structure code
+  Could not resolve type clashes
+z(rt java.lang.Integer )
+  Unable to fully structure code
+
+
+mx1
+----------------------------
+
+A(sv0 )
+  Unable to fully structure code
+L()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 6[WHILELOOP]
+R(o41 long )
+  Unable to fully structure code
+
+
+uw1
+----------------------------
+
+m(java.lang.String fk java.util.Map )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+wj
+----------------------------
+
+Q(o60 java.lang.Object )
+  Unable to fully structure code
+a(k13 fw0 gt1 n23 tm2 fw0 bv1 cs2 boolean int int j71 de1 boolean t20 v30 int int )
+  Unable to fully structure code
+  Could not resolve type clashes
+j(pl mn0 z83 int fz1 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+ac
+----------------------------
+
+d()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 22[TRYBLOCK] [35, 34 : 504->512)] java.lang.Throwable
+run()
+  Unable to fully structure code
+
+
+ah3
+----------------------------
+
+I(android.content.Context )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+al
+----------------------------
+
+run()
+  Loose catch block
+
+
+wn0
+----------------------------
+
+E()
+  Unable to fully structure code
+  Could not resolve type clashes
+shutdown()
+  Unable to fully structure code
+
+
+n20
+----------------------------
+
+<init>()
+  Unable to fully structure code
+
+
+androidx.media3.ui.AspectRatioFrameLayout
+----------------------------
+
+onMeasure(int int )
+  Unable to fully structure code
+
+
+androidx.recyclerview.widget.RecyclerView
+----------------------------
+
+<init>(android.content.Context android.util.AttributeSet )
+  Loose catch block
+V(int int android.view.MotionEvent int )
+  Unable to fully structure code
+  Could not resolve type clashes
+focusSearch(android.view.View int )
+  Unable to fully structure code
+  Could not resolve type clashes
+n()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: CONTINUE without a while class org.benf.cfr.reader.bytecode.analysis.parse.statement.AssignmentSimple
+onGenericMotionEvent(android.view.MotionEvent )
+  Unable to fully structure code
+  Could not resolve type clashes
+onTouchEvent(android.view.MotionEvent )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+androidx.recyclerview.widget.StaggeredGridLayoutManager
+----------------------------
+
+D0(int int int )
+  Unable to fully structure code
+  Could not resolve type clashes
+H0(pc0 me2 boolean )
+  Unable to fully structure code
+  Could not resolve type clashes
+M(android.view.View int pc0 me2 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+ao2
+----------------------------
+
+b()
+  Unable to fully structure code
+
+
+ap1
+----------------------------
+
+f(xo1 mr1 )
+  Loose catch block
+
+
+b63
+----------------------------
+
+j(org.xmlpull.v1.XmlPullParser d63 )
+  Unable to fully structure code
+k(java.lang.String a63 )
+  Unable to fully structure code
+c(byte[] int int )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+id1
+----------------------------
+
+A(java.lang.Object )
+  Unable to fully structure code
+
+
+b7
+----------------------------
+
+start()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 4[TRYBLOCK] [5 : 105->148)] java.lang.Throwable
+
+
+b82
+----------------------------
+
+B(nb0 android.net.Uri java.util.Map long long wb2 )
+  Loose catch block
+h(byte[] int int )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 10[TRYBLOCK] [12 : 895->967)] java.lang.Throwable
+
+
+b83
+----------------------------
+
+G(d42 d42 java.util.zip.Inflater )
+  Loose catch block
+N(java.lang.String )
+  Unable to fully structure code
+  Could not resolve type clashes
+U(long long long java.math.RoundingMode )
+  Unable to fully structure code
+
+
+b8
+----------------------------
+
+H(ea1 )
+  Unable to fully structure code
+  Could not resolve type clashes
+l(p60 )
+  Unable to fully structure code
+
+
+b92
+----------------------------
+
+k()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Statement already marked as first in another block
+
+
+ba
+----------------------------
+
+a(java.lang.Object )
+  Unable to fully structure code
+
+
+bb1
+----------------------------
+
+d(m51 java.util.List int java.util.ArrayList )
+  Exception : java.lang.UnsupportedOperationException
+u(ft0 tw0 p60 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+bb3
+----------------------------
+
+a()
+  Unable to fully structure code
+
+
+bc
+----------------------------
+
+q(java.lang.Object )
+  Unable to fully structure code
+
+
+bd0
+----------------------------
+
+c(android.view.MotionEvent v7 )
+  Unable to fully structure code
+d(np0 )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 3[TRYBLOCK] [3 : 4978->5001)] java.lang.ArrayIndexOutOfBoundsException
+
+
+uc1
+----------------------------
+
+<clinit>()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+
+
+bd1
+----------------------------
+
+<init>(java.net.InetAddress java.lang.String )
+  Unable to fully structure code
+C(ua0 long )
+  Unable to fully structure code
+J(java.lang.String )
+  Loose catch block
+w()
+  Unable to fully structure code
+
+
+bd2
+----------------------------
+
+l(j10 dw0 )
+  Loose catch block
+
+
+bf0
+----------------------------
+
+apply(java.lang.Object )
+  Unable to fully structure code
+
+
+bh
+----------------------------
+
+l(android.hardware.usb.UsbDevice )
+  Unable to fully structure code
+  Could not resolve type clashes
+n(android.content.Context b00 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+bj
+----------------------------
+
+a(d42 )
+  Unable to fully structure code
+
+
+bl1
+----------------------------
+
+d()
+  Loose catch block
+
+
+bm
+----------------------------
+
+j(int long )
+  Loose catch block
+
+
+bo1
+----------------------------
+
+b(kf1 j50 )
+  Unable to fully structure code
+e(kf1 boolean )
+  Unable to fully structure code
+
+
+bp0
+----------------------------
+
+S(m72 int boolean int long int boolean )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+bq1
+----------------------------
+
+e(k33 zp1 long )
+  Unable to fully structure code
+
+
+bq
+----------------------------
+
+L(android.content.Context java.io.File java.lang.String java.lang.String boolean )
+  Unable to fully structure code
+
+
+bx1
+----------------------------
+
+close()
+  Unable to fully structure code
+i(long )
+  Loose catch block
+
+
+c00
+----------------------------
+
+onCreate(android.os.Bundle )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+c01
+----------------------------
+
+e(h01 boolean r01 long long )
+  Unable to fully structure code
+
+
+c71
+----------------------------
+
+I(long )
+  Unable to fully structure code
+
+
+c72
+----------------------------
+
+a(java.lang.CharSequence long android.view.textclassifier.TextClassifier p60 )
+  Unable to fully structure code
+
+
+c80
+----------------------------
+
+i(int )
+  Unable to fully structure code
+
+
+c82
+----------------------------
+
+g(k82 int )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+cb1
+----------------------------
+
+L(android.content.pm.PackageInfo java.io.File )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+P(aj boolean int nw1 )
+  Unable to fully structure code
+R(byte[] int int r6 )
+  Unable to fully structure code
+  Could not resolve type clashes
+S(byte[] int int )
+  Unable to fully structure code
+  Could not resolve type clashes
+T(byte[] int int )
+  Unable to fully structure code
+  Could not resolve type clashes
+m0(int byte[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 2[TRYBLOCK] [2 : 143->161)] java.lang.Throwable
+r0(android.content.Context java.util.concurrent.Executor kb2 boolean )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 10[TRYBLOCK] [16 : 529->555)] java.lang.Throwable
+
+
+cd0
+----------------------------
+
+run()
+  Unable to fully structure code
+
+
+cd3
+----------------------------
+
+c()
+  Unable to fully structure code
+
+
+ce3
+----------------------------
+
+a(java.lang.Object )
+  Unable to fully structure code
+
+
+ce
+----------------------------
+
+b()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 8[TRYBLOCK] [8 : 1087->1122)] java.lang.Throwable
+
+
+cf2
+----------------------------
+
+c(cd yc long fw0 o60 )
+  Unable to fully structure code
+
+
+com.shilapi.xcertplay.CarPlayHostActivity
+----------------------------
+
+F(v4 )
+  Unable to fully structure code
+I()
+  Unable to fully structure code
+dispatchKeyEvent(android.view.KeyEvent )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [1[CASE]], but top level block is 4[SWITCH]
+v()
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+com.shilapi.xcertplay.CarPlayVideoActivity
+----------------------------
+
+onDestroy()
+  Loose catch block
+
+
+com.shilapi.xcertplay.DiPlayActivity
+----------------------------
+
+n(android.content.Context boolean )
+  Handled impossible loop by adding 'first' condition
+
+
+or0
+----------------------------
+
+d(android.content.Context java.lang.String )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+com.shilapi.xcertplay.WheelKeyService
+----------------------------
+
+onKeyEvent(android.view.KeyEvent )
+  Unable to fully structure code
+
+
+com.shilapi.xcertplay.license.LicenseManager
+----------------------------
+
+a(android.content.Context kc1 java.security.KeyPair )
+  Loose catch block
+
+
+com.shilapi.xcertplay.network.CarPlayVpnService
+----------------------------
+
+e(int aw )
+  Unable to fully structure code
+
+
+com.shilapi.xcertplay.network.a
+----------------------------
+
+a(java.lang.String java.lang.String )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+com.shilapi.xcertplay.transport.a
+----------------------------
+
+a(com.shilapi.xcertplay.transport.LinuxI2cNativeException )
+  Unable to fully structure code
+
+
+com.shilapi.xcertplay.transport.b
+----------------------------
+
+h(byte[] int int )
+  Loose catch block
+
+
+cr0
+----------------------------
+
+w(android.app.Activity java.lang.String )
+  Loose catch block
+
+
+dd2
+----------------------------
+
+a(java.lang.CharSequence tw0 n03 uw0 boolean boolean bv1 c32 a03 t20 v30 int int )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+ct0
+----------------------------
+
+d(float float float )
+  Unable to fully structure code
+
+
+ct2
+----------------------------
+
+hasNext()
+  Unable to fully structure code
+
+
+cu0
+----------------------------
+
+d(android.view.KeyEvent dw0 )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [83[WHILELOOP]], but top level block is 18[TRYBLOCK]
+e(int rd2 fw0 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+cu1
+----------------------------
+
+e(np0 ss0 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+cu2
+----------------------------
+
+b(gt0 o60 )
+  Unable to fully structure code
+
+
+d01
+----------------------------
+
+run()
+  Unable to fully structure code
+
+
+d0
+----------------------------
+
+a(java.lang.Object )
+  Unable to fully structure code
+
+
+d13
+----------------------------
+
+t(p60 )
+  Unable to fully structure code
+
+
+de
+----------------------------
+
+b()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 2[TRYBLOCK] [7 : 137->204)] java.lang.Throwable
+
+
+dk2
+----------------------------
+
+g(java.lang.Object java.lang.Object )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+do0
+----------------------------
+
+g(java.nio.ByteOrder )
+  Unable to fully structure code
+
+
+dq0
+----------------------------
+
+run()
+  Loose catch block
+
+
+wv1
+----------------------------
+
+w()
+  Unable to fully structure code
+
+
+e01
+----------------------------
+
+B(o51 long fw0 )
+  Unable to fully structure code
+b(gt0 o60 )
+  Unable to fully structure code
+  Could not resolve type clashes
+m(int int np0 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+e0
+----------------------------
+
+q(java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 1[TRYBLOCK] [1 : 287->319)] java.lang.Throwable
+
+
+e11
+----------------------------
+
+a()
+  Unable to fully structure code
+q(long )
+  Unable to fully structure code
+
+
+e41
+----------------------------
+
+h(long )
+  Loose catch block
+m(l41 long )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 8[TRYBLOCK] [10 : 154->194)] java.lang.Throwable
+
+
+e4
+----------------------------
+
+g(long long long java.util.List lo1[] )
+  Handled impossible loop by adding 'first' condition
+
+
+e70
+----------------------------
+
+g(java.lang.Object java.lang.Object )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+e80
+----------------------------
+
+k()
+  Unable to fully structure code
+
+
+e92
+----------------------------
+
+<init>(java.util.List n91 )
+  Unable to fully structure code
+
+
+eb2
+----------------------------
+
+g(wf0 )
+  Unable to fully structure code
+q(long tw0 p60 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+ec2
+----------------------------
+
+a(d42 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+ed1
+----------------------------
+
+<init>(cd1 )
+  Unable to fully structure code
+
+
+ee
+----------------------------
+
+b()
+  Unable to fully structure code
+
+
+ef0
+----------------------------
+
+call()
+  Unable to fully structure code
+
+
+xx1
+----------------------------
+
+a1()
+  Unable to fully structure code
+e1(ft1 uw1 long xz0 int boolean float boolean )
+  Unable to fully structure code
+  Could not resolve type clashes
+j1(fo1 )
+  Could not resolve type clashes
+  Unable to fully structure code
+
+
+eg
+----------------------------
+
+c(sv0 zf )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Statement already marked as first in another block
+equals(java.lang.Object )
+  Unable to fully structure code
+
+
+ej
+----------------------------
+
+e(np0 ss0 )
+  Could not resolve type clashes
+  Unable to fully structure code
+
+
+en
+----------------------------
+
+a(rd2 p60 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+eq2
+----------------------------
+
+m(int j33 long )
+  Unable to fully structure code
+
+
+et2
+----------------------------
+
+a(float float long )
+  Unable to fully structure code
+
+
+f0
+----------------------------
+
+a(java.lang.Object )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+f10
+----------------------------
+
+b(android.content.res.Resources org.xmlpull.v1.XmlPullParser android.util.AttributeSet android.content.res.Resources$Theme )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+f4
+----------------------------
+
+n(h93 byte[] )
+  Unable to fully structure code
+o(java.lang.String org.json.JSONObject )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 5[TRYBLOCK] [5 : 187->200)] java.lang.Throwable
+m(n20 hs1 )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 9[TRYBLOCK] [10 : 299->308)] java.lang.Throwable
+p(android.content.Context )
+  Unable to fully structure code
+q(android.content.Context )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 10[TRYBLOCK] [10 : 239->248)] java.lang.Throwable
+
+
+fe
+----------------------------
+
+g(java.lang.Object java.lang.Object )
+  Unable to fully structure code
+
+
+ff0
+----------------------------
+
+<init>(int j43 int jf0 int boolean bf0 int )
+  Unable to fully structure code
+
+
+fj2
+----------------------------
+
+a(long int int int l43 )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 1[TRYBLOCK] [1 : 200->202)] java.lang.Throwable
+i(long boolean )
+  Unable to fully structure code
+z(long boolean )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 7[TRYBLOCK] [8 : 166->181)] java.lang.Throwable
+
+
+fn0
+----------------------------
+
+a(java.lang.String bt1 pl java.nio.charset.Charset )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+fr2
+----------------------------
+
+q(java.lang.Object )
+  Unable to fully structure code
+
+
+ft
+----------------------------
+
+run()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 6[TRYBLOCK] [6 : 298->342)] java.lang.Throwable
+
+
+od2
+----------------------------
+
+a(gt1 tw0 tw0 tw0 tw0 int long long te3 t20 v30 int )
+  Unable to fully structure code
+
+
+fw1
+----------------------------
+
+q(java.lang.Object )
+  Loose catch block
+
+
+g0
+----------------------------
+
+q(java.lang.Object )
+  Unable to fully structure code
+
+
+g11
+----------------------------
+
+b()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 2[TRYBLOCK] [9, 8, 7, 6 : 94->266)] java.lang.Throwable
+c()
+  Loose catch block
+run()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 7[TRYBLOCK] [14, 13 : 995->1008)] java.lang.RuntimeException
+
+
+g20
+----------------------------
+
+a()
+  Unable to fully structure code
+
+
+g23
+----------------------------
+
+z(long long )
+  Unable to fully structure code
+
+
+g6
+----------------------------
+
+a(java.lang.Object )
+  Could not resolve type clashes
+  Unable to fully structure code
+
+
+g70
+----------------------------
+
+a(java.lang.Object )
+  Unable to fully structure code
+
+
+g7
+----------------------------
+
+run()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 6[TRYBLOCK] [7 : 532->545)] java.lang.Throwable
+
+
+ga3
+----------------------------
+
+k(long long )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 3[TRYBLOCK] [4 : 93->99)] java.lang.Throwable
+n()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 4[TRYBLOCK] [4 : 110->136)] java.lang.Throwable
+
+
+ga
+----------------------------
+
+a(java.lang.Object )
+  Loose catch block
+
+
+gd0
+----------------------------
+
+q(java.lang.Object )
+  Loose catch block
+
+
+ge
+----------------------------
+
+run()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 1[TRYBLOCK] [3 : 96->111)] java.lang.Throwable
+
+
+gm1
+----------------------------
+
+f(java.lang.Object java.lang.Object java.lang.Object )
+  Unable to fully structure code
+
+
+gn2
+----------------------------
+
+q(java.lang.Object )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+go
+----------------------------
+
+b()
+  Unable to fully structure code
+d(zt1 v7 boolean )
+  Unable to fully structure code
+
+
+wo1
+----------------------------
+
+h0(n91 )
+  Unable to fully structure code
+
+
+gp1
+----------------------------
+
+G0(java.lang.String )
+  Unable to fully structure code
+m0(bc0 )
+  Unable to fully structure code
+o()
+  Unable to fully structure code
+t()
+  Loose catch block
+x0(bc0 )
+  Unable to fully structure code
+
+
+gs2
+----------------------------
+
+b()
+  Unable to fully structure code
+
+
+gw2
+----------------------------
+
+a(android.text.Spanned java.lang.String )
+  Unable to fully structure code
+
+
+gy0
+----------------------------
+
+w(kg0 ue1 by0 g6 )
+  Loose catch block
+
+
+h01
+----------------------------
+
+c(nb0 qb0 boolean boolean )
+  Unable to fully structure code
+g(nb0 qb0 boolean )
+  Could not resolve type clashes
+  Unable to fully structure code
+
+
+h0
+----------------------------
+
+q(java.lang.Object )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+h30
+----------------------------
+
+a(android.view.ScrollCaptureSession ka1 p60 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+h5
+----------------------------
+
+b()
+  Unable to fully structure code
+
+
+h60
+----------------------------
+
+f(java.lang.Object java.lang.Object java.lang.Object )
+  Unable to fully structure code
+
+
+h9
+----------------------------
+
+q(java.lang.Object )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+ha0
+----------------------------
+
+b(int )
+  Unable to fully structure code
+
+
+hg0
+----------------------------
+
+a()
+  Unable to fully structure code
+
+
+hl0
+----------------------------
+
+g(byte[] int[] int int int android.graphics.Paint android.graphics.Canvas )
+  Unable to fully structure code
+
+
+hn1
+----------------------------
+
+l(android.graphics.Canvas boolean )
+  Unable to fully structure code
+
+
+ho0
+----------------------------
+
+<init>(java.io.ByteArrayInputStream )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 1[TRYBLOCK] [5, 4, 3 : 89->115)] java.lang.Throwable
+d(go0 )
+  Loose catch block
+e(co0 int int )
+  Unable to fully structure code
+  Could not resolve type clashes
+f(java.io.BufferedInputStream )
+  Unable to fully structure code
+
+
+hu
+----------------------------
+
+a(java.lang.Object )
+  Unable to fully structure code
+
+
+qp2
+----------------------------
+
+j(qp2 gt0 o60 )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 1[TRYBLOCK] [1 : 185->190)] java.lang.Throwable
+k(java.lang.Object o60 )
+  Loose catch block
+v(long )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Statement already marked as first in another block
+
+
+i01
+----------------------------
+
+e(lp0[] boolean[] gj2[] boolean[] long )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+i72
+----------------------------
+
+a(hg1 z9 p60 )
+  Unable to fully structure code
+b(v7 tw0 p60 )
+  Unable to fully structure code
+
+
+i83
+----------------------------
+
+e(hk0 float vl )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+i8
+----------------------------
+
+b()
+  Unable to fully structure code
+
+
+ia0
+----------------------------
+
+<init>(java.net.DatagramPacket )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 3[TRYBLOCK] [7, 6 : 273->278)] java.lang.Throwable
+m()
+  Could not resolve type clashes
+  Unable to fully structure code
+
+
+ic1
+----------------------------
+
+run()
+  Unable to fully structure code
+
+
+ic3
+----------------------------
+
+d(byte[] int int sw2 p50 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+id2
+----------------------------
+
+a(java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 11[TRYBLOCK] [10 : 268->278)] java.lang.Throwable
+
+
+ie0
+----------------------------
+
+b(cj1 )
+  Unable to fully structure code
+
+
+if2
+----------------------------
+
+b(int java.lang.Object[] v )
+  Unable to fully structure code
+  Could not resolve type clashes
+get(java.lang.Object )
+  Unable to fully structure code
+
+
+ih0
+----------------------------
+
+<init>(java.lang.String long java.lang.String java.lang.String java.lang.String java.lang.String int boolean )
+  Unable to fully structure code
+
+
+ij1
+----------------------------
+
+run()
+  Loose catch block
+
+
+ik1
+----------------------------
+
+d()
+  Unable to fully structure code
+
+
+in0
+----------------------------
+
+q(java.lang.Object )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+it2
+----------------------------
+
+b(d42 java.nio.charset.Charset )
+  Unable to fully structure code
+d(byte[] int int sw2 p50 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+j11
+----------------------------
+
+n(nj1 )
+  Unable to fully structure code
+v(jj1 long long java.io.IOException int )
+  Unable to fully structure code
+
+
+j21
+----------------------------
+
+run()
+  Unable to fully structure code
+
+
+j63
+----------------------------
+
+a(com.shilapi.xcertplay.CarPlayVideoActivity bv0 android.content.res.Resources java.lang.String int )
+  Unable to fully structure code
+
+
+j9
+----------------------------
+
+b(long xl2 p60 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+j
+----------------------------
+
+b(int tf0 byte[][] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [4[CASE]], but top level block is 0[TRYBLOCK]
+
+
+jc1
+----------------------------
+
+b(int byte[] )
+  Unable to fully structure code
+
+
+jd2
+----------------------------
+
+s(kd2 java.util.List java.util.List java.util.List sv1 sv1 sv1 sv1 )
+  Unable to fully structure code
+q(java.lang.Object )
+  Unable to fully structure code
+
+
+jd3
+----------------------------
+
+a()
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+je0
+----------------------------
+
+b(int byte[] )
+  Unable to fully structure code
+
+
+je3
+----------------------------
+
+onFailure(int )
+  Loose catch block
+onSuccess()
+  Unable to fully structure code
+
+
+je
+----------------------------
+
+run()
+  Loose catch block
+
+
+jh3
+----------------------------
+
+g(java.lang.Object java.lang.Object )
+  Unable to fully structure code
+
+
+td2
+----------------------------
+
+b(rv1 java.lang.Object java.lang.Object )
+  Unable to fully structure code
+m(w13 android.text.Layout c4 int android.graphics.RectF pm2 y4 boolean )
+  Unable to fully structure code
+
+
+jp0
+----------------------------
+
+B0()
+  Unable to fully structure code
+  Could not resolve type clashes
+N()
+  Unable to fully structure code
+  Could not resolve type clashes
+O(boolean boolean boolean boolean )
+  Unable to fully structure code
+W(ip0 )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 2[TRYBLOCK] [2 : 376->397)] java.lang.Throwable
+X(eq1 long boolean boolean )
+  Could not resolve type clashes
+  Unable to fully structure code
+handleMessage(android.os.Message )
+  Loose catch block
+i()
+  Unable to fully structure code
+u(k33 boolean )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 1[TRYBLOCK] [1 : 1486->1505)] java.lang.Throwable
+
+
+jr0
+----------------------------
+
+f(android.content.Context t73 java.io.File )
+  Loose catch block
+
+
+js
+----------------------------
+
+A()
+  Unable to fully structure code
+  Could not resolve type clashes
+O(l41 )
+  Unable to fully structure code
+R(android.hardware.usb.UsbDevice )
+  Unable to fully structure code
+S(jk1 )
+  Unable to fully structure code
+close()
+  Loose catch block
+e0(t51 bx1 )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 5[TRYBLOCK] [5 : 167->262)] java.lang.Throwable
+g0(int )
+  Unable to fully structure code
+h0(android.bluetooth.BluetoothAdapter )
+  Loose catch block
+o()
+  Loose catch block
+r(java.lang.String dw0 )
+  Unable to fully structure code
+u(android.bluetooth.BluetoothSocket java.lang.String )
+  Unable to fully structure code
+  Could not resolve type clashes
+v0(int )
+  Unable to fully structure code
+
+
+jt0
+----------------------------
+
+k(java.lang.Object o60 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+ju0
+----------------------------
+
+D0()
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+jx1
+----------------------------
+
+E0(long long p60 )
+  Unable to fully structure code
+F0(int long long )
+  Unable to fully structure code
+G0(long o60 )
+  Unable to fully structure code
+
+
+k03
+----------------------------
+
+a(java.lang.Object )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+k23
+----------------------------
+
+a(java.lang.Object )
+  Unable to fully structure code
+
+
+k63
+----------------------------
+
+b(com.shilapi.xcertplay.CarPlayVideoActivity cv0 android.content.res.Resources )
+  Unable to fully structure code
+c(android.content.Context mv0[] )
+  Unable to fully structure code
+e(com.shilapi.xcertplay.CarPlayVideoActivity android.content.res.Resources java.lang.String )
+  Unable to fully structure code
+
+
+k6
+----------------------------
+
+e(np0 ss0 )
+  Unable to fully structure code
+
+
+k7
+----------------------------
+
+b()
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+k93
+----------------------------
+
+h(la3 )
+  Unable to fully structure code
+i(ma3 )
+  Unable to fully structure code
+n()
+  Unable to fully structure code
+
+
+ka
+----------------------------
+
+k(gi ks1 )
+  Unable to fully structure code
+p(int byte[] )
+  Unable to fully structure code
+
+
+kb3
+----------------------------
+
+<init>(android.view.View jz1 )
+  Ignored method signature, as it can't be verified against descriptor
+
+
+kd1
+----------------------------
+
+b(np0 )
+  Unable to fully structure code
+e(np0 ss0 )
+  Unable to fully structure code
+
+
+kd2
+----------------------------
+
+D(java.util.List sv1 )
+  Unable to fully structure code
+E(l40 sv1 )
+  Loose catch block
+a(l40 tw0 )
+  Loose catch block
+
+
+kd3
+----------------------------
+
+e(java.lang.String jd3 )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+
+
+ke
+----------------------------
+
+b(android.content.Context )
+  Loose catch block
+e(android.content.Context )
+  Unable to fully structure code
+
+
+kf1
+----------------------------
+
+c(gt1 )
+  Unable to fully structure code
+
+
+kl2
+----------------------------
+
+b(yl2 long p60 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+ku1
+----------------------------
+
+e(np0 ss0 )
+  Unable to fully structure code
+g(long )
+  Could not resolve type clashes
+  Unable to fully structure code
+
+
+l00
+----------------------------
+
+d(sv0 )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+
+
+l21
+----------------------------
+
+e()
+  Unable to fully structure code
+
+
+l40
+----------------------------
+
+e(nx )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 3[TRYBLOCK] [3 : 118->123)] java.lang.Throwable
+j(tw0 )
+  Loose catch block
+k()
+  Unable to fully structure code
+l()
+  Unable to fully structure code
+q(java.util.ArrayList )
+  Loose catch block
+t(cd2 n6 java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 3[TRYBLOCK] [5 : 141->165)] java.lang.Throwable
+w()
+  Unable to fully structure code
+y(java.lang.Object )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+l4
+----------------------------
+
+c(d42 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+l50
+----------------------------
+
+read()
+  Handled impossible loop by adding 'first' condition
+read(byte[] int int )
+  Handled impossible loop by adding 'first' condition
+
+
+l63
+----------------------------
+
+b(com.shilapi.xcertplay.CarPlayVideoActivity cv0 android.content.res.Resources )
+  Loose catch block
+o(mv0[] android.content.ContentResolver )
+  Loose catch block
+
+
+l7
+----------------------------
+
+b()
+  Unable to fully structure code
+
+
+lc2
+----------------------------
+
+m(android.content.Context )
+  Loose catch block
+
+
+lh
+----------------------------
+
+a(byte[] byte[] java.lang.Integer java.lang.Throwable )
+  Loose catch block
+close()
+  Unable to fully structure code
+
+
+li0
+----------------------------
+
+k(java.lang.Object o60 )
+  Unable to fully structure code
+
+
+ln1
+----------------------------
+
+y(k33 )
+  Unable to fully structure code
+
+
+lo0
+----------------------------
+
+l(long )
+  Unable to fully structure code
+
+
+lo
+----------------------------
+
+f(android.os.Bundle jo )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 1[TRYBLOCK] [1 : 179->184)] java.lang.Throwable
+p(java.lang.Object java.lang.String jo )
+  Unable to fully structure code
+
+
+lw
+----------------------------
+
+h(pw )
+  Unable to fully structure code
+
+
+lx
+----------------------------
+
+d(boolean b82 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+lz1
+----------------------------
+
+b()
+  Unable to fully structure code
+
+
+wd1
+----------------------------
+
+B0(java.io.ByteArrayOutputStream byte[] ug0[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 4[TRYBLOCK] [4 : 186->198)] java.lang.Throwable
+K(byte[] sq byte byte[] int )
+  Unable to fully structure code
+  Could not resolve type clashes
+f0()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 1[TRYBLOCK] [1 : 23->91)] java.lang.Throwable
+m(p4 java.util.Set )
+  Unable to fully structure code
+m0(java.io.ByteArrayInputStream byte[] int ug0[] )
+  Handled impossible loop by adding 'first' condition
+o(byte[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 4[TRYBLOCK] [4 : 58->65)] java.lang.Throwable
+v0(np0 boolean )
+  Unable to fully structure code
+y0(lw2 sw2 p50 )
+  Unable to fully structure code
+
+
+m0
+----------------------------
+
+a(java.lang.Object )
+  Unable to fully structure code
+
+
+m50
+----------------------------
+
+read()
+  Handled impossible loop by adding 'first' condition
+read(byte[] int int )
+  Handled impossible loop by adding 'first' condition
+
+
+md2
+----------------------------
+
+performEditorAction(int )
+  Unable to fully structure code
+
+
+me3
+----------------------------
+
+e(je0 android.net.wifi.p2p.WifiP2pManager$Channel rc3 long long )
+  Unable to fully structure code
+l(long )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 5[TRYBLOCK] [5 : 349->362)] java.lang.Exception
+y()
+  Unable to fully structure code
+
+
+mf1
+----------------------------
+
+a()
+  Unable to fully structure code
+
+
+mf
+----------------------------
+
+read(byte[] int int )
+  Unable to fully structure code
+
+
+mh1
+----------------------------
+
+g()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[UNCONDITIONALDOLOOP]], but top level block is 4[UNCONDITIONALDOLOOP]
+
+
+mh2
+----------------------------
+
+<init>(java.lang.String float[] yd3 float[] oi0 oi0 float float v43 int )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+mr1
+----------------------------
+
+d()
+  Loose catch block
+
+
+mr
+----------------------------
+
+run()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 4[TRYBLOCK] [8, 7 : 297->310)] java.lang.RuntimeException
+
+
+ms2
+----------------------------
+
+a(ls2 long qn float long kv0 iv0 jv0 vx2 java.lang.String long qk n13 ck1 long tz2 fp2 f72 ik0 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+n10
+----------------------------
+
+g(java.lang.Object java.lang.Object )
+  Unable to fully structure code
+
+
+n11
+----------------------------
+
+a()
+  Unable to fully structure code
+
+
+p0
+----------------------------
+
+f()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Statement already marked as first in another block
+
+
+n5
+----------------------------
+
+a()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 8[TRYBLOCK] [15, 14 : 252->260)] java.lang.Throwable
+d()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 3[TRYBLOCK] [5 : 74->85)] java.lang.Throwable
+e()
+  Unable to fully structure code
+f()
+  Unable to fully structure code
+g()
+  Loose catch block
+run()
+  Unable to fully structure code
+
+
+n62
+----------------------------
+
+handleMessage(android.os.Message )
+  Unable to fully structure code
+
+
+n
+----------------------------
+
+n(byte[] )
+  Unable to fully structure code
+
+
+nb2
+----------------------------
+
+c(android.content.Context boolean )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 1[TRYBLOCK] [2, 1 : 42->53)] java.lang.Throwable
+
+
+nc
+----------------------------
+
+c(fw0 o60 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+nd2
+----------------------------
+
+performEditorAction(int )
+  Unable to fully structure code
+performHandwritingGesture(android.view.inputmethod.HandwritingGesture java.util.concurrent.Executor java.util.function.IntConsumer )
+  Unable to fully structure code
+
+
+ua2
+----------------------------
+
+f(java.io.File java.io.InputStream )
+  Loose catch block
+n(android.content.Context android.net.Uri )
+  Loose catch block
+
+
+nf0
+----------------------------
+
+<init>(int j43 int jf0 int java.lang.String int boolean )
+  Unable to fully structure code
+
+
+nm1
+----------------------------
+
+a()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 3[TRYBLOCK] [3 : 159->173)] java.lang.Throwable
+
+
+nq0
+----------------------------
+
+d()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Extractable last case doesn't follow previous, and can't clone.
+
+
+nq
+----------------------------
+
+b()
+  Unable to fully structure code
+
+
+nt
+----------------------------
+
+run()
+  Unable to fully structure code
+
+
+nw
+----------------------------
+
+c(int int int int )
+  Unable to fully structure code
+
+
+ny1
+----------------------------
+
+run()
+  Unable to fully structure code
+
+
+ny2
+----------------------------
+
+q(java.lang.Object )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+o5
+----------------------------
+
+b()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 6[TRYBLOCK] [6 : 423->435)] java.lang.Throwable
+
+
+o82
+----------------------------
+
+<init>(com.shilapi.xcertplay.CarPlayVideoActivity )
+  Loose catch block
+e(u43 int )
+  Unable to fully structure code
+  Could not resolve type clashes
+w()
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+oa
+----------------------------
+
+<init>(sa int int long )
+  Unable to fully structure code
+  Could not resolve type clashes
+c(rd2 int tm2 )
+  Unable to fully structure code
+
+
+oe0
+----------------------------
+
+b(k33 k33 )
+  Unable to fully structure code
+
+
+og0
+----------------------------
+
+c(pg0 br2 )
+  Unable to fully structure code
+
+
+og1
+----------------------------
+
+a(android.view.inputmethod.EditorInfo )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+oh2
+----------------------------
+
+q(java.lang.Object )
+  Handled impossible loop by duplicating code
+
+
+oi
+----------------------------
+
+a()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [3[CATCHBLOCK]], but top level block is 6[UNCONDITIONALDOLOOP]
+
+
+oj0
+----------------------------
+
+q(java.lang.Object )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+ok2
+----------------------------
+
+e(long long sv0 android.media.MediaFormat )
+  Unable to fully structure code
+
+
+on2
+----------------------------
+
+f()
+  Unable to fully structure code
+
+
+or
+----------------------------
+
+a(java.lang.Object )
+  Loose catch block
+
+
+ov0
+----------------------------
+
+q(java.lang.Object )
+  Unable to fully structure code
+
+
+ow
+----------------------------
+
+k()
+  Unable to fully structure code
+
+
+p13
+----------------------------
+
+b(tp1 )
+  Loose catch block
+
+
+ub0
+----------------------------
+
+K(ju0 aj0 )
+  Unable to fully structure code
+  Could not resolve type clashes
+L(ju0 aj0 )
+  Unable to fully structure code
+  Could not resolve type clashes
+c(wq2 java.lang.Integer int java.lang.Integer )
+  Unable to fully structure code
+j(long long java.math.RoundingMode )
+  Handled duff style switch with additional control
+m(gt0 gb2 boolean p60 )
+  Unable to fully structure code
+r(ju0 ju0 int aj0 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+p5
+----------------------------
+
+run()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 1[TRYBLOCK] [1 : 1241->1381)] java.lang.Throwable
+
+
+p61
+----------------------------
+
+d(java.util.Map )
+  Unable to fully structure code
+
+
+p83
+----------------------------
+
+<clinit>()
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+pa2
+----------------------------
+
+d(p60 )
+  Unable to fully structure code
+  Could not resolve type clashes
+e(p60 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+pb2
+----------------------------
+
+a(qx2 hk )
+  Unable to fully structure code
+b(qx2 hk )
+  Unable to fully structure code
+h(qx2 rf v e92 hk )
+  Unable to fully structure code
+k(qx2 xz2 e92 hk )
+  Unable to fully structure code
+l(qx2 xz2 e92 int hk )
+  Unable to fully structure code
+
+
+pc0
+----------------------------
+
+k(qe2 )
+  Unable to fully structure code
+m(int long )
+  Unable to fully structure code
+
+
+pd0
+----------------------------
+
+e(long long p60 )
+  Unable to fully structure code
+
+
+pd
+----------------------------
+
+run()
+  Handled duff style switch with additional control
+  Unable to fully structure code
+
+
+pf0
+----------------------------
+
+a(int ma )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [6[CASE]], but top level block is 10[SWITCH]
+
+
+pf2
+----------------------------
+
+c()
+  Loose catch block
+
+
+pf
+----------------------------
+
+onFrameRendered(android.media.MediaCodec long long )
+  Unable to fully structure code
+
+
+pg0
+----------------------------
+
+g(og0 br2 boolean dw0 )
+  Unable to fully structure code
+
+
+pj1
+----------------------------
+
+k(int java.lang.String )
+  Unable to fully structure code
+
+
+pm1
+----------------------------
+
+l(long )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 12[TRYBLOCK] [18 : 526->536)] java.lang.Throwable
+
+
+po1
+----------------------------
+
+run()
+  Unable to fully structure code
+
+
+pq2
+----------------------------
+
+D0(go1 )
+  Unable to fully structure code
+
+
+pq
+----------------------------
+
+g(java.lang.Object java.lang.Object )
+  Unable to fully structure code
+
+
+ps1
+----------------------------
+
+a(java.lang.String dw0 )
+  Loose catch block
+h(java.net.DatagramSocket xf byte[] )
+  Loose catch block
+start()
+  Unable to fully structure code
+
+
+pt0
+----------------------------
+
+e(np0 ss0 )
+  Unable to fully structure code
+
+
+pu1
+----------------------------
+
+c(d42 )
+  Unable to fully structure code
+
+
+pu2
+----------------------------
+
+d(android.net.wifi.p2p.WifiP2pManager$Channel java.lang.String java.lang.String boolean )
+  Unable to fully structure code
+
+
+py2
+----------------------------
+
+a(qx2 boolean f92 hk )
+  Unable to fully structure code
+e(qx2 f92 hk )
+  Unable to fully structure code
+
+
+q73
+----------------------------
+
+a(ba ce p60 )
+  Unable to fully structure code
+
+
+qh1
+----------------------------
+
+b(java.lang.Class )
+  Unable to fully structure code
+
+
+qh3
+----------------------------
+
+e(qx2 f92 hk )
+  Unable to fully structure code
+f(p60 )
+  Unable to fully structure code
+g0(java.lang.String )
+  Unable to fully structure code
+
+
+qi0
+----------------------------
+
+c(double )
+  Unable to fully structure code
+
+
+qi
+----------------------------
+
+a(kh )
+  Unable to fully structure code
+
+
+qj0
+----------------------------
+
+q(java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [22[UNCONDITIONALDOLOOP]], but top level block is 23[FORLOOP]
+
+
+qk1
+----------------------------
+
+k(long )
+  Loose catch block
+
+
+ql2
+----------------------------
+
+H(e92 f92 long )
+  Unable to fully structure code
+  Could not resolve type clashes
+L0(p60 )
+  Unable to fully structure code
+  Could not resolve type clashes
+M0(jj0 p60 )
+  Unable to fully structure code
+N0(kj0 p60 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+qo1
+----------------------------
+
+i0(sv0 android.media.MediaFormat )
+  Unable to fully structure code
+t()
+  Loose catch block
+
+
+qp
+----------------------------
+
+f(java.lang.Object java.lang.Object java.lang.Object )
+  Unable to fully structure code
+
+
+qq0
+----------------------------
+
+a()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Extractable last case doesn't follow previous, and can't clone.
+
+
+rn1
+----------------------------
+
+I(int int )
+  Handled duff style switch with additional control
+a(java.lang.String gt1 n23 int boolean int int v30 int int )
+  Unable to fully structure code
+  Could not resolve type clashes
+b(float float float float c10 )
+  Unable to fully structure code
+f(mc2 t20 v30 int )
+  Unable to fully structure code
+g(mc2[] t20 v30 int )
+  Unable to fully structure code
+o(float float float float c10 )
+  Unable to fully structure code
+
+
+qr
+----------------------------
+
+run()
+  Unable to fully structure code
+
+
+qx2
+----------------------------
+
+i(long tw0 p60 )
+  Unable to fully structure code
+  Could not resolve type clashes
+m(long tw0 hk )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+r12
+----------------------------
+
+<init>(int )
+  Loose catch block
+close()
+  Unable to fully structure code
+
+
+r51
+----------------------------
+
+b(int long )
+  Unable to fully structure code
+k(int byte[] )
+  Loose catch block
+n(long )
+  Unable to fully structure code
+
+
+r5
+----------------------------
+
+B(boolean )
+  Unable to fully structure code
+D(q5 java.lang.String )
+  Unable to fully structure code
+close()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 2[TRYBLOCK] [4 : 171->182)] java.lang.Throwable
+i(oi2 )
+  Unable to fully structure code
+s(java.net.Socket )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 7[TRYBLOCK] [13, 12 : 151->157)] java.lang.Throwable
+
+
+r61
+----------------------------
+
+M(d42 int int boolean )
+  Unable to fully structure code
+w(int d42 boolean int qv0 )
+  Handled duff style switch with additional control
+  Unable to fully structure code
+
+
+r6
+----------------------------
+
+n(long long p60 )
+  Unable to fully structure code
+o(long p60 )
+  Unable to fully structure code
+  Could not resolve type clashes
+q(java.lang.String java.lang.String java.lang.String )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 2[TRYBLOCK] [2 : 143->193)] java.lang.Throwable
+
+
+rc0
+----------------------------
+
+i(int java.nio.ByteBuffer )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [1[CASE]], but top level block is 7[SWITCH]
+l()
+  Unable to fully structure code
+t(java.nio.ByteBuffer )
+  Unable to fully structure code
+
+
+rc3
+----------------------------
+
+d(byte[] int int sw2 p50 )
+  Unable to fully structure code
+g(boolean boolean )
+  Unable to fully structure code
+
+
+rf1
+----------------------------
+
+G(tw0 java.lang.Object )
+  Unable to fully structure code
+
+
+ri1
+----------------------------
+
+handleMessage(android.os.Message )
+  Loose catch block
+
+
+ri
+----------------------------
+
+a()
+  Unable to fully structure code
+
+
+rj
+----------------------------
+
+g(mx1 boolean )
+  Unable to fully structure code
+
+
+rk2
+----------------------------
+
+e(java.net.Socket )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+rn2
+----------------------------
+
+b(kf1 kn2 )
+  Unable to fully structure code
+
+
+rp
+----------------------------
+
+y()
+  Unable to fully structure code
+
+
+rq2
+----------------------------
+
+l(java.lang.Object java.lang.Object )
+  Loose catch block
+
+
+rr2
+----------------------------
+
+q(java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 1[TRYBLOCK] [1 : 135->139)] java.lang.Throwable
+
+
+rx
+----------------------------
+
+e(v70 int vn )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+rz0
+----------------------------
+
+a(d42 boolean r6 )
+  Unable to fully structure code
+
+
+s21
+----------------------------
+
+a(int boolean boolean boolean )
+  Unable to fully structure code
+b(float p60 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+s33
+----------------------------
+
+close()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 10[TRYBLOCK] [12 : 168->192)] java.lang.Throwable
+
+
+s43
+----------------------------
+
+c(d42 )
+  Unable to fully structure code
+o(byte[] long long )
+  Unable to fully structure code
+
+
+s51
+----------------------------
+
+close()
+  Loose catch block
+j(int long )
+  Unable to fully structure code
+
+
+s7
+----------------------------
+
+run()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 13[TRYBLOCK] [15 : 1487->1514)] java.lang.Throwable
+
+
+s80
+----------------------------
+
+c(float )
+  Unable to fully structure code
+
+
+s
+----------------------------
+
+toString()
+  Unable to fully structure code
+
+
+sa
+----------------------------
+
+<init>(java.lang.String n23 java.util.List java.util.List pu0 kg0 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+sc3
+----------------------------
+
+a(np0 long )
+  Unable to fully structure code
+
+
+sd0
+----------------------------
+
+h(qb0 )
+  Unable to fully structure code
+
+
+se2
+----------------------------
+
+g(android.view.View int android.os.Bundle )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+sj0
+----------------------------
+
+a(qx2 long p60 )
+  Unable to fully structure code
+b(qx2 long p60 )
+  Unable to fully structure code
+  Could not resolve type clashes
+c(qx2 long y4 hk )
+  Unable to fully structure code
+d(qx2 long fw0 p60 )
+  Unable to fully structure code
+
+
+un0
+----------------------------
+
+b(long vn0 wn0 )
+  Unable to fully structure code
+
+
+su1
+----------------------------
+
+a(java.lang.Object )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+sv0
+----------------------------
+
+<init>(rv0 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+sv
+----------------------------
+
+run()
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+t32
+----------------------------
+
+b(long ue1 )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Statement already marked as first in another block
+
+
+t41
+----------------------------
+
+h(g51 )
+  Unable to fully structure code
+
+
+t51
+----------------------------
+
+e(long )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 20[TRYBLOCK] [41 : 361->367)] java.lang.Throwable
+
+
+t60
+----------------------------
+
+y(android.view.KeyEvent )
+  Unable to fully structure code
+
+
+t61
+----------------------------
+
+a(np0 qv0 int )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+ta3
+----------------------------
+
+run()
+  Unable to fully structure code
+
+
+tb2
+----------------------------
+
+a()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 8[TRYBLOCK] [8 : 208->214)] java.lang.Throwable
+
+
+tg0
+----------------------------
+
+c(tg0 xe2 ue2 yl2 xe2 long p60 )
+  Unable to fully structure code
+  Could not resolve type clashes
+b(yl2 ut1 float float p60 )
+  Unable to fully structure code
+i(yl2 wt1 p60 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+tg1
+----------------------------
+
+run()
+  Unable to fully structure code
+
+
+tg
+----------------------------
+
+b()
+  Loose catch block
+d()
+  Loose catch block
+
+
+to2
+----------------------------
+
+a(java.lang.String )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 6[TRYBLOCK] [6 : 109->144)] java.lang.Throwable
+
+
+tr
+----------------------------
+
+g(java.lang.Object java.lang.Object )
+  Unable to fully structure code
+
+
+tv1
+----------------------------
+
+q(java.lang.Object )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+u11
+----------------------------
+
+o(i00 )
+  Unable to fully structure code
+
+
+u33
+----------------------------
+
+h(java.nio.ByteBuffer )
+  Unable to fully structure code
+
+
+u50
+----------------------------
+
+a(android.media.MediaCodecInfo$VideoCapabilities int int double )
+  Unable to fully structure code
+
+
+u51
+----------------------------
+
+a(java.lang.Object )
+  Could not resolve type clashes
+  Unable to fully structure code
+
+
+u8
+----------------------------
+
+c(p60 )
+  Unable to fully structure code
+d(ea1 )
+  Handled impossible loop by adding 'first' condition
+l(int on2 )
+  Unable to fully structure code
+
+
+uh0
+----------------------------
+
+h(java.lang.Object )
+  Loose catch block
+
+
+uj1
+----------------------------
+
+o(android.net.wifi.WifiManager$LocalOnlyHotspotReservation )
+  Loose catch block
+e(byte[] java.util.Set java.util.Set rf long )
+  Unable to fully structure code
+i(rf long long )
+  Unable to fully structure code
+l(long )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 23[TRYBLOCK] [39, 38 : 526->540)] java.lang.Throwable
+q(tj1 )
+  Unable to fully structure code
+
+
+uk0
+----------------------------
+
+apply(java.lang.Object )
+  Could not resolve type clashes
+  Unable to fully structure code
+
+
+ur2
+----------------------------
+
+a(java.util.Set )
+  Unable to fully structure code
+
+
+uz0
+----------------------------
+
+a(long java.util.List boolean )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+v03
+----------------------------
+
+q(java.lang.Object )
+  Unable to fully structure code
+
+
+v10
+----------------------------
+
+put(java.lang.Object java.lang.Object )
+  Unable to fully structure code
+
+
+v2
+----------------------------
+
+<clinit>()
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+v30
+----------------------------
+
+N(v30 int boolean int )
+  Loose catch block
+H()
+  Unable to fully structure code
+  Could not resolve type clashes
+K(int int int )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Statement already marked as first in another block
+S(int g02 int java.lang.Object )
+  Unable to fully structure code
+  Could not resolve type clashes
+X(int )
+  Unable to fully structure code
+p(boolean )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+v7
+----------------------------
+
+G(tw0 p60 )
+  Unable to fully structure code
+I()
+  Unable to fully structure code
+  Could not resolve type clashes
+dispatchGenericMotionEvent(android.view.MotionEvent )
+  Unable to fully structure code
+  Could not resolve type clashes
+l(android.view.MotionEvent )
+  Unable to fully structure code
+onCreateInputConnection(android.view.inputmethod.EditorInfo )
+  Unable to fully structure code
+  Could not resolve type clashes
+t(boolean )
+  Unable to fully structure code
+
+
+vc0
+----------------------------
+
+q(java.lang.Object )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+vf
+----------------------------
+
+flush()
+  Unable to fully structure code
+
+
+vh
+----------------------------
+
+b(java.lang.String )
+  Unable to fully structure code
+h()
+  Unable to fully structure code
+n(boolean )
+  Unable to fully structure code
+p()
+  Unable to fully structure code
+  Could not resolve type clashes
+r()
+  Unable to fully structure code
+
+
+vj1
+----------------------------
+
+invoke(java.lang.Object java.lang.reflect.Method java.lang.Object[] )
+  Unable to fully structure code
+
+
+vm1
+----------------------------
+
+d(java.util.Collection )
+  Loose catch block
+
+
+z23
+----------------------------
+
+c(int )
+  Unable to fully structure code
+
+
+vr2
+----------------------------
+
+b()
+  Unable to fully structure code
+  Could not resolve type clashes
+c(java.lang.Object fw0 dw0 )
+  Unable to fully structure code
+
+
+vr
+----------------------------
+
+a(java.lang.Object )
+  Loose catch block
+
+
+vx1
+----------------------------
+
+f(int yv1 yv1 ft1 boolean )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+vx
+----------------------------
+
+k(java.lang.Object o60 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+w13
+----------------------------
+
+<init>(java.lang.CharSequence float android.text.TextPaint int android.text.TextUtils$TruncateAt int boolean int int int int int int ze1 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+w20
+----------------------------
+
+f(java.lang.Object java.lang.Object java.lang.Object )
+  Unable to fully structure code
+
+
+w61
+----------------------------
+
+onClick(android.view.View )
+  Unable to fully structure code
+
+
+w7
+----------------------------
+
+D(int )
+  Unable to fully structure code
+  Could not resolve type clashes
+X(int int android.os.Bundle )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [1[CASE]], but top level block is 14[SWITCH]
+
+
+wc1
+----------------------------
+
+run()
+  Unable to fully structure code
+
+
+wc
+----------------------------
+
+q(java.lang.Object )
+  Unable to fully structure code
+
+
+wd2
+----------------------------
+
+f(qe2 qp0 qp0 )
+  Unable to fully structure code
+
+
+wl2
+----------------------------
+
+a(int long )
+  Unable to fully structure code
+
+
+wm
+----------------------------
+
+b(d42 int int int int java.lang.String boolean ok0 um int )
+  Unable to fully structure code
+  Could not resolve type clashes
+i(d42 vm java.lang.String ok0 boolean )
+  Unable to fully structure code
+  Could not resolve type clashes
+j(gu1 jx0 long ok0 boolean boolean bx0 boolean )
+  Unable to fully structure code
+  Could not resolve type clashes
+k(hu1 boolean )
+  Unable to fully structure code
+
+
+wn
+----------------------------
+
+b(p60 )
+  Unable to fully structure code
+
+
+wq2
+----------------------------
+
+u(int int )
+  Unable to fully structure code
+
+
+wr
+----------------------------
+
+b()
+  Unable to fully structure code
+
+
+wt1
+----------------------------
+
+q(java.lang.Object )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+wu0
+----------------------------
+
+b(android.content.pm.PackageManager xu0 android.content.res.Resources )
+  Unable to fully structure code
+  Could not resolve type clashes
+c(android.content.Context xu0 java.lang.String )
+  Unable to fully structure code
+
+
+wy0
+----------------------------
+
+c(d42 )
+  Unable to fully structure code
+
+
+x50
+----------------------------
+
+close()
+  Loose catch block
+h(qb0 )
+  Unable to fully structure code
+read(byte[] int int )
+  Unable to fully structure code
+
+
+x5
+----------------------------
+
+e()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 2[TRYBLOCK] [3 : 161->177)] java.lang.Throwable
+h(java.lang.String java.util.Map )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 4[TRYBLOCK] [5 : 90->115)] java.lang.Throwable
+
+
+xc2
+----------------------------
+
+close()
+  Loose catch block
+h(qb0 )
+  Unable to fully structure code
+read(byte[] int int )
+  Unable to fully structure code
+
+
+xj0
+----------------------------
+
+q(java.lang.Object )
+  Unable to fully structure code
+
+
+xk0
+----------------------------
+
+c(d42 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+xm2
+----------------------------
+
+q(java.lang.Object )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+xn1
+----------------------------
+
+q(wn1 )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+xn
+----------------------------
+
+c(o60 java.lang.Object )
+  Unable to fully structure code
+e(long )
+  Unable to fully structure code
+h()
+  Unable to fully structure code
+v(o60 )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 2[TRYBLOCK] [2 : 239->250)] java.lang.Throwable
+
+
+xq
+----------------------------
+
+b(mo2 )
+  Loose catch block
+
+
+xx0
+----------------------------
+
+M(mf1 )
+  Unable to fully structure code
+
+
+xx
+----------------------------
+
+h(java.nio.ByteBuffer )
+  Unable to fully structure code
+
+
+y01
+----------------------------
+
+e(v01 r01 b82 android.net.Uri cw0 )
+  Unable to fully structure code
+  Could not resolve type clashes
+f(b82 android.net.Uri cw0 )
+  Unable to fully structure code
+d(android.net.Uri pb0 )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 10[TRYBLOCK] [12 : 288->436)] java.lang.Throwable
+
+
+y11
+----------------------------
+
+a(java.lang.Object )
+  Loose catch block
+
+
+y13
+----------------------------
+
+b(int )
+  Unable to fully structure code
+
+
+y4
+----------------------------
+
+g(java.lang.Object java.lang.Object )
+  Unable to fully structure code
+
+
+y51
+----------------------------
+
+b(y51 o41 c61 long h51 wr sr m0 fw0 fw0 int )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 2[TRYBLOCK] [2 : 454->475)] java.lang.Throwable
+a(o41 s43 int long h51 f0 or )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 2[TRYBLOCK] [2 : 343->365)] java.lang.Throwable
+
+
+y9
+----------------------------
+
+q(java.lang.Object )
+  Unable to fully structure code
+
+
+ya
+----------------------------
+
+a(og1 p60 )
+  Unable to fully structure code
+
+
+yb
+----------------------------
+
+a(android.view.Menu )
+  Unable to fully structure code
+
+
+yk1
+----------------------------
+
+b(byte[] )
+  Loose catch block
+
+
+yl2
+----------------------------
+
+a(long p60 )
+  Unable to fully structure code
+c(al2 long int )
+  Unable to fully structure code
+
+
+yn1
+----------------------------
+
+<init>(java.lang.String byte[] int int )
+  Unable to fully structure code
+toString()
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+yr2
+----------------------------
+
+run()
+  Unable to fully structure code
+
+
+z3
+----------------------------
+
+a(z3 java.lang.String )
+  Unable to fully structure code
+
+
+z4
+----------------------------
+
+j(int long )
+  Unable to fully structure code
+
+
+z9
+----------------------------
+
+q(java.lang.Object )
+  Unable to fully structure code
+
+
+za0
+----------------------------
+
+k(java.lang.Class java.util.HashSet )
+  Unable to fully structure code
+
+
+za2
+----------------------------
+
+b(java.net.Socket boolean fw0 )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 4[TRYBLOCK] [4 : 91->127)] java.lang.Exception
+
+
+ze0
+----------------------------
+
+b(int long v30 int )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+zl1
+----------------------------
+
+v0(long fw0 )
+  Unable to fully structure code
+
+
+zp1
+----------------------------
+
+j(float k33 boolean )
+  Could not resolve type clashes
+  Unable to fully structure code
+
+
+zq
+----------------------------
+
+close()
+  Loose catch block
+e(java.net.InetAddress int int )
+  Loose catch block
+i()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 3[TRYBLOCK] [7 : 282->399)] java.lang.Throwable
+
+
+zr0
+----------------------------
+
+R(java.io.File java.io.File )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 4[TRYBLOCK] [4 : 118->125)] java.lang.Throwable
+
+
+zt
+----------------------------
+
+e(r5 int java.util.LinkedHashMap )
+  Loose catch block
+f(r5 )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 1[TRYBLOCK] [1 : 22->48)] java.lang.Throwable
+h(r5 int )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 3[TRYBLOCK] [3 : 89->104)] java.lang.Throwable
+
+
+zv0
+----------------------------
+
+h(java.util.ArrayList )
+  Unable to fully structure code
+e(np0 ss0 )
+  Could not resolve type clashes
+  Unable to fully structure code

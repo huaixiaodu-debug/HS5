@@ -123,7 +123,7 @@ dex 里 4,227 个类被 R8 压进默认包（`a`、`a0`、`a1` …），业务�
 逐个人工重命名既不必要也不安全，本项目的做法是：
 
 1. **授权子系统全量语义化重命名**（9 个类，见下表），让「去授权」这件事可审计；
-2. 保留完整 smali 树 + jadx Java 源码供整体阅读。
+2. 保留完整 smali 树 + CFR Java 反编译源码供整体阅读（`apk-source/` 与 `java/`）。
 
 | 混淆 | 重命名后 | 作用 |
 |---|---|---|
@@ -188,6 +188,11 @@ dex 里 4,227 个类被 R8 压进默认包（`a`、`a0`、`a1` …），业务�
 │   ├── apktool.yml
 │   ├── smali/             #   com/shilapi/ 39 个业务类 + 4218 个 R8 混淆类 + 框架类
 │   ├── res/ assets/ lib/ kotlin/ unknown/ original/ META-INF/
+├── java/                  ★ 补丁后 APK 的 Java 反编译（4487 个 .java，CFR 0.152）
+│   ├── README.md          #   反编译链路 / 产物质量 / 补丁在 Java 层的呈现
+│   ├── com/shilapi/xcertplay/  #   30 个业务类 + license/ 9 个类（读代码从这里进）
+│   ├── androidx/ android/      #   打包进来的 AndroidX 库与框架 stub
+│   └── *.java             #   4216 个默认包混淆类
 ├── patches/
 │   ├── README.md          #   补丁差异说明（47 个文件的变化清单）
 │   └── license-removal.diff  # 原始 → 补丁后完整 diff，可 git apply -p1
@@ -243,7 +248,37 @@ wc -l ../patches/license-removal.diff
 
 ---
 
-## 六、快速开始
+## 六、Java 反编译源码（java/）
+
+`java/` 是**补丁后 APK 的完整 Java 反编译**（4487 个 `.java`，CFR 0.152），
+用于整体阅读代码。要改代码重打包请回到 `apk-source/` 的 smali 树 —— smali 才是
+字节码的权威表示，可无损回编译。
+
+补丁点直接可见 —— `java/com/shilapi/xcertplay/license/LicenseManager.java`：
+
+```java
+public static final boolean h(Context context, String string) { return true; }
+
+public static final LicenseStatus e(Context context) {
+    return new LicenseStatus(true, "\u5df2\u6388\u6743", "LICENSE_VALID", 4102444800L,
+        ef.v0(new String[]{"hud", "instrument-map", "steering-wheel"}), true);
+}
+```
+
+复现（`dist/FAW-Play-patched.apk` → Java）：
+
+```bash
+java -cp "dex-tools-v2.4/lib/*" com.googlecode.dex2jar.tools.Dex2jarCmd \
+     dist/FAW-Play-patched.apk -o fawplay-patched.jar      # 约 17 秒
+java -jar cfr.jar fawplay-patched.jar --outputdir java \
+     --silent true --comments false                        # 约 4.5 分钟
+```
+
+详情（目录构成、产物质量、与原版的差异）见 [`java/README.md`](java/README.md)。
+
+---
+
+## 七、快速开始
 
 ```bash
 # 0) 准备工具链（JDK 17 + apktool + uber-apk-signer + jadx）
@@ -308,7 +343,7 @@ adb install dist/FAW-Play-patched.apk
 
 ---
 
-## 七、可调参数
+## 八、可调参数
 
 `src/patch_smali.py` 支持改授权状态的内容：
 
@@ -327,7 +362,7 @@ python3 src/patch_smali.py --decode-dir decompile/apktool-out \
 
 ---
 
-## 八、环境要求
+## 九、环境要求
 
 - **Python 3.8+**，只用标准库，无第三方依赖
 - **JDK 17**（apktool 2.9.x 与 uber-apk-signer 需要）
@@ -336,17 +371,19 @@ python3 src/patch_smali.py --decode-dir decompile/apktool-out \
 
 ---
 
-## 九、已知限制
+## 十、已知限制
 
 - 本项目只做了**静态验证**与**端到端回解码验证**，没有在真机上跑过。
 - 若车机对安装包做**系统级签名白名单**校验（部分车机预装应用会做），换签名会安装失败。
   这种情况需要在车机上关闭校验，或使用原始签名（不可得）。
-- 全量 jadx 反编译在这个混淆包上很慢（R8 全量混淆 + 单 dex 4.5 MB），
-  建议 `--no-res --no-debug-info`，或者直接读 smali。
+- **jadx 1.5.0 在这个包上会卡死在 `loading` 阶段**（R8 全量混淆 + 4588 个类；
+  实测 7 分钟仍未创建输出目录，缩小输入到 39 个类同样卡住），与输入大小无关。
+  本仓库改用 **dex2jar + CFR**：17 秒转 jar，4.5 分钟出全量 4487 个 Java 文件，
+  结果见 `java/`，链路见 [`java/README.md`](java/README.md)。
 
 ---
 
-## 十、上传到 GitHub
+## 十一、上传到 GitHub
 
 仓库已经在本地初始化好结构，`.gitignore` 已排除 `tools/`、`decompile/`、`build/`、
 `dist/`、`*.apk`、`*.jks` 等不该进仓库的内容。直接推：
@@ -383,7 +420,7 @@ gh release create v1.0.0 dist/FAW-Play-patched.apk \
 
 ---
 
-## 十一、第三方说明
+## 十二、第三方说明
 
 本项目包含的代码为独立实现，不含原应用任何代码或资源。分析对象 `com.shihab.diplay`
 及其商标、代码、资源版权归其权利人所有。使用者需自行确认在其所在法域内使用本项目的合法性，
