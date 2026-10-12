@@ -1,5 +1,65 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.app.AppOpsManager
+ *  android.bluetooth.BluetoothManager
+ *  android.content.ContentResolver
+ *  android.content.Context
+ *  android.content.DialogInterface$OnDismissListener
+ *  android.content.Intent
+ *  android.content.SharedPreferences
+ *  android.content.pm.ActivityInfo
+ *  android.content.pm.ResolveInfo
+ *  android.content.res.Configuration
+ *  android.graphics.BitmapFactory
+ *  android.graphics.BitmapFactory$Options
+ *  android.graphics.Color
+ *  android.graphics.Point
+ *  android.graphics.Typeface
+ *  android.graphics.drawable.Drawable
+ *  android.graphics.drawable.GradientDrawable
+ *  android.hardware.display.DisplayManager
+ *  android.hardware.display.DisplayManager$DisplayListener
+ *  android.media.MediaCodecInfo
+ *  android.media.MediaCodecList
+ *  android.net.Uri
+ *  android.net.VpnService
+ *  android.os.Build
+ *  android.os.Build$VERSION
+ *  android.os.Bundle
+ *  android.os.Handler
+ *  android.os.Looper
+ *  android.os.Process
+ *  android.os.SystemClock
+ *  android.provider.Settings
+ *  android.provider.Settings$Secure
+ *  android.util.DisplayMetrics
+ *  android.util.Log
+ *  android.view.Display
+ *  android.view.KeyEvent
+ *  android.view.KeyEvent$Callback
+ *  android.view.MotionEvent
+ *  android.view.Surface
+ *  android.view.View
+ *  android.view.View$OnClickListener
+ *  android.view.View$OnLayoutChangeListener
+ *  android.view.View$OnTouchListener
+ *  android.view.ViewConfiguration
+ *  android.view.ViewGroup
+ *  android.view.ViewGroup$LayoutParams
+ *  android.view.ViewOutlineProvider
+ *  android.view.Window
+ *  android.view.WindowManager
+ *  android.view.WindowManager$LayoutParams
+ *  android.widget.Button
+ *  android.widget.FrameLayout
+ *  android.widget.FrameLayout$LayoutParams
+ *  android.widget.ImageView
+ *  android.widget.LinearLayout
+ *  android.widget.LinearLayout$LayoutParams
+ *  android.widget.TextView
+ *  android.widget.Toast
  */
 package com.shilapi.xcertplay;
 
@@ -64,6 +124,7 @@ import java.io.Closeable;
 import java.io.File;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -376,11 +437,11 @@ extends n20 {
                         ((WeakHashMap)object2).put(object, object4);
                     }
                     f15 = object.getResources().getDisplayMetrics().density;
-                    bl3 = u11.q() && u11.e != null;
+                    bl3 = u11.q();
                     n16 = ((v11)object4).a(motionEvent, f15, bl3);
                     if (motionEvent.getActionMasked() == 5 && motionEvent.getPointerCount() == 3) {
                         object4 = new StringBuilder("three-finger horizontal start navigating=");
-                        bl3 = u11.q() && u11.e != null;
+                        bl3 = u11.q();
                         ((StringBuilder)object4).append(bl3);
                         Log.i((String)"DiPlay-HongqiNavi", (String)((StringBuilder)object4).toString());
                     }
@@ -427,10 +488,10 @@ extends n20 {
                 Log.w((String)"DiPlay-HongqiNavi", (String)"instrument gesture unavailable: ".concat(object4.getClass().getSimpleName()));
             }
         }
-        n16 = objectArray.getWidth();
-        int n18 = objectArray.getHeight();
-        float f16 = n16;
-        f15 = n18;
+        int n18 = objectArray.getWidth();
+        n16 = objectArray.getHeight();
+        float f16 = n18;
+        f15 = n16;
         if (motionEvent.getActionMasked() == 0) {
             ((CarPlayHostActivity)object).releaseTouch();
             float f17 = motionEvent.getX();
@@ -550,11 +611,11 @@ extends n20 {
                 n18 = n17;
             }
             n18 = Math.min(n16, n18);
-            for (kt kt32 : wd1.P(object, button, button2)) {
-                if (kt32.getLayoutParams().width == n18) continue;
-                ViewGroup.LayoutParams layoutParams = kt32.getLayoutParams();
-                layoutParams.width = n18;
-                kt32.setLayoutParams(layoutParams);
+            for (Button button3 : wd1.P(object, button, button2)) {
+                if (button3.getLayoutParams().width == n18) continue;
+                kt32 = button3.getLayoutParams();
+                ((ViewGroup.LayoutParams)kt32).width = n18;
+                button3.setLayoutParams((ViewGroup.LayoutParams)kt32);
             }
             if (ve22.i != n14) {
                 ve22.i = n14;
@@ -609,12 +670,12 @@ extends n20 {
                     object3.setVisibility(0);
                 }
                 if (wirelessStartupFailure != wirelessStartupFailure2) {
-                    object3 = this.getString(2131624754);
-                    object2 = new StringBuilder();
-                    ((StringBuilder)object2).append((String)object);
-                    ((StringBuilder)object2).append("\n");
-                    ((StringBuilder)object2).append((String)object3);
-                    object = ((StringBuilder)object2).toString();
+                    object2 = this.getString(2131624754);
+                    object3 = new StringBuilder();
+                    ((StringBuilder)object3).append((String)object);
+                    ((StringBuilder)object3).append("\n");
+                    ((StringBuilder)object3).append((String)object2);
+                    object = ((StringBuilder)object3).toString();
                 }
                 this.T((String)object);
                 n14 = this.l1;
@@ -686,6 +747,7 @@ extends n20 {
      */
     public static final e73 w(int n14, CarPlayHostActivity carPlayHostActivity, pv object) {
         void var5_38;
+        Object object2;
         boolean bl3;
         object.getClass();
         int n15 = carPlayHostActivity.l1;
@@ -722,14 +784,14 @@ extends n20 {
                     av av4 = (av)object;
                     String string = av4.f;
                     String string2 = av4.a;
-                    String string3 = av4.b;
+                    object2 = av4.b;
                     n15 = av4.c;
                     if (n15 == 0) {
-                        String string4 = carPlayHostActivity.getString(2131624008);
+                        String string3 = carPlayHostActivity.getString(2131624008);
                     } else {
-                        String string5 = String.valueOf(n15);
+                        String string4 = String.valueOf(n15);
                     }
-                    String string6 = carPlayHostActivity.getString(2131624606, new Object[]{string, string2, string3, var5_17});
+                    String string5 = carPlayHostActivity.getString(2131624606, new Object[]{string, string2, object2, var5_17});
                 }
                 var5_13.getClass();
             } else if (object.equals(mv.a)) {
@@ -783,12 +845,12 @@ extends n20 {
                     qv0.f();
                     return null;
                 }
-                zu zu3 = (zu)object;
-                WirelessStartupFailure wirelessStartupFailure = zu3.c;
+                object2 = (zu)object;
+                WirelessStartupFailure wirelessStartupFailure = ((zu)object2).c;
                 n15 = wirelessStartupFailure == null ? -1 : jt.a[wirelessStartupFailure.ordinal()];
                 if (n15 != 1) {
                     if (n15 != 2) {
-                        String string = carPlayHostActivity.getString(2131624605, new Object[]{zu3.a});
+                        String string = carPlayHostActivity.getString(2131624605, new Object[]{((zu)object2).a});
                         string.getClass();
                     } else {
                         String string = carPlayHostActivity.getString(2131624243);
@@ -802,18 +864,18 @@ extends n20 {
         }
         carPlayHostActivity.T((String)var5_38);
         if (!(object instanceof zu)) return e732;
-        object = (zu)object;
-        bl3 = ((zu)object).b;
-        View view = carPlayHostActivity.wifiRecoveryButton;
+        object2 = (zu)object;
+        bl3 = ((zu)object2).b;
+        object = carPlayHostActivity.wifiRecoveryButton;
         if (bl3) {
-            if (view == null) return e732;
-            view.setVisibility(0);
+            if (object == null) return e732;
+            object.setVisibility(0);
             return e732;
         }
-        if (view != null) {
-            view.setVisibility(8);
+        if (object != null) {
+            object.setVisibility(8);
         }
-        if ((object = ((zu)object).c) != null) {
+        if ((object = ((zu)object2).c) != null) {
             if (carPlayHostActivity.D == n14) {
                 return e732;
             }
@@ -856,167 +918,165 @@ extends n20 {
      * Enabled aggressive exception aggregation
      */
     public final void C() {
-        Integer n14 = 111;
+        Object object = 111;
         AirPlayPersistence.INSTANCE.getClass();
         if (!AirPlayPersistence.c((Context)this)) {
             this.y();
             return;
         }
-        Object object = tz.a;
-        Object object2 = this.B();
-        object = Build.FINGERPRINT;
-        object.getClass();
-        boolean bl3 = object.equals("BYD-AUTO/IVI/IVI:13/TP1A.220624.014/eng.build20260722.221155:user/release-keys");
+        Object object22 = tz.a;
+        xg0 xg02 = this.B();
+        object22 = Build.FINGERPRINT;
+        object22.getClass();
+        boolean bl3 = object22.equals("BYD-AUTO/IVI/IVI:13/TP1A.220624.014/eng.build20260722.221155:user/release-keys");
         LinkedHashSet linkedHashSet = this.j1;
         if (bl3) {
-            int n15;
-            Object object32;
-            xg0 xg02 = xg0.j;
-            bl3 = object2 == xg02;
+            int n14;
+            xg0 xg03 = xg0.j;
+            bl3 = xg02 == xg03;
             boolean bl4 = !f4.g(this) || this.T.b;
-            Object object4 = new LinkedHashMap();
-            Object object5 = this.U;
-            for (Object object32 : ((LinkedHashMap)object5).entrySet()) {
-                if ((Boolean)object32.getKey() == bl3) continue;
-                ((AbstractMap)object4).put(object32.getKey(), object32.getValue());
+            Object object3 = new LinkedHashMap();
+            Serializable serializable = this.U;
+            for (Object object22 : ((LinkedHashMap)serializable).entrySet()) {
+                if ((Boolean)object22.getKey() == bl3) continue;
+                ((AbstractMap)object3).put(object22.getKey(), object22.getValue());
             }
-            object = ((Iterable)object4.values()).iterator();
-            while (object.hasNext()) {
-                ((c00)((Object)object.next())).a(false);
+            object22 = ((Iterable)object3.values()).iterator();
+            while (object22.hasNext()) {
+                ((c00)((Object)object22.next())).a(false);
             }
-            object = (c00)((Object)((LinkedHashMap)object5).get(bl3));
-            object32 = object;
-            if (object == null) {
+            Object object4 = object22 = (c00)((Object)((LinkedHashMap)serializable).get(bl3));
+            if (object22 == null) {
                 block18: {
-                    n15 = c00.p;
-                    object32 = wj.x((Context)this, (xg0)((Object)object2));
-                    if (object32 == null) return;
-                    object = new Object();
-                    object.i = object4 = new c00(this, (Display)object32, (xg0)((Object)object2), new d0(this, 8, object));
-                    object4.setOnDismissListener(new ct(this, bl3, (xe2)object));
+                    n14 = c00.p;
+                    object4 = wj.x((Context)this, xg02);
+                    if (object4 == null) return;
+                    object22 = new Object();
+                    ((xe2)object22).i = object3 = new c00(this, (Display)object4, xg02, new d0(this, 8, object22));
+                    object3.setOnDismissListener(new ct(this, bl3, (xe2)object22));
                     try {
-                        object4 = object.i;
-                        if (object4 == null) {
+                        object3 = ((xe2)object22).i;
+                        if (object3 == null) {
                             cb1.i0("presentation");
                             throw null;
                         }
-                        ((c00)((Object)object4)).a(false);
-                        object4 = object.i;
-                        if (object4 == null) {
+                        ((c00)((Object)object3)).a(false);
+                        object3 = ((xe2)object22).i;
+                        if (object3 == null) {
                             cb1.i0("presentation");
                             throw null;
                         }
-                        this.Q = (c00)((Object)object4);
-                        object4 = object.i;
-                        if (object4 == null) {
+                        this.Q = (c00)((Object)object3);
+                        object3 = ((xe2)object22).i;
+                        if (object3 == null) {
                             cb1.i0("presentation");
                             throw null;
                         }
-                        object5.put(bl3, (c00)((Object)object4));
-                        object4 = object.i;
-                        if (object4 == null) {
+                        serializable.put(bl3, (c00)((Object)object3));
+                        object3 = ((xe2)object22).i;
+                        if (object3 == null) {
                             cb1.i0("presentation");
                             throw null;
                         }
-                        ((c00)((Object)object4)).show();
-                        n15 = object32.getDisplayId();
-                        object32 = new StringBuilder("Cluster map: retained layer display=");
-                        ((StringBuilder)object32).append(n15);
-                        ((StringBuilder)object32).append(" fullMap=");
-                        ((StringBuilder)object32).append(bl3);
-                        this.k(((StringBuilder)object32).toString());
-                        object = object.i;
-                        if (object == null) {
+                        ((c00)((Object)object3)).show();
+                        n14 = object4.getDisplayId();
+                        object4 = new StringBuilder("Cluster map: retained layer display=");
+                        ((StringBuilder)object4).append(n14);
+                        ((StringBuilder)object4).append(" fullMap=");
+                        ((StringBuilder)object4).append(bl3);
+                        this.k(((StringBuilder)object4).toString());
+                        object22 = ((xe2)object22).i;
+                        if (object22 == null) {
                             cb1.i0("presentation");
                             throw null;
                         }
-                        object = (c00)((Object)object);
+                        object22 = (c00)((Object)object22);
                         break block18;
                     }
                     catch (RuntimeException runtimeException) {}
-                    object5.remove(bl3);
+                    serializable.remove(bl3);
                     this.Q = null;
-                    object = runtimeException.getClass().getSimpleName();
-                    object5 = runtimeException.getMessage();
-                    object32 = new StringBuilder("Cluster map: presentation failed ");
-                    ((StringBuilder)object32).append((String)object);
-                    ((StringBuilder)object32).append(": ");
-                    ((StringBuilder)object32).append((String)object5);
-                    this.k(((StringBuilder)object32).toString());
+                    object22 = runtimeException.getClass().getSimpleName();
+                    object4 = runtimeException.getMessage();
+                    serializable = new StringBuilder("Cluster map: presentation failed ");
+                    ((StringBuilder)serializable).append((String)object22);
+                    ((StringBuilder)serializable).append(": ");
+                    ((StringBuilder)serializable).append((String)object4);
+                    this.k(((StringBuilder)serializable).toString());
                     return;
                 }
-                object32 = object;
-                if (object == null) {
+                object4 = object22;
+                if (object22 == null) {
                     return;
                 }
             }
-            this.Q = object32;
-            object = ((c00)((Object)object32)).n;
-            if (object != null) {
-                this.K((Surface)object);
+            this.Q = object4;
+            object22 = ((c00)((Object)object4)).n;
+            if (object22 != null) {
+                this.K((Surface)object22);
             }
-            ((c00)((Object)object32)).b(linkedHashSet.contains(n14));
-            ((c00)((Object)object32)).a(bl4);
+            ((c00)((Object)object4)).b(linkedHashSet.contains(object));
+            ((c00)((Object)object4)).a(bl4);
             this.a0();
             this.l();
-            n15 = c00.p;
-            object32 = object32.getDisplay();
-            object32.getClass();
-            object = new Point();
-            object32.getRealSize((Point)object);
-            int n16 = object.x;
-            n15 = object.y;
-            object = n16 == 1920 && n15 == 720 ? (object2 == xg02 ? new wg0(true, 0, 144, n16, 480) : new wg0(false, 1320, 0, 600, n15)) : null;
+            n14 = c00.p;
+            object22 = object4.getDisplay();
+            object22.getClass();
+            object4 = new Point();
+            object22.getRealSize((Point)object4);
+            n14 = ((Point)object4).x;
+            int n15 = ((Point)object4).y;
+            object22 = n14 == 1920 && n15 == 720 ? (xg02 == xg03 ? new wg0(true, 0, 144, n14, 480) : new wg0(false, 1320, 0, 600, n15)) : null;
             if (this.O == null) return;
-            if (object == null) return;
-            object32 = this.w1;
-            if (object32 == null) return;
-            if (((j32)object32).equals(new j32(object.c, object.d))) return;
+            if (object22 == null) return;
+            object4 = this.w1;
+            if (object4 == null) return;
+            if (((j32)object4).equals(new j32(((wg0)object22).c, ((wg0)object22).d))) return;
             CarPlayHostActivity.L(this, "Cluster viewport changed; requesting its full stream", null, 6);
             return;
         }
         if (this.Q != null) {
             return;
         }
-        int n17 = c00.p;
-        object = wj.x((Context)this, (xg0)((Object)object2));
-        if (object == null) {
+        int n16 = c00.p;
+        object22 = wj.x((Context)this, xg02);
+        if (object22 == null) {
             this.k("Cluster map: no cluster projection display among ".concat(wj.r((Context)this)));
             return;
         }
-        Object object6 = new c00(this, (Display)object, (xg0)((Object)object2), new ms(this, 2));
-        object6.setOnDismissListener((DialogInterface.OnDismissListener)new rs(this, (c00)((Object)object6)));
+        Object object5 = new c00(this, (Display)object22, xg02, new ms(this, 2));
+        object5.setOnDismissListener((DialogInterface.OnDismissListener)new rs(this, (c00)((Object)object5)));
         try {
-            object6.show();
-            this.Q = object6;
+            object5.show();
+            this.Q = object5;
             this.a0();
-            ((c00)((Object)object6)).b(linkedHashSet.contains(n14));
+            ((c00)((Object)object5)).b(linkedHashSet.contains(object));
             this.l();
-            n17 = object.getDisplayId();
-            object6 = object.getName();
-            object2 = new StringBuilder("cluster presentation shown display=");
-            ((StringBuilder)object2).append(n17);
-            ((StringBuilder)object2).append(" name=");
-            ((StringBuilder)object2).append((String)object6);
-            Log.i((String)"DiPlay-Cluster", (String)((StringBuilder)object2).toString());
-            n17 = object.getDisplayId();
-            object = object.getName();
-            object6 = new StringBuilder("Cluster map: presentation shown display=");
-            ((StringBuilder)object6).append(n17);
-            ((StringBuilder)object6).append(" name=");
-            ((StringBuilder)object6).append((String)object);
-            this.k(((StringBuilder)object6).toString());
+            n16 = object22.getDisplayId();
+            object = object22.getName();
+            object5 = new StringBuilder("cluster presentation shown display=");
+            ((StringBuilder)object5).append(n16);
+            ((StringBuilder)object5).append(" name=");
+            ((StringBuilder)object5).append((String)object);
+            Log.i((String)"DiPlay-Cluster", (String)((StringBuilder)object5).toString());
+            n16 = object22.getDisplayId();
+            object5 = object22.getName();
+            object22 = new StringBuilder("Cluster map: presentation shown display=");
+            ((StringBuilder)object22).append(n16);
+            ((StringBuilder)object22).append(" name=");
+            ((StringBuilder)object22).append((String)object5);
+            this.k(((StringBuilder)object22).toString());
             return;
         }
         catch (RuntimeException runtimeException) {
             Log.w((String)"DiPlay-Cluster", (String)"cluster presentation failed", (Throwable)runtimeException);
-            object = runtimeException.getClass().getSimpleName();
+            object22 = runtimeException.getClass().getSimpleName();
             String string = runtimeException.getMessage();
-            object2 = new StringBuilder("Cluster map: presentation failed ");
-            ((StringBuilder)object2).append((String)object);
-            ((StringBuilder)object2).append(": ");
-            ((StringBuilder)object2).append(string);
-            this.k(((StringBuilder)object2).toString());
+            object = new StringBuilder("Cluster map: presentation failed ");
+            ((StringBuilder)object).append((String)object22);
+            ((StringBuilder)object).append(": ");
+            ((StringBuilder)object).append(string);
+            this.k(((StringBuilder)object).toString());
             return;
         }
     }
@@ -1056,9 +1116,9 @@ extends n20 {
             try {
                 var12_5 = this.o0 != false ? "video/hevc" : "video/avc";
                 var13_6 /* !! */  = new MediaCodecList(0);
-                var15_7 /* !! */  = var13_6 /* !! */ .getCodecInfos();
-                var15_7 /* !! */ .getClass();
-                var6_8 = var15_7 /* !! */ .length;
+                var14_7 = var13_6 /* !! */ .getCodecInfos();
+                var14_7.getClass();
+                var6_8 = ((MediaCodecInfo[])var14_7).length;
                 var2_9 = 0;
             }
             catch (Exception var1_2) {
@@ -1068,13 +1128,13 @@ extends n20 {
                 var17_13 = null;
                 if (var2_9 >= var6_8) break;
                 {
-                    var13_6 /* !! */  = var15_7 /* !! */ [var2_9];
+                    var13_6 /* !! */  = var14_7[var2_9];
                     if (!var13_6 /* !! */ .isEncoder()) {
-                        var14_12 = var13_6 /* !! */ .getSupportedTypes();
-                        var14_12.getClass();
-                        var7_11 = ((String[])var14_12).length;
+                        var15_12 /* !! */  = var13_6 /* !! */ .getSupportedTypes();
+                        var15_12 /* !! */ .getClass();
+                        var7_11 = var15_12 /* !! */ .length;
                         for (var3_10 = 0; var3_10 < var7_11; ++var3_10) {
-                            if (!mv2.p((String)var14_12[var3_10], var12_5)) {
+                            if (!mv2.p(var15_12 /* !! */ [var3_10], var12_5)) {
                                 continue;
                             }
                             break block13;
@@ -1105,12 +1165,12 @@ lbl43:
                     var8_15 = hy0.u((MediaCodecInfo)var13_6 /* !! */ );
                     break block15;
                 }
-                var14_12 = var13_6 /* !! */ .getName();
-                var14_12.getClass();
-                if (var14_12.startsWith("OMX.google.")) ** GOTO lbl-1000
-                var14_12 = var13_6 /* !! */ .getName();
-                var14_12.getClass();
-                if (!var14_12.startsWith("c2.android.")) {
+                var14_7 = var13_6 /* !! */ .getName();
+                var14_7.getClass();
+                if (var14_7.startsWith("OMX.google.")) ** GOTO lbl-1000
+                var14_7 = var13_6 /* !! */ .getName();
+                var14_7.getClass();
+                if (!var14_7.startsWith("c2.android.")) {
                     var8_15 = true;
                 } else lbl-1000:
                 // 2 sources
@@ -1128,8 +1188,8 @@ lbl43:
             var11_18 = var1_1.equals("supported");
             var19_19 = var13_6 /* !! */ .getName();
             var13_6 /* !! */  = var18_16 != null ? var18_16.getSupportedWidths() : null;
-            var14_12 = var18_16 != null ? var18_16.getSupportedHeights() : null;
-            var15_7 /* !! */  = var18_16 != null ? Integer.valueOf(var18_16.getWidthAlignment()) : null;
+            var14_7 = var18_16 != null ? var18_16.getSupportedHeights() : null;
+            var15_12 /* !! */  = var18_16 != null ? Integer.valueOf(var18_16.getWidthAlignment()) : null;
             var16_20 = var18_16 != null ? Integer.valueOf(var18_16.getHeightAlignment()) : null;
             if (var18_16 != null) {
                 var17_13 = var18_16.getSupportedFrameRates();
@@ -1148,9 +1208,9 @@ lbl43:
             var18_16.append(" widths=");
             var18_16.append(var13_6 /* !! */ );
             var18_16.append(" heights=");
-            var18_16.append(var14_12);
+            var18_16.append(var14_7);
             var18_16.append(" alignment=");
-            var18_16.append(var15_7 /* !! */ );
+            var18_16.append(var15_12 /* !! */ );
             var18_16.append("x");
             var18_16.append(var16_20);
             var18_16.append(" fpsRange=");
@@ -1167,11 +1227,11 @@ lbl43:
         Object object22;
         block16: {
             block15: {
-                AirPlayPersistence airPlayPersistence;
+                Object object3;
                 block18: {
                     block17: {
-                        airPlayPersistence = AirPlayPersistence.INSTANCE;
-                        airPlayPersistence.getClass();
+                        object3 = AirPlayPersistence.INSTANCE;
+                        object3.getClass();
                         hn1.m((Context)this);
                         this.H0 = true;
                         this.I0 = AirPlayPersistence.g(this);
@@ -1192,42 +1252,48 @@ lbl43:
                     object22 = "";
                 }
                 this.K0 = object22;
-                object22 = object = this.getSharedPreferences("xcertplay_airplay", 0).getString("remote_mfi_token", null);
+                object = this.getSharedPreferences("xcertplay_airplay", 0).getString("remote_mfi_token", null);
+                object22 = object;
                 if (object == null) {
                     object22 = "";
                 }
                 this.L0 = object22;
-                this.D0 = airPlayPersistence.loadLocationReportingEnabled((Context)this);
+                this.D0 = ((AirPlayPersistence)object3).loadLocationReportingEnabled((Context)this);
                 hn1.m((Context)this);
                 this.N0 = tg3.i;
-                object22 = object = this.getSharedPreferences("xcertplay_airplay", 0).getString("existing_wifi_ssid", "");
+                object = this.getSharedPreferences("xcertplay_airplay", 0).getString("existing_wifi_ssid", "");
+                object22 = object;
                 if (object == null) {
                     object22 = "";
                 }
                 this.P0 = object22;
-                object22 = object = this.getSharedPreferences("xcertplay_airplay", 0).getString("existing_wifi_passphrase", "");
+                object = this.getSharedPreferences("xcertplay_airplay", 0).getString("existing_wifi_passphrase", "");
+                object22 = object;
                 if (object == null) {
                     object22 = "";
                 }
                 this.Q0 = object22;
-                object22 = object = this.getSharedPreferences("xcertplay_airplay", 0).getString("manual_hotspot_ssid", null);
+                object = this.getSharedPreferences("xcertplay_airplay", 0).getString("manual_hotspot_ssid", null);
+                object22 = object;
                 if (object == null) {
                     object22 = "";
                 }
                 this.O0 = object22;
-                object22 = object = this.getSharedPreferences("xcertplay_airplay", 0).getString("manual_hotspot_passphrase", null);
+                object = this.getSharedPreferences("xcertplay_airplay", 0).getString("manual_hotspot_passphrase", null);
+                object22 = object;
                 if (object == null) {
                     object22 = "";
                 }
                 this.R0 = object22;
-                object = this.getSharedPreferences("xcertplay_airplay", 0).getString("manual_hotspot_band", null);
+                object3 = this.getSharedPreferences("xcertplay_airplay", 0).getString("manual_hotspot_band", null);
                 for (Object object22 : km1.m) {
-                    if (!cb1.a(((km1)((Object)object22)).name(), object)) continue;
+                    if (!cb1.a(((km1)((Object)object22)).name(), object3)) continue;
                     break block15;
                 }
                 object22 = null;
             }
-            object22 = object = (km1)((Object)object22);
+            object = (km1)((Object)object22);
+            object22 = object;
             if (object == null) {
                 object22 = km1.i;
             }
@@ -1241,7 +1307,8 @@ lbl43:
             }
             object22 = null;
         }
-        object22 = object = (qm1)((Object)object22);
+        object = (qm1)((Object)object22);
+        object22 = object;
         if (object == null) {
             object22 = this.getSharedPreferences("xcertplay_airplay", 0).getString("manual_hotspot_passphrase", null);
             if (object22 == null) {
@@ -1309,17 +1376,17 @@ lbl43:
                 if (bl4) {
                     object = "dark";
                 }
-                int n15 = w232.b;
-                n14 = w232.c;
+                n14 = w232.b;
+                int n15 = w232.c;
                 charSequence = pr0.o("THEME_DIAGNOSTIC sample source=", string, " uiMode=0x", string2, " nightMask=0x");
                 pr0.x((StringBuilder)charSequence, string3, " reported=", (String)object2, " applied=");
                 ((StringBuilder)charSequence).append((String)object);
                 ((StringBuilder)charSequence).append(" sessionActive=");
                 ((StringBuilder)charSequence).append(bl3);
                 ((StringBuilder)charSequence).append(" pollsSinceSample=");
-                ((StringBuilder)charSequence).append(n15);
-                ((StringBuilder)charSequence).append(" callbacksSinceSample=");
                 ((StringBuilder)charSequence).append(n14);
+                ((StringBuilder)charSequence).append(" callbacksSinceSample=");
+                ((StringBuilder)charSequence).append(n15);
                 object = ((StringBuilder)charSequence).toString();
                 w232.d = v232;
                 w232.a = l14;
@@ -1403,49 +1470,49 @@ lbl43:
                                                                 if (var9_14 < 2) {
                                                                     var8_13 = 2;
                                                                 }
-                                                                var12_15 = Math.max(this.y0, var7_10);
-                                                                var13_16 = Math.max(this.z0, var8_13);
+                                                                var13_15 = Math.max(this.y0, var7_10);
+                                                                var12_16 = Math.max(this.z0, var8_13);
                                                                 var10_17 = this.w0;
                                                                 var23_1 = this.x0;
                                                                 var23_1.getClass();
                                                                 if (var7_10 > 0 && var8_13 > 0) {
-                                                                    if (var12_15 > 0 && var13_16 > 0) {
+                                                                    if (var13_15 > 0 && var12_16 > 0) {
                                                                         var9_14 = var23_1.ordinal();
                                                                         if (var9_14 != 0) {
                                                                             if (var9_14 != 1) {
                                                                                 qv0.f();
                                                                                 return;
                                                                             }
-                                                                            var1_18 = var8_13;
-                                                                            var3_19 = var13_16;
+                                                                            var3_18 = var8_13;
+                                                                            var1_19 = var12_16;
                                                                         } else {
-                                                                            var1_18 = var7_10;
-                                                                            var3_19 = var12_15;
+                                                                            var3_18 = var7_10;
+                                                                            var1_19 = var13_15;
                                                                         }
-                                                                        var1_18 /= var3_19;
+                                                                        var1_19 = var3_18 / var1_19;
                                                                         var9_14 = var10_17;
                                                                         if (var10_17 < 1) {
                                                                             var9_14 = 1;
                                                                         }
-                                                                        var1_18 = (double)var9_14 * var1_18;
+                                                                        var1_19 = (double)var9_14 * var1_19;
                                                                         var9_14 = var23_1.ordinal();
                                                                         if (var9_14 != 0) {
                                                                             if (var9_14 != 1) {
                                                                                 qv0.f();
                                                                                 return;
                                                                             }
-                                                                            var3_19 = (double)var7_10 * var1_18 / (double)var8_13;
-                                                                            var5_20 = var1_18;
+                                                                            var5_20 = (double)var7_10 * var1_19 / (double)var8_13;
+                                                                            var3_18 = var1_19;
                                                                         } else {
-                                                                            var5_20 = (double)var8_13 * var1_18 / (double)var7_10;
-                                                                            var3_19 = var1_18;
+                                                                            var3_18 = (double)var8_13 * var1_19 / (double)var7_10;
+                                                                            var5_20 = var1_19;
                                                                         }
-                                                                        var12_15 = vc2.c((int)Math.round(var3_19), 1, 2000);
-                                                                        var13_16 = vc2.c((int)Math.round(var5_20), 1, 2000);
+                                                                        var12_16 = vc2.c((int)Math.round(var5_20), 1, 2000);
+                                                                        var13_15 = vc2.c((int)Math.round(var3_18), 1, 2000);
                                                                         var9_14 = hn1.w(this) != false || this.getResources().getConfiguration().touchscreen == 1 ? 1 : 0;
                                                                         var14_21 = this.v0;
                                                                         var10_17 = var9_14 != 0 ? 3 : 1;
-                                                                        var30_22 = new v4(var7_10, var8_13, var12_15, var13_16, var14_21, var10_17, null, null, 1984);
+                                                                        var30_22 = new v4(var7_10, var8_13, var12_16, var13_15, var14_21, var10_17, null, null, 1984);
                                                                         var23_1 = var9_14 != 0 ? "knob" : "touch";
                                                                         var19_9 = hn1.w(this);
                                                                         var9_14 = this.getResources().getConfiguration().touchscreen;
@@ -1458,31 +1525,31 @@ lbl43:
                                                                         this.k(var24_23.toString());
                                                                         var9_14 = this.l0;
                                                                         var10_17 = vc2.c(var9_14, 30, 160);
-                                                                        var26_27 = v4.a((v4)var30_22, h8.g(var10_17, var7_10), h8.g(var10_17, var8_13), null, null, null, null, null, null, 2044);
+                                                                        var27_27 = v4.a((v4)var30_22, h8.g(var10_17, var7_10), h8.g(var10_17, var8_13), null, null, null, null, null, null, 2044);
                                                                         var10_17 = this.m0;
-                                                                        var27_28 = rv.a((v4)var26_27, var10_17);
+                                                                        var26_29 = rv.a((v4)var27_27, var10_17);
                                                                         var14_21 = this.m0;
-                                                                        var23_1 = var14_21 < 100 && var27_28 == var26_27 ? new gt("canvas_4k_limit", "Decoder capability check skipped: canvas exceeds enlargement limit", false) : (var14_21 >= 100 && var27_28.a <= var7_10 && var27_28.b <= var8_13 ? new gt("not_enlarging", "Decoder capability enlargement check not required", true) : this.F((v4)var27_28));
+                                                                        var23_1 = var14_21 < 100 && var26_29 == var27_27 ? new gt("canvas_4k_limit", "Decoder capability check skipped: canvas exceeds enlargement limit", false) : (var14_21 >= 100 && var26_29.a <= var7_10 && var26_29.b <= var8_13 ? new gt("not_enlarging", "Decoder capability enlargement check not required", true) : this.F((v4)var26_29));
                                                                         var31_30 = new Object();
                                                                         if (!var23_1.a && this.m0 < 100) {
                                                                             this.m0 = 100;
                                                                             AirPlayPersistence.INSTANCE.getClass();
                                                                             this.getSharedPreferences("xcertplay_airplay", 0).edit().putInt("ui_scale_percent", rv.c(100)).apply();
-                                                                            var25_31 = var23_1.b;
-                                                                            var24_23 = new StringBuilder("Larger CarPlay canvas unavailable reason=");
-                                                                            var24_23.append((String)var25_31);
-                                                                            var24_23.append("; using Default icon and text size");
-                                                                            this.k(var24_23.toString());
+                                                                            var24_23 = var23_1.b;
+                                                                            var25_31 = new StringBuilder("Larger CarPlay canvas unavailable reason=");
+                                                                            var25_31.append((String)var24_23);
+                                                                            var25_31.append("; using Default icon and text size");
+                                                                            this.k(var25_31.toString());
                                                                             if (this.l0 > 100) {
-                                                                                var25_31 = this.F((v4)var26_27);
+                                                                                var25_31 = this.F((v4)var27_27);
                                                                                 var24_23 = var25_31.a != false ? var23_1 : var25_31;
                                                                                 var23_1 = new gt(var24_23.b, pr0.i(var23_1.c, "\n", var25_31.c), var25_31.a);
                                                                             }
-                                                                            var24_23 = var26_27;
+                                                                            var24_23 = var27_27;
                                                                             var7_10 = 1;
                                                                             var25_31 = var23_1;
                                                                         } else {
-                                                                            var24_23 = var27_28;
+                                                                            var24_23 = var26_29;
                                                                             var7_10 = 0;
                                                                             var25_31 = var23_1;
                                                                         }
@@ -1493,11 +1560,11 @@ lbl43:
                                                                             this.getSharedPreferences("xcertplay_airplay", 0).edit().putInt("display_scale_percent", vc2.c(100, 30, 160)).apply();
                                                                             this.getSharedPreferences("xcertplay_airplay", 0).edit().putInt("display_scale_tenths", vc2.c(10, 3, 10)).apply();
                                                                             var24_23 = rv.a((v4)var30_22, this.m0);
-                                                                            var23_1 = var25_31.b;
-                                                                            var30_22 = new StringBuilder("Enlarged CarPlay resolution unavailable reason=");
-                                                                            var30_22.append((String)var23_1);
-                                                                            var30_22.append("; using 100%");
-                                                                            this.k(var30_22.toString());
+                                                                            var30_22 = var25_31.b;
+                                                                            var23_1 = new StringBuilder("Enlarged CarPlay resolution unavailable reason=");
+                                                                            var23_1.append((String)var30_22);
+                                                                            var23_1.append("; using 100%");
+                                                                            this.k(var23_1.toString());
                                                                         }
                                                                         if (var7_10 != 0 || var31_30.i) {
                                                                             this.runOnUiThread(new p5(this, 18, var31_30));
@@ -1512,45 +1579,45 @@ lbl43:
                                                                         var30_22 = v4.a((v4)var24_23, 0, 0, null, null, null, rn1.l0(null, var28_8.a, var28_8.b, var24_23.a, var24_23.b), this.C0, null, 1663);
                                                                         var7_10 = rv.c(var10_17);
                                                                         var23_1 = var7_10 != 75 ? (var7_10 != 85 ? (var7_10 != 115 ? "Default" : "Large") : "Small") : "Smaller";
-                                                                        var14_21 = var28_8.a;
-                                                                        var7_10 = var28_8.b;
-                                                                        var8_13 = var26_27.a;
-                                                                        var16_32 = var26_27.b;
-                                                                        var15_33 = var27_28.a;
-                                                                        var18_34 = var27_28.b;
+                                                                        var8_13 = var28_8.a;
+                                                                        var18_32 = var28_8.b;
+                                                                        var15_33 = var27_27.a;
+                                                                        var14_21 = var27_27.b;
+                                                                        var16_34 = var26_29.a;
+                                                                        var7_10 = var26_29.b;
                                                                         var17_35 = this.v0;
                                                                         var24_23 = this.o0 != false ? "HEVC" : "H.264";
                                                                         var23_1 = ni1.h("Display request selected=", (String)var23_1, " percent=", var10_17, " surface=");
-                                                                        pr0.v((StringBuilder)var23_1, var14_21, "x", var7_10, " resolution=");
-                                                                        pr0.v((StringBuilder)var23_1, var9_14, "% base=", var8_13, "x");
-                                                                        pr0.v((StringBuilder)var23_1, var16_32, " candidate=", var15_33, "x");
-                                                                        pr0.v((StringBuilder)var23_1, var18_34, " fps=", var17_35, " codec=");
+                                                                        pr0.v((StringBuilder)var23_1, var8_13, "x", var18_32, " resolution=");
+                                                                        pr0.v((StringBuilder)var23_1, var9_14, "% base=", var15_33, "x");
+                                                                        pr0.v((StringBuilder)var23_1, var14_21, " candidate=", var16_34, "x");
+                                                                        pr0.v((StringBuilder)var23_1, var7_10, " fps=", var17_35, " codec=");
                                                                         var23_1 = pr0.m((StringBuilder)var23_1, (String)var24_23, " softwareHevc=false");
-                                                                        var10_17 = this.m0;
-                                                                        var8_13 = this.l0;
+                                                                        var7_10 = this.m0;
+                                                                        var10_17 = this.l0;
                                                                         var9_14 = var30_22.a;
-                                                                        var7_10 = var30_22.b;
-                                                                        var31_30 = var25_31.b;
-                                                                        var26_27 = var30_22.h;
-                                                                        var24_23 = var30_22.i;
-                                                                        var27_28 = ni1.g("Display effective percent=", var10_17, " resolution=", var8_13, "% canvas=");
-                                                                        pr0.v((StringBuilder)var27_28, var9_14, "x", var7_10, " decision=");
-                                                                        var27_28.append((String)var31_30);
-                                                                        var27_28.append(" physical=");
-                                                                        var27_28.append(var12_15);
-                                                                        var27_28.append("x");
-                                                                        var27_28.append(var13_16);
-                                                                        var27_28.append("mm safeArea=");
-                                                                        var27_28.append(var26_27);
-                                                                        var27_28.append(" drawOutside=");
-                                                                        var27_28.append(var24_23);
-                                                                        var31_30 = var27_28.toString();
+                                                                        var8_13 = var30_22.b;
+                                                                        var26_29 = var25_31.b;
+                                                                        var24_23 = var30_22.h;
+                                                                        var31_30 = var30_22.i;
+                                                                        var27_27 = ni1.g("Display effective percent=", var7_10, " resolution=", var10_17, "% canvas=");
+                                                                        pr0.v((StringBuilder)var27_27, var9_14, "x", var8_13, " decision=");
+                                                                        var27_27.append((String)var26_29);
+                                                                        var27_27.append(" physical=");
+                                                                        var27_27.append(var12_16);
+                                                                        var27_27.append("x");
+                                                                        var27_27.append(var13_15);
+                                                                        var27_27.append("mm safeArea=");
+                                                                        var27_27.append(var24_23);
+                                                                        var27_27.append(" drawOutside=");
+                                                                        var27_27.append(var31_30);
+                                                                        var31_30 = var27_27.toString();
                                                                         var24_23 = ai0.a;
                                                                         var32_36 = var25_31.c;
                                                                         synchronized (var24_23) {
-                                                                            var26_27 = UUID.randomUUID().toString();
-                                                                            var26_27.getClass();
-                                                                            var27_28 = this.getSharedPreferences("diplay_display_diagnostics", 0).edit();
+                                                                            var27_27 = UUID.randomUUID().toString();
+                                                                            var27_27.getClass();
+                                                                            var26_29 = this.getSharedPreferences("diplay_display_diagnostics", 0).edit();
                                                                             var34_37 = ai0.b;
                                                                             var33_38 = new ArrayList();
                                                                             var34_37 = var34_37.iterator();
@@ -1576,14 +1643,14 @@ lbl43:
                                                                     }
                                                                     for (var7_10 = 0; var7_10 < var8_13; ++var7_10) {
                                                                         var34_37 = var33_38.get(var7_10);
-                                                                        var27_28.remove((String)var34_37);
+                                                                        var26_29.remove((String)var34_37);
                                                                     }
-                                                                    var27_28.putString("attempt", (String)var26_27);
-                                                                    var33_38 = new j32("request", var23_1);
-                                                                    var34_37 = new j32("capability", var32_36);
+                                                                    var26_29.putString("attempt", (String)var27_27);
+                                                                    var34_37 = new j32("request", var23_1);
+                                                                    var33_38 = new j32("capability", var32_36);
                                                                     var32_36 = new j32("effective", var31_30);
-                                                                    for (Object var34_37 : wd1.P(new j32[]{var33_38, var34_37, var32_36})) {
-                                                                        var32_36 = (String)var34_37.i;
+                                                                    for (Object var34_37 : wd1.P(new j32[]{var34_37, var33_38, var32_36})) {
+                                                                        var33_38 = (String)var34_37.i;
                                                                         var34_37 = kh0.a((String)var34_37.j);
                                                                         if (var34_37 == null) continue;
                                                                         var35_39 /* !! */  = ai0.a;
@@ -1594,33 +1661,33 @@ lbl43:
                                                                         var36_40.append((String)var35_39 /* !! */ );
                                                                         var36_40.append(" ");
                                                                         var36_40.append((String)var34_37);
-                                                                        var27_28.putString((String)var32_36, var36_40.toString());
+                                                                        var26_29.putString((String)var33_38, var36_40.toString());
                                                                     }
-                                                                    var27_28.apply();
+                                                                    var26_29.apply();
                                                                 }
-                                                                this.n0 = var26_27;
+                                                                this.n0 = var27_27;
                                                                 this.k((String)var23_1);
                                                                 this.k(var25_31.c);
                                                                 this.k((String)var31_30);
                                                                 this.v1 = false;
                                                                 this.w1 = null;
-                                                                var26_27 = AirPlayPersistence.INSTANCE;
-                                                                var26_27.getClass();
+                                                                var26_29 = AirPlayPersistence.INSTANCE;
+                                                                var26_29.getClass();
                                                                 if (!AirPlayPersistence.c((Context)this)) ** GOTO lbl-1000
                                                                 var25_31 = this.B();
                                                                 var7_10 = c00.p;
-                                                                var27_28 = wj.x((Context)this, (xg0)var25_31);
-                                                                if (var27_28 != null) break block94;
+                                                                var23_1 = wj.x((Context)this, (xg0)var25_31);
+                                                                if (var23_1 != null) break block94;
                                                                 var23_1 = this.c0();
                                                                 break block88;
                                                             }
                                                             var24_23 = new Point();
-                                                            var27_28.getRealSize((Point)var24_23);
+                                                            var23_1.getRealSize((Point)var24_23);
                                                             if (var24_23.x <= 0 || var24_23.y <= 0) break block95;
                                                             this.v1 = true;
-                                                            var23_1 = Build.FINGERPRINT;
-                                                            var23_1.getClass();
-                                                            if (var23_1.equals("BYD-AUTO/IVI/IVI:13/TP1A.220624.014/eng.build20260722.221155:user/release-keys")) {
+                                                            var27_27 = Build.FINGERPRINT;
+                                                            var27_27.getClass();
+                                                            if (var27_27.equals("BYD-AUTO/IVI/IVI:13/TP1A.220624.014/eng.build20260722.221155:user/release-keys")) {
                                                                 var24_23 = f4.r(var24_23.x, var24_23.y, (xg0)var25_31);
                                                                 ** if (var24_23 != null) goto lbl-1000
                                                             }
@@ -1636,43 +1703,43 @@ lbl-1000:
                                                             // 1 sources
 
                                                             {
-                                                                var26_27 = var26_27.b(this);
+                                                                var26_29 = var26_29.b(this);
                                                                 var23_1 = f4.r(1920, 720, (xg0)var25_31);
                                                                 if (var23_1 == null) {
                                                                     qv0.o("Required value was null.");
                                                                     return;
                                                                 }
-                                                                var27_28 = kr.a;
-                                                                var27_28 = kr.b(1920, 720, 0, 0, null, 120);
-                                                                var26_27 = kr.b(var23_1.c, var23_1.d, 0, 0, (jr)var26_27, 88);
+                                                                var27_27 = kr.a;
+                                                                var27_27 = kr.b(1920, 720, 0, 0, null, 120);
+                                                                var26_29 = kr.b(var23_1.c, var23_1.d, 0, 0, (jr)var26_29, 88);
                                                                 var7_10 = 292 * var23_1.c / 1920;
-                                                                var27_28 = var27_28.d;
-                                                                if (var27_28 == null) {
+                                                                var27_27 = var27_27.d;
+                                                                if (var27_27 == null) {
                                                                     qv0.o("Required value was null.");
                                                                     return;
                                                                 }
-                                                                var23_1 = v4.a((v4)var26_27, 0, 0, var7_10, var27_28.intValue() * var23_1.d / 720, null, null, null, null, 1907);
-                                                                var7_10 = var23_1.b;
-                                                                var8_13 = var23_1.a;
+                                                                var23_1 = v4.a((v4)var26_29, 0, 0, var7_10, var27_27.intValue() * var23_1.d / 720, null, null, null, null, 1907);
+                                                                var8_13 = var23_1.b;
+                                                                var7_10 = var23_1.a;
                                                                 this.w1 = new j32(var24_23.c, var24_23.d);
-                                                                cn1.d((double)var8_13 / (double)var7_10);
-                                                                var26_27 = new StringBuilder("Cluster map: requesting viewport ");
-                                                                pr0.v((StringBuilder)var26_27, var8_13, "x", var7_10, "; layout=");
-                                                                var26_27.append(var25_31);
-                                                                var26_27.append(" viewport=");
-                                                                var26_27.append(var24_23);
-                                                                this.k(var26_27.toString());
+                                                                cn1.d((double)var7_10 / (double)var8_13);
+                                                                var26_29 = new StringBuilder("Cluster map: requesting viewport ");
+                                                                pr0.v((StringBuilder)var26_29, var7_10, "x", var8_13, "; layout=");
+                                                                var26_29.append(var25_31);
+                                                                var26_29.append(" viewport=");
+                                                                var26_29.append(var24_23);
+                                                                this.k(var26_29.toString());
                                                             }
                                                             break block88;
                                                         }
-                                                        var23_1 = var27_28.getName();
+                                                        var23_1 = var23_1.getName();
                                                         var23_1.getClass();
                                                         var8_13 = var24_23.x;
                                                         var7_10 = var24_23.y;
                                                         if (!var23_1.equals("fission_bg_xdjaVirtualSurface") || var8_13 != 1920 || var7_10 != 720) break block97;
                                                         var24_23 = AirPlayPersistence.INSTANCE.b(this);
-                                                        var9_14 = vc2.d(this.getSharedPreferences("xcertplay_airplay", 0).getInt("cluster_marker_horizontal_step", 0), kr.d);
-                                                        var10_17 = vc2.d(this.getSharedPreferences("xcertplay_airplay", 0).getInt("cluster_marker_vertical_step", 0), kr.e);
+                                                        var10_17 = vc2.d(this.getSharedPreferences("xcertplay_airplay", 0).getInt("cluster_marker_horizontal_step", 0), kr.d);
+                                                        var7_10 = vc2.d(this.getSharedPreferences("xcertplay_airplay", 0).getInt("cluster_marker_vertical_step", 0), kr.e);
                                                         var23_1 = this.getSharedPreferences("xcertplay_airplay", 0).getString("cluster_safe_area_1920x720", null);
                                                         if (var23_1 == null) break block98;
                                                         var25_31 = fv2.M((CharSequence)var23_1, new char[]{','}, 6);
@@ -1680,16 +1747,16 @@ lbl-1000:
                                                             var23_1 = null;
                                                             break block89;
                                                         } else {
-                                                            var12_15 = Integer.parseInt((String)var25_31.get(0));
-                                                            var7_10 = Integer.parseInt((String)var25_31.get(1));
-                                                            var8_13 = Integer.parseInt((String)var25_31.get(2));
-                                                            var23_1 = new ti2(var12_15, var7_10, var8_13, Integer.parseInt((String)var25_31.get(3)));
+                                                            var12_16 = Integer.parseInt((String)var25_31.get(0));
+                                                            var8_13 = Integer.parseInt((String)var25_31.get(1));
+                                                            var9_14 = Integer.parseInt((String)var25_31.get(2));
+                                                            var23_1 = new ti2(var12_16, var8_13, var9_14, Integer.parseInt((String)var25_31.get(3)));
                                                             break block89;
                                                         }
                                                     }
                                                     var23_1 = kr.a;
-                                                    var8_13 = var24_23.x;
-                                                    var9_14 = var24_23.y;
+                                                    var9_14 = var24_23.x;
+                                                    var8_13 = var24_23.y;
                                                     var23_1 = this.getSharedPreferences("xcertplay_airplay", 0);
                                                     var7_10 = 83;
                                                     var10_17 = var23_1.getInt("cluster_map_scale_percent", 83);
@@ -1700,24 +1767,24 @@ lbl-1000:
                                                     if (var23_1 != null) {
                                                         var7_10 = var23_1.intValue();
                                                     }
-                                                    var10_17 = vc2.d(this.getSharedPreferences("xcertplay_airplay", 0).getInt("cluster_marker_horizontal_step", 0), kr.d);
-                                                    var12_15 = vc2.d(this.getSharedPreferences("xcertplay_airplay", 0).getInt("cluster_marker_vertical_step", 0), kr.e);
-                                                    var25_31 = var26_27.b(this);
+                                                    var12_16 = vc2.d(this.getSharedPreferences("xcertplay_airplay", 0).getInt("cluster_marker_horizontal_step", 0), kr.d);
+                                                    var10_17 = vc2.d(this.getSharedPreferences("xcertplay_airplay", 0).getInt("cluster_marker_vertical_step", 0), kr.e);
+                                                    var25_31 = var26_29.b(this);
                                                     var23_1 = u11.q() != false ? kr.b : kr.a;
-                                                    var23_1 = kr.a(var8_13, var9_14, var7_10, var10_17, var12_15, (jr)var25_31, (c5)var23_1);
-                                                    var7_10 = var23_1.b;
+                                                    var23_1 = kr.a(var9_14, var8_13, var7_10, var12_16, var10_17, (jr)var25_31, (c5)var23_1);
+                                                    var9_14 = var23_1.b;
                                                     var10_17 = var23_1.a;
-                                                    cn1.d((double)var10_17 / (double)var7_10);
+                                                    cn1.d((double)var10_17 / (double)var9_14);
                                                     var8_13 = var24_23.x;
-                                                    var9_14 = var24_23.y;
-                                                    var25_31 = var23_1.h;
+                                                    var7_10 = var24_23.y;
+                                                    var26_29 = var23_1.h;
                                                     var24_23 = var23_1.j;
-                                                    var26_27 = ni1.g("Cluster map: requesting ", var10_17, "x", var7_10, " on ");
-                                                    pr0.v((StringBuilder)var26_27, var8_13, "x", var9_14, " safeArea=");
-                                                    var26_27.append(var25_31);
-                                                    var26_27.append(" url=");
-                                                    var26_27.append((String)var24_23);
-                                                    this.k(var26_27.toString());
+                                                    var25_31 = ni1.g("Cluster map: requesting ", var10_17, "x", var9_14, " on ");
+                                                    pr0.v((StringBuilder)var25_31, var8_13, "x", var7_10, " safeArea=");
+                                                    var25_31.append(var26_29);
+                                                    var25_31.append(" url=");
+                                                    var25_31.append((String)var24_23);
+                                                    this.k(var25_31.toString());
                                                     break block88;
                                                 }
                                                 var23_1 = this.c0();
@@ -1730,7 +1797,7 @@ lbl-1000:
                                         }
                                         var23_1 = var23_1 != null ? var23_1.a(1920, 720) : null;
                                         var25_31 = kr.a;
-                                        var24_23 = kr.b(1920, 720, var9_14, var10_17, (jr)var24_23, 64);
+                                        var24_23 = kr.b(1920, 720, var10_17, var7_10, (jr)var24_23, 64);
                                         var23_1 = var23_1 == null ? var24_23 : v4.a((v4)var24_23, 0, 0, null, null, null, rn1.l0((ti2)var23_1, 1920, 720, 1920, 720), null, null, 1919);
                                         var24_23 = cn1.b;
                                         cn1.d((double)var23_1.a / (double)var23_1.b);
@@ -1763,7 +1830,7 @@ lbl-1000:
                         if (var24_23 instanceof xg2) {
                             var25_31 = null;
                         }
-                        var26_27 = (String)var25_31;
+                        var26_29 = (String)var25_31;
                         try {
                             var24_23 = Settings.Secure.getString((ContentResolver)this.getContentResolver(), (String)"bluetooth_address");
                         }
@@ -1774,22 +1841,22 @@ lbl-1000:
                         if (var24_23 instanceof xg2) {
                             var25_31 = null;
                         }
-                        var25_31 = ef.j0(new String[]{var26_27, (String)var25_31});
-                        var9_14 = var25_31.size();
+                        var26_29 = ef.j0(new String[]{var26_29, (String)var25_31});
+                        var9_14 = var26_29.size();
                         var7_10 = 0;
                         while (var7_10 < var9_14) {
-                            var24_23 = var25_31.get(var7_10);
+                            var24_23 = var26_29.get(var7_10);
                             var8_13 = var7_10 + 1;
-                            var26_27 = (String)var24_23;
-                            var27_28 = Pattern.compile("(?i)([0-9a-f]{2}:){5}[0-9a-f]{2}");
-                            var27_28.getClass();
-                            var26_27.getClass();
+                            var27_27 = (String)var24_23;
+                            var25_31 = Pattern.compile("(?i)([0-9a-f]{2}:){5}[0-9a-f]{2}");
+                            var25_31.getClass();
+                            var27_27.getClass();
                             var7_10 = var8_13;
-                            if (!var27_28.matcher((CharSequence)var26_27).matches()) continue;
+                            if (!var25_31.matcher((CharSequence)var27_27).matches()) continue;
                             var7_10 = var8_13;
-                            if (mv2.s((String)var26_27, "02:00:00:00:00:")) continue;
+                            if (mv2.s((String)var27_27, "02:00:00:00:00:")) continue;
                             var7_10 = var8_13;
-                            if (var26_27.equals("00:00:00:00:00:00")) continue;
+                            if (var27_27.equals("00:00:00:00:00:00")) continue;
                             break block92;
                         }
                         var24_23 = null;
@@ -1808,39 +1875,39 @@ lbl-1000:
                         var24_23 = ef.m0((byte[])var24_23, ":", new w70(1));
                     }
                     var19_9 = var23_1 == null || !u11.q();
-                    var22_41 = this.o0;
-                    var21_42 = this.F0;
-                    var25_31 = var26_27 = fv2.T(this.s0).toString();
-                    if (fv2.D((CharSequence)var26_27)) {
+                    var21_41 = this.o0;
+                    var22_42 = this.F0;
+                    var25_31 = var26_29 = fv2.T(this.s0).toString();
+                    if (fv2.D((CharSequence)var26_29)) {
                         var25_31 = "FAW Play";
                     }
-                    var26_27 = var27_28 = fv2.T(this.t0).toString();
-                    if (fv2.D((CharSequence)var27_28)) {
-                        var26_27 = "FAW Play";
+                    var26_29 = var27_27 = fv2.T(this.t0).toString();
+                    if (fv2.D((CharSequence)var27_27)) {
+                        var26_29 = "FAW Play";
                     }
                     var32_36 = this.u0;
                     try {
                         AirPlayPersistence.INSTANCE.getClass();
-                        var27_28 = new File(this.getFilesDir(), "airplay-icon.png");
-                        if (!var27_28.isFile()) {
-                            var27_28 = null;
+                        var27_27 = new File(this.getFilesDir(), "airplay-icon.png");
+                        if (!var27_27.isFile()) {
+                            var27_27 = null;
                         }
-                        if (var27_28 == null) break block93;
-                        var27_28 = zr0.T((File)var27_28);
+                        if (var27_27 == null) break block93;
+                        var27_27 = zr0.T((File)var27_27);
                     }
-                    catch (Exception var27_29) {}
+                    catch (Exception var27_28) {}
                 }
-                var27_28 = null;
-                if (var27_28 == null) break block100;
-                if ((var27_28 = CarPlayHostActivity.x((byte[])var27_28)) != null) break block101;
+                var27_27 = null;
+                if (var27_27 == null) break block100;
+                if ((var27_27 = CarPlayHostActivity.x((byte[])var27_27)) != null) break block101;
                 AirPlayPersistence.INSTANCE.getClass();
                 new File(this.getFilesDir(), "airplay-icon.png").delete();
             }
-            var27_28 = this.getResources().openRawResource(2131558400);
+            var27_27 = this.getResources().openRawResource(2131558400);
             try {
-                var27_28.getClass();
-                var33_38 = new ByteArrayOutputStream(Math.max(8192, var27_28.available()));
-                cb1.j((InputStream)var27_28, (OutputStream)var33_38);
+                var27_27.getClass();
+                var33_38 = new ByteArrayOutputStream(Math.max(8192, var27_27.available()));
+                cb1.j((InputStream)var27_27, (OutputStream)var33_38);
                 var33_38 = var33_38.toByteArray();
                 var33_38.getClass();
             }
@@ -1849,22 +1916,22 @@ lbl-1000:
                     throw var23_5;
                 }
                 catch (Throwable var24_26) {
-                    ah3.x((Closeable)var27_28, var23_5);
+                    ah3.x((Closeable)var27_27, var23_5);
                     throw var24_26;
                 }
             }
-            ah3.x((Closeable)var27_28, null);
-            var27_28 = CarPlayHostActivity.x((byte[])var33_38);
-            if (var27_28 == null) {
+            ah3.x((Closeable)var27_27, null);
+            var27_27 = CarPlayHostActivity.x((byte[])var33_38);
+            if (var27_27 == null) {
                 qv0.o("Packaged AirPlay icon is invalid");
                 return;
             }
         }
-        var27_28 = wd1.O(var27_28);
+        var33_38 = wd1.O(var27_27);
         var7_10 = rq0.a;
-        var33_38 = i21.u;
+        var27_27 = i21.u;
         var20_43 = u11.q();
-        var31_30 = new p4("FAW Play", (String)var31_30, (String)var24_23, "950.7.1", (v4)var30_22, (v4)var23_1, 7000, var22_41, var21_42, (String)var25_31, (String)var26_27, (String)var32_36, (List)var27_28, var20_43, false, var19_9);
+        var31_30 = new p4("FAW Play", (String)var31_30, (String)var24_23, "950.7.1", (v4)var30_22, (v4)var23_1, 7000, var21_41, var22_42, (String)var25_31, (String)var26_29, (String)var32_36, (List)var33_38, var20_43, false, var19_9);
         if (!var29_12.u) {
             var24_23 = null;
         } else if (var29_12.i.m) {
@@ -1876,20 +1943,20 @@ lbl-1000:
         } else {
             var24_23 = new b7(this);
         }
-        var12_15 = var28_8.a;
-        var8_13 = var28_8.b;
-        var7_10 = var30_22.a;
-        var9_14 = var30_22.b;
-        var10_17 = this.l0;
+        var9_14 = var28_8.a;
+        var12_16 = var28_8.b;
+        var10_17 = var30_22.a;
+        var8_13 = var30_22.b;
+        var7_10 = this.l0;
         var33_38 = var30_22.c;
         var32_36 = var30_22.d;
-        var25_31 = var22_41 != false ? "HEVC" : "H.264";
-        var26_27 = var29_12.u != false ? "enabled" : "disabled";
-        var27_28 = var29_12.i.m != false ? "+wheel-speed" : "";
+        var25_31 = var21_41 != false ? "HEVC" : "H.264";
+        var26_29 = var29_12.u != false ? "enabled" : "disabled";
+        var27_27 = var29_12.i.m != false ? "+wheel-speed" : "";
         var34_37 = this.J(var29_12.b);
-        var35_39 /* !! */  = ni1.g("Starting CarPlay controller at ", var12_15, "x", var8_13, " -> ");
-        pr0.v(var35_39 /* !! */ , var7_10, "x", var9_14, " (");
-        var35_39 /* !! */ .append(var10_17);
+        var35_39 /* !! */  = ni1.g("Starting CarPlay controller at ", var9_14, "x", var12_16, " -> ");
+        pr0.v(var35_39 /* !! */ , var10_17, "x", var8_13, " (");
+        var35_39 /* !! */ .append(var7_10);
         var35_39 /* !! */ .append("%) physical=");
         var35_39 /* !! */ .append(var33_38);
         var35_39 /* !! */ .append("x");
@@ -1897,35 +1964,35 @@ lbl-1000:
         var35_39 /* !! */ .append("mm video=");
         var35_39 /* !! */ .append((String)var25_31);
         var35_39 /* !! */ .append(" decoder=hardware microphone=");
-        var35_39 /* !! */ .append(var21_42);
+        var35_39 /* !! */ .append(var22_42);
         var35_39 /* !! */ .append(" location=");
-        var35_39 /* !! */ .append((String)var26_27);
-        var35_39 /* !! */ .append((String)var27_28);
+        var35_39 /* !! */ .append((String)var26_29);
+        var35_39 /* !! */ .append((String)var27_27);
         var35_39 /* !! */ .append(" mfi=");
         var35_39 /* !! */ .append((String)var34_37);
         this.k(var35_39 /* !! */ .toString());
-        var10_17 = var28_8.a;
-        var9_14 = var28_8.b;
-        var12_15 = var30_22.a;
+        var9_14 = var28_8.a;
+        var7_10 = var28_8.b;
+        var10_17 = var30_22.a;
         var8_13 = var30_22.b;
-        var7_10 = this.l0;
+        var12_16 = this.l0;
         var19_9 = var29_12.u;
-        var25_31 = var29_12.b;
-        var26_27 = ni1.g("starting controller display=", var10_17, "x", var9_14, " negotiated=");
-        pr0.v((StringBuilder)var26_27, var12_15, "x", var8_13, " scale=");
-        var26_27.append(var7_10);
-        var26_27.append("% hevc=");
-        var26_27.append(var22_41);
-        var26_27.append(" softwareHevc=false microphone=");
-        var26_27.append(var21_42);
-        var26_27.append(" location=");
-        var26_27.append(var19_9);
-        var26_27.append(" mfi=");
-        var26_27.append(var25_31);
-        Log.i((String)"xcertplay-usb", (String)var26_27.toString());
+        var26_29 = var29_12.b;
+        var25_31 = ni1.g("starting controller display=", var9_14, "x", var7_10, " negotiated=");
+        pr0.v((StringBuilder)var25_31, var10_17, "x", var8_13, " scale=");
+        var25_31.append(var12_16);
+        var25_31.append("% hevc=");
+        var25_31.append(var21_41);
+        var25_31.append(" softwareHevc=false microphone=");
+        var25_31.append(var22_42);
+        var25_31.append(" location=");
+        var25_31.append(var19_9);
+        var25_31.append(" mfi=");
+        var25_31.append(var26_29);
+        Log.i((String)"xcertplay-usb", (String)var25_31.toString());
         var10_17 = var30_22.a;
         var9_14 = var30_22.b;
-        var27_28 = this.n1;
+        var27_27 = this.n1;
         if (var23_1 != null) {
             var23_1 = Collections.singletonMap(111, new j32(var23_1.a, var23_1.b));
             var23_1.getClass();
@@ -1936,30 +2003,29 @@ lbl-1000:
         if (var23_1 == null) {
             var25_31 = an0.i;
         }
-        var19_9 = this.q0;
+        var21_41 = this.q0;
         AirPlayPersistence.INSTANCE.getClass();
-        var21_42 = this.getSharedPreferences("xcertplay_airplay", 0).getBoolean("audio_focus_enabled", this.getPackageManager().hasSystemFeature("android.hardware.type.automotive"));
+        var19_9 = this.getSharedPreferences("xcertplay_airplay", 0).getBoolean("audio_focus_enabled", this.getPackageManager().hasSystemFeature("android.hardware.type.automotive"));
         var8_13 = this.getSharedPreferences("xcertplay_airplay", 0).getInt("media_audio_channel", 0);
         var23_1 = var8_13;
-        var26_27 = AirPlayPersistence.a;
-        var7_10 = var26_27.i;
-        if (var8_13 > var26_27.j || var7_10 > var8_13) {
+        var26_29 = AirPlayPersistence.a;
+        var7_10 = var26_29.i;
+        if (var8_13 > var26_29.j || var7_10 > var8_13) {
             var23_1 = null;
         }
         var7_10 = var23_1 != null ? var23_1.intValue() : 0;
         var23_1 = this.getSharedPreferences("xcertplay_airplay", 0);
-        var12_15 = var23_1.getInt("navigation_audio_channel", var23_1.getInt("navigation_stream_type", 0));
-        var23_1 = var12_15;
-        var8_13 = var26_27.i;
-        if (var12_15 > var26_27.j || var8_13 > var12_15) {
+        var12_16 = var23_1.getInt("navigation_audio_channel", var23_1.getInt("navigation_stream_type", 0));
+        var23_1 = var12_16;
+        var8_13 = var26_29.i;
+        if (var12_16 > var26_29.j || var8_13 > var12_16) {
             var23_1 = null;
         }
         var8_13 = var23_1 != null ? var23_1.intValue() : 0;
-        var12_15 = this.r0;
-        var26_27 = fu.a;
-        var23_1 = new f0(1, var26_27, fu.class, "onMediaAudioChanged", "onMediaAudioChanged(Z)V", 0, 23);
-        var25_31 = new ka(var10_17, var9_14, var19_9, var21_42, var7_10, var8_13, this, var12_15, new z8(this, var11_11), new ys((to2)var27_28, 1), (f0)var23_1, (Map)var25_31);
-        this.N = var25_31;
+        var12_16 = this.r0;
+        var26_29 = fu.a;
+        var23_1 = new f0(1, var26_29, fu.class, "onMediaAudioChanged", "onMediaAudioChanged(Z)V", 0, 23);
+        this.N = var25_31 = new ka(var10_17, var9_14, var21_41, var19_9, var7_10, var8_13, this, var12_16, new z8(this, var11_11), new ys((to2)var27_27, 1), (f0)var23_1, (Map)var25_31);
         var23_1 = this.P;
         if (var23_1 != null) {
             this.n((Surface)var23_1);
@@ -1970,23 +2036,23 @@ lbl-1000:
         cn1.b();
         var19_9 = this.F0;
         var23_1 = new File(this.getFilesDir(), "audio-capture.enabled").isFile() == false ? null : new File(this.getFilesDir(), "audio-captures");
-        var34_37 = new zt((ka)var25_31, var19_9, (File)var23_1);
-        var35_39 /* !! */  = AirPlayPersistence.h(this, new ns(this, 3));
-        var23_1 = this.E;
-        if (var23_1 == null) {
+        var27_27 = new zt((ka)var25_31, var19_9, (File)var23_1);
+        var23_1 = AirPlayPersistence.h(this, new ns(this, 3));
+        var30_22 = this.E;
+        if (var30_22 == null) {
             cb1.i0("airPlayIdentity");
             throw null;
         }
-        var32_36 = new ma(this, var11_11);
-        var33_38 = new dt(var11_11, 0, this);
-        var30_22 = new os(this, 3);
-        var36_40 = new ms(this, 6);
-        var27_28 = new os(this, 4);
+        var33_38 = new ma(this, var11_11);
+        var34_37 = new dt(var11_11, 0, this);
+        var32_36 = new os(this, 3);
+        var35_39 /* !! */  = new ms(this, 6);
+        var36_40 = new os(this, 4);
         this.getSharedPreferences("diplay_byd_outputs", 0).getBoolean("battery_to_iphone", false);
-        var24_23 = new js(this, var29_12, (p4)var31_30, (b5)var23_1, (zt1)var35_39 /* !! */ , (ma)var32_36, (zt)var34_37, (dt)var33_38, (os)var30_22, (ms)var36_40, (os)var27_28, (h51)var24_23);
+        var24_23 = new js(this, var29_12, (p4)var31_30, (b5)var30_22, (zt1)var23_1, (ma)var33_38, (zt)var27_27, (dt)var34_37, (os)var32_36, (ms)var35_39 /* !! */ , (os)var36_40, (h51)var24_23);
         this.O = var24_23;
         this.a0();
-        var26_27.c(this, (js)var24_23);
+        var26_29.c(this, (js)var24_23);
         var23_1 = this.n1;
         q21.C.post((Runnable)new d01(var24_23, 7, var23_1));
         if (var20_43) {
@@ -2046,7 +2112,7 @@ lbl-1000:
     }
 
     public final void K(Surface surface) {
-        ka ka4;
+        Surface surface2;
         Object object;
         if (this.R == surface) {
             return;
@@ -2058,8 +2124,8 @@ lbl-1000:
             object = null;
         }
         object.getClass();
-        if (!(object.equals("BYD-AUTO/IVI/IVI:13/TP1A.220624.014/eng.build20260722.221155:user/release-keys") && surface != null || (object = this.R) == null || (ka4 = this.N) == null)) {
-            ka4.b(111, (Surface)object);
+        if (!(object.equals("BYD-AUTO/IVI/IVI:13/TP1A.220624.014/eng.build20260722.221155:user/release-keys") && surface != null || (surface2 = this.R) == null || (object = this.N) == null)) {
+            ((ka)object).b(111, surface2);
         }
         this.R = surface;
         if (surface != null && (object = this.N) != null) {
@@ -2074,7 +2140,7 @@ lbl-1000:
         block12: {
             block9: {
                 boolean bl3;
-                gu gu3;
+                iu iu3;
                 boolean bl4;
                 Object object;
                 block10: {
@@ -2092,26 +2158,26 @@ lbl-1000:
                             if (object == null) break block9;
                         }
                         catch (Throwable throwable2) {}
-                        bl4 = (Boolean)object;
-                        object = this.D();
-                        ((iu)object).f = bl4;
-                        gu3 = ((iu)object).e;
-                        gu gu4 = gu.j;
+                        bl4 = object;
+                        iu3 = this.D();
+                        iu3.f = bl4;
+                        object = iu3.e;
+                        gu gu3 = gu.j;
                         bl3 = bl5 = false;
-                        if (gu3 != gu4) break block10;
+                        if (object != gu3) break block10;
                         bl3 = bl5;
-                        if (((iu)object).g != null) break block10;
-                        bl3 = ((iu)object).a.b != null;
+                        if (iu3.g != null) break block10;
+                        bl3 = iu3.a.b != null;
                         if (!bl3) break block11;
                         bl3 = bl5;
-                        if (!((iu)object).j) break block10;
+                        if (!iu3.j) break block10;
                         bl3 = bl5;
-                        if (((iu)object).k) break block10;
+                        if (iu3.k) break block10;
                     }
                     bl3 = true;
                 }
-                if (gu3 != gu.i && !bl3) break block9;
-                ((iu)object).b(bl4);
+                if (object != gu.i && !bl3) break block9;
+                iu3.b(bl4);
                 break block12;
             }
             this.b1 = u233;
@@ -2178,38 +2244,38 @@ lbl-1000:
     }
 
     public final void Q(String object) {
-        ht ht3;
+        Object object2;
         CarPlayBackgroundSession carPlayBackgroundSession = CarPlayBackgroundSession.INSTANCE;
-        if (carPlayBackgroundSession.b(this) && !this.o1.get() && !this.k1 && (ht3 = this.i0) != null) {
+        if (carPlayBackgroundSession.b(this) && !this.o1.get() && !this.k1 && (object2 = this.i0) != null) {
             this.B.c = null;
-            Object object2 = this.startupRetryButton;
-            if (object2 != null) {
-                object2.setVisibility(8);
+            View view = this.startupRetryButton;
+            if (view != null) {
+                view.setVisibility(8);
             }
             this.k((String)object);
             this.j1.clear();
             tz.b(false);
             this.T((String)object);
-            int n14 = ht3.a;
-            int n15 = ht3.b;
+            int n14 = ((ht)object2).a;
+            int n15 = ((ht)object2).b;
             object = new StringBuilder((String)object);
             ((StringBuilder)object).append("; rebuilding stack at ");
             ((StringBuilder)object).append(n14);
             ((StringBuilder)object).append("x");
             ((StringBuilder)object).append(n15);
             Log.i((String)"xcertplay-usb", (String)((StringBuilder)object).toString());
-            this.l1 = n14 = this.l1 + 1;
+            this.l1 = n15 = this.l1 + 1;
             this.m1 = false;
             this.releaseTouch();
             this.k1 = true;
-            object2 = this.O;
-            object = this.N;
-            fu.a.d((js)object2);
-            carPlayBackgroundSession.a((js)object2, true);
+            object = this.O;
+            object2 = this.N;
+            fu.a.d((js)object);
+            carPlayBackgroundSession.a((js)object, true);
             this.O = null;
             this.N = null;
             this.k0 = null;
-            object = new dp((js)object2, this.n1, n14, (ka)object, this);
+            object = new dp((js)object, this.n1, n15, (ka)object2, this);
             this.q1.execute((Runnable)object);
         }
     }
@@ -2340,7 +2406,6 @@ lbl-1000:
                 block30: {
                     block29: {
                         int n14;
-                        WindowManager windowManager;
                         block26: {
                             block27: {
                                 Context context;
@@ -2379,7 +2444,8 @@ lbl-1000:
                                             if (((AppOpsManager)this.getSystemService(AppOpsManager.class)).checkOpNoThrow("android:get_usage_stats", Process.myUid(), this.getPackageName()) != 0) break block26;
                                             object = this.c0;
                                             if (object == null) {
-                                                this.c0 = object = new m11(this, new f0(1, this, CarPlayHostActivity.class, "onHomeScreenVisible", "onHomeScreenVisible(Z)V", 0, 25));
+                                                object = new m11(this, new f0(1, this, CarPlayHostActivity.class, "onHomeScreenVisible", "onHomeScreenVisible(Z)V", 0, 25));
+                                                this.c0 = object;
                                             }
                                             if (((m11)object).k || ((m11)object).d != null) break block27;
                                             if (((m11)object).k) return;
@@ -2447,9 +2513,9 @@ lbl-1000:
                         context.getClass();
                         double d14 = cn1.a;
                         object2 = new f0(1, this, CarPlayHostActivity.class, "onCenterMapSurface", "onCenterMapSurface(Landroid/view/Surface;)V", 0, 26);
-                        object = new os(this, 2);
+                        os os3 = new os(this, 2);
                         if (uw.b != null) break block29;
-                        if (!(Math.abs(d14) <= Double.MAX_VALUE) || d14 <= 0.0 || !Settings.canDrawOverlays((Context)context) || (windowManager = (WindowManager)context.getSystemService(WindowManager.class)) == null) break block30;
+                        if (!(Math.abs(d14) <= Double.MAX_VALUE) || d14 <= 0.0 || !Settings.canDrawOverlays((Context)context) || (object = (WindowManager)context.getSystemService(WindowManager.class)) == null) break block30;
                         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
                         int n15 = displayMetrics.widthPixels;
                         int n16 = displayMetrics.heightPixels;
@@ -2507,21 +2573,21 @@ lbl-1000:
                         Object object14 = new Object();
                         Object object15 = new Object();
                         Object object16 = new Object();
-                        frameLayout.setOnTouchListener((View.OnTouchListener)new sw((ue2)object4, (ue2)object5, (ve2)object6, layoutParams, (ve2)object7, (te2)object8, (te2)object9, (ve2)object10, (ve2)object11, (te2)new Object(), (ue2)object12, (ue2)object13, n26, displayMetrics.density * 64.0f, (ue2)object14, n18, n17, d14, (ve2)object15, n15, (ve2)object16, n16, sharedPreferences, (os)object, windowManager));
+                        frameLayout.setOnTouchListener((View.OnTouchListener)new sw((ue2)object4, (ue2)object5, (ve2)object6, layoutParams, (ve2)object7, (te2)object8, (te2)object9, (ve2)object10, (ve2)object11, (te2)new Object(), (ue2)object12, (ue2)object13, n26, displayMetrics.density * 64.0f, (ue2)object14, n18, n17, d14, (ve2)object15, n15, (ve2)object16, n16, sharedPreferences, os3, (WindowManager)object));
                         try {
-                            windowManager.addView((View)frameLayout, (ViewGroup.LayoutParams)layoutParams);
+                            object.addView((View)frameLayout, (ViewGroup.LayoutParams)layoutParams);
                             uw.b = frameLayout;
                             uw.c = object2;
-                            n17 = layoutParams.x;
-                            n26 = layoutParams.y;
+                            n26 = layoutParams.x;
+                            n17 = layoutParams.y;
                             object = new StringBuilder("card shown ");
                             ((StringBuilder)object).append(n14);
                             ((StringBuilder)object).append("x");
                             ((StringBuilder)object).append(n19);
                             ((StringBuilder)object).append(" at ");
-                            ((StringBuilder)object).append(n17);
-                            ((StringBuilder)object).append(",");
                             ((StringBuilder)object).append(n26);
+                            ((StringBuilder)object).append(",");
+                            ((StringBuilder)object).append(n17);
                             Log.i((String)"DiPlay-CenterMap", (String)((StringBuilder)object).toString());
                         }
                         catch (RuntimeException runtimeException) {
@@ -2633,9 +2699,9 @@ lbl-1000:
     public final v4 c0() {
         cn1.d(1.7777777777777777);
         Object object = kr.a;
-        object = AirPlayPersistence.INSTANCE.b(this);
-        c5 c54 = kr.a;
-        object = kr.b(1280, 720, 0, 0, (jr)((Object)object), 24);
+        jr jr3 = AirPlayPersistence.INSTANCE.b(this);
+        object = kr.a;
+        object = kr.b(1280, 720, 0, 0, jr3, 24);
         this.k(ni1.e("Cluster map: requesting virtual ", ((v4)object).a, "x", ((v4)object).b, " (16:9) stream for launcher/center card"));
         return object;
     }
@@ -2684,6 +2750,7 @@ lbl-1000:
                 Iterator iterator;
                 Object object3;
                 block18: {
+                    int n16;
                     object3 = CarPlayBackgroundSession.INSTANCE;
                     object2 = ((CarPlayBackgroundSession)object3).snapshot();
                     n15 = 0;
@@ -2708,31 +2775,32 @@ lbl-1000:
                     this.w1 = object;
                     this.O = ((vq)object2).getController();
                     this.a0();
-                    this.N = object = ((vq)object2).b;
-                    iterator = new ys(this.n1, 0);
-                    object.getClass();
-                    ((ka)object).k = iterator;
+                    iterator = ((vq)object2).b;
+                    this.N = iterator;
+                    object = new ys(this.n1, 0);
+                    iterator.getClass();
+                    ((ka)((Object)iterator)).k = object;
                     iterator = ((vq)object2).getController();
                     object = this.n1;
                     q21.C.post((Runnable)new d01(iterator, 7, object));
                     this.k0 = ((vq)object2).e;
                     cn1.b();
                     ((CarPlayBackgroundSession)object3).c(((vq)object2).getController(), ((vq)object2).b, ((vq)object2).c, ((vq)object2).d, this, ((vq)object2).e, new ms(this, 4));
-                    int n16 = ((vq)object2).c;
-                    if (n16 > 0 && (n14 = ((vq)object2).d) > 0) {
-                        this.i0 = new ht(n16, n14);
+                    n14 = ((vq)object2).c;
+                    if (n14 > 0 && (n16 = ((vq)object2).d) > 0) {
+                        this.i0 = new ht(n14, n16);
                     }
                     if ((object = this.K) != null) {
                         object.post((Runnable)new ps(this, 3));
                     }
                     n14 = this.l1;
                     object = ((vq)object2).getController();
-                    iterator = new ma(this, n14);
-                    object3 = new dt(n14, 0, this);
+                    object3 = new ma(this, n14);
+                    iterator = new dt(n14, 0, this);
                     object.getClass();
-                    ((js)object).G = iterator;
-                    ((js)object).H = object3;
-                    ((js)object).A.post((Runnable)new ac(object, iterator, object3, 5));
+                    ((js)object).G = object3;
+                    ((js)object).H = iterator;
+                    ((js)object).A.post((Runnable)new ac(object, object3, iterator, 5));
                     iterator = ((vq)object2).b;
                     object3 = new ns(this, 2);
                     object = ((ka)((Object)iterator)).r;
@@ -2869,22 +2937,22 @@ lbl-1000:
         ((dd2)object).n();
     }
 
-    public final void n(Surface surface) {
+    public final void n(Surface object) {
         ka ka4 = this.N;
         if (ka4 != null) {
-            ka4.r(110, surface);
+            ka4.r(110, (Surface)object);
         }
         AirPlayPersistence.INSTANCE.getClass();
         if (AirPlayPersistence.c((Context)this)) {
-            surface = this.R;
-            if (surface != null && (ka4 = this.N) != null) {
-                ka4.r(111, surface);
+            ka4 = this.R;
+            if (ka4 != null && (object = this.N) != null) {
+                ((ka)object).r(111, (Surface)ka4);
                 return;
             }
         } else {
             ka4 = this.N;
             if (ka4 != null) {
-                ka4.r(111, surface);
+                ka4.r(111, (Surface)object);
             }
         }
     }
@@ -2913,7 +2981,7 @@ lbl-1000:
     @Override
     public final void onCreate(Bundle object) {
         boolean bl3;
-        lm lm3;
+        ce ce4;
         Object object2;
         super.onCreate((Bundle)object);
         Object object3 = zw1.a;
@@ -2921,77 +2989,77 @@ lbl-1000:
         object4.getClass();
         ((zw1)object3).a((Context)object4);
         uw.d = new k7(0, this, CarPlayHostActivity.class, "showCenterMap", "showCenterMap()V", 0, 3);
-        object4 = cn1.b;
+        object3 = cn1.b;
         cn1.f = this.a0;
         cn1.g = this.b0;
         this.F = AppLocale.INSTANCE.preference((Context)this);
         try {
-            object4 = f4.D;
+            object3 = f4.D;
             AirPlayPersistence.INSTANCE.getClass();
-            ((f4)object4).m(this, AirPlayPersistence.g(this));
-            object4 = e73.a;
+            ((f4)object3).m(this, AirPlayPersistence.g(this));
+            object3 = e73.a;
         }
         catch (Throwable throwable) {
-            object4 = new xg2(throwable);
+            object3 = new xg2(throwable);
         }
-        if (object4 instanceof xg2) {
+        if (object3 instanceof xg2) {
             this.startActivity(new Intent((Context)this, DiPlayActivity.class));
             this.finish();
             return;
         }
         this.getWindow().addFlags(128);
-        object4 = (DisplayManager)this.getSystemService(DisplayManager.class);
-        if (object4 != null) {
-            object4.registerDisplayListener((DisplayManager.DisplayListener)this.x1, this.p1);
+        object3 = (DisplayManager)this.getSystemService(DisplayManager.class);
+        if (object3 != null) {
+            object3.registerDisplayListener((DisplayManager.DisplayListener)this.x1, this.p1);
         }
         Object object5 = new File(new File(this.getFilesDir(), "logs"), "diplay.log");
-        object4 = nf.a;
-        object3 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.US).format(new Date());
-        int n14 = Process.myPid();
-        object4 = new StringBuilder("FAW Play log started ");
-        ((StringBuilder)object4).append((String)object3);
-        ((StringBuilder)object4).append(" pid=");
-        ((StringBuilder)object4).append(n14);
-        Object object6 = ((StringBuilder)object4).toString();
         object3 = nf.a;
-        synchronized (object3) {
+        object4 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.US).format(new Date());
+        int n14 = Process.myPid();
+        object3 = new StringBuilder("FAW Play log started ");
+        ((StringBuilder)object3).append((String)object4);
+        ((StringBuilder)object3).append(" pid=");
+        ((StringBuilder)object3).append(n14);
+        Object object6 = ((StringBuilder)object3).toString();
+        object4 = nf.a;
+        synchronized (object4) {
             object2 = nf.b;
             if (object2.size() >= 8) {
-                object4 = null;
+                object3 = null;
             } else {
-                object4 = new to2((File)object5);
-                object2.add(object4);
-                lm3 = nf.f;
-                object2 = new ce((File)object5, (to2)object4, (String)object6);
-                bl3 = lm3.b((dw0)object2);
+                object3 = new to2((File)object5);
+                object2.add(object3);
+                object2 = nf.f;
+                ce4 = new ce((File)object5, (to2)object3, (String)object6);
+                bl3 = ((lm)object2).b(ce4);
                 if (!bl3) {
                     object = new IllegalStateException("Check failed.");
                     throw object;
                 }
             }
         }
-        this.n1 = object4;
+        this.n1 = object3;
         this.g1 = new Configuration(this.getResources().getConfiguration());
         bl3 = object != null ? object.getBoolean("carplay_night_active") : ((object = hn1.B(this.getResources().getConfiguration().uiMode)) != null ? (Boolean)object : false);
         this.X0 = bl3;
-        object4 = u23.l;
-        object = this.getResources().getConfiguration();
-        object.getClass();
-        this.H((u23)((Object)object4), (Configuration)object);
+        object = u23.l;
+        object3 = this.getResources().getConfiguration();
+        object3.getClass();
+        this.H((u23)((Object)object), (Configuration)object3);
         this.p0 = this.getResources().getBoolean(2130903040);
         AirPlayPersistence.INSTANCE.getClass();
-        object4 = this.getSharedPreferences("xcertplay_airplay", 0);
-        object3 = object4.getString("identity_private", null);
-        object = object4.getString("identity_public", null);
-        object5 = object4.getString("pairing_id", null);
-        if (object3 != null && object != null && object5 != null) {
-            object = new b5(AirPlayPersistence.a((String)object3), AirPlayPersistence.a((String)object), (String)object5);
+        object3 = this.getSharedPreferences("xcertplay_airplay", 0);
+        object5 = object3.getString("identity_private", null);
+        object = object3.getString("identity_public", null);
+        object4 = object3.getString("pairing_id", null);
+        if (object5 != null && object != null && object4 != null) {
+            object = new b5(AirPlayPersistence.a((String)object5), AirPlayPersistence.a((String)object), (String)object4);
         } else {
-            object3 = t4.a;
+            object4 = t4.a;
             object = new byte[32];
-            ((SecureRandom)object3).nextBytes((byte[])object);
-            object3 = bh.j((byte[])object);
-            object3.getClass();
+            ((SecureRandom)object4).nextBytes((byte[])object);
+            object4 = bh.j((byte[])object);
+            object4.getClass();
             synchronized (object) {
                 object6 = wd1.D((byte[])object);
             }
@@ -2999,26 +3067,26 @@ lbl-1000:
             wd1.w((sq)object6, (byte[])object5);
             object6 = UUID.randomUUID().toString();
             object6.getClass();
-            object = new b5((byte[])object3, (byte[])object5, (String)object6);
-            object4.edit().putString("identity_private", AirPlayPersistence.i((byte[])object3)).putString("identity_public", AirPlayPersistence.i((byte[])object5)).putString("pairing_id", (String)object6).apply();
+            object = new b5((byte[])object4, (byte[])object5, (String)object6);
+            object3.edit().putString("identity_private", AirPlayPersistence.i((byte[])object4)).putString("identity_public", AirPlayPersistence.i((byte[])object5)).putString("pairing_id", (String)object6).apply();
         }
         this.E = object;
         this.Y0 = gu.j;
         this.Z0 = new j6();
         this.a1 = 0;
         object = this.D();
-        object4 = this.Y0;
-        object3 = hn1.B(this.getResources().getConfiguration().uiMode);
-        bl3 = object3 != null ? (Boolean)object3 : false;
-        object3 = this.Z0;
+        object3 = this.Y0;
+        object4 = hn1.B(this.getResources().getConfiguration().uiMode);
+        bl3 = object4 != null ? (Boolean)object4 : false;
+        object4 = this.Z0;
         n14 = this.a1;
         object.getClass();
-        object4.getClass();
         object3.getClass();
+        object4.getClass();
         ((iu)object).c();
-        ((iu)object).e = object4;
+        ((iu)object).e = object3;
         ((iu)object).f = bl3;
-        ((iu)object).h = object3;
+        ((iu)object).h = object4;
         ((iu)object).i = vc2.c(n14, 0, 60);
         ((iu)object).a();
         this.l0 = 100;
@@ -3030,13 +3098,13 @@ lbl-1000:
         this.s0 = "FAW Play";
         this.t0 = "FAW Play";
         object = this.getSharedPreferences("xcertplay_airplay", 0);
-        object4 = "\u7ea2\u65d7";
-        object = object3 = object.getString("oem_label", "\u7ea2\u65d7");
-        if (object3 == null) {
+        object3 = "\u7ea2\u65d7";
+        object = object4 = object.getString("oem_label", "\u7ea2\u65d7");
+        if (object4 == null) {
             object = "";
         }
         if (fv2.D((CharSequence)object)) {
-            object = object4;
+            object = object3;
         }
         this.u0 = object;
         this.v0 = qh3.E((Context)this);
@@ -3065,33 +3133,33 @@ lbl-1000:
         object.setOnTouchListener((View.OnTouchListener)new ss(this));
         object3.addView((View)object4, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
         object3.addView((View)object, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
-        object6 = new FrameLayout((Context)this);
-        object6.setBackgroundColor(Color.rgb((int)12, (int)17, (int)27));
-        object6.setClickable(true);
-        LinearLayout linearLayout = new LinearLayout((Context)this);
-        linearLayout.setOrientation(1);
-        linearLayout.setGravity(17);
-        lm3 = new ImageView((Context)this);
-        lm3.setImageResource(2131099737);
-        lm3.setContentDescription(this.getString(2131624039));
-        linearLayout.addView((View)lm3, (ViewGroup.LayoutParams)new LinearLayout.LayoutParams(this.A(88), this.A(88)));
+        object5 = new FrameLayout((Context)this);
+        object5.setBackgroundColor(Color.rgb((int)12, (int)17, (int)27));
+        object5.setClickable(true);
+        object2 = new LinearLayout((Context)this);
+        object2.setOrientation(1);
+        object2.setGravity(17);
+        ImageView imageView = new ImageView((Context)this);
+        imageView.setImageResource(2131099737);
+        imageView.setContentDescription((CharSequence)this.getString(2131624039));
+        object2.addView((View)imageView, (ViewGroup.LayoutParams)new LinearLayout.LayoutParams(this.A(88), this.A(88)));
         TextView textView = new TextView((Context)this);
         textView.setText((CharSequence)this.getString(2131624159));
         textView.setTextColor(Color.rgb((int)241, (int)245, (int)252));
         textView.setGravity(17);
         textView.setTypeface(Typeface.create((String)"sans-serif-medium", (int)0));
-        linearLayout.addView((View)textView);
-        object5 = new TextView((Context)this);
-        object5.setText((CharSequence)this.getString(2131624252));
-        object5.setGravity(17);
-        object5.setTextColor(Color.rgb((int)241, (int)245, (int)252));
-        linearLayout.addView((View)object5);
-        object2 = new TextView((Context)this);
+        object2.addView((View)textView);
+        object6 = new TextView((Context)this);
+        object6.setText((CharSequence)this.getString(2131624252));
+        object6.setGravity(17);
+        object6.setTextColor(Color.rgb((int)241, (int)245, (int)252));
+        object2.addView((View)object6);
+        ce4 = new TextView((Context)this);
         object = this.H0 ? this.getString(2131624312) : this.getString(2131624657);
-        object2.setText((CharSequence)object);
-        object2.setGravity(17);
-        object2.setTextColor(Color.rgb((int)168, (int)182, (int)202));
-        linearLayout.addView((View)object2);
+        ce4.setText((CharSequence)object);
+        ce4.setGravity(17);
+        ce4.setTextColor(Color.rgb((int)168, (int)182, (int)202));
+        object2.addView((View)ce4);
         object = new Button((Context)this);
         object.setText((CharSequence)this.getString(2131624522));
         object.setAllCaps(false);
@@ -3100,7 +3168,7 @@ lbl-1000:
         this.wifiRecoveryButton = object;
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(this.A(300), this.A(64));
         layoutParams.bottomMargin = this.A(12);
-        linearLayout.addView((View)object, (ViewGroup.LayoutParams)layoutParams);
+        object2.addView((View)object, (ViewGroup.LayoutParams)layoutParams);
         layoutParams = new Button((Context)this);
         layoutParams.setText((CharSequence)this.getString(2131624532));
         layoutParams.setAllCaps(false);
@@ -3109,7 +3177,7 @@ lbl-1000:
         this.startupRetryButton = layoutParams;
         LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(this.A(300), this.A(64));
         layoutParams2.bottomMargin = this.A(12);
-        linearLayout.addView((View)layoutParams, (ViewGroup.LayoutParams)layoutParams2);
+        object2.addView((View)layoutParams, (ViewGroup.LayoutParams)layoutParams2);
         layoutParams2 = new Button((Context)this);
         layoutParams2.setText((CharSequence)this.getString(2131624015));
         layoutParams2.setAllCaps(false);
@@ -3119,31 +3187,31 @@ lbl-1000:
         object7.setCornerRadius((float)this.A(20));
         layoutParams2.setBackground((Drawable)object7);
         layoutParams2.setOnClickListener((View.OnClickListener)new ts(this, 1));
-        linearLayout.addView((View)layoutParams2, (ViewGroup.LayoutParams)new LinearLayout.LayoutParams(this.A(300), this.A(64)));
-        object6.addView((View)linearLayout, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -2, 17));
-        object3.addView((View)object6, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
+        object2.addView((View)layoutParams2, (ViewGroup.LayoutParams)new LinearLayout.LayoutParams(this.A(300), this.A(64)));
+        object5.addView((View)object2, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -2, 17));
+        object3.addView((View)object5, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
         object7 = new Object();
         object7.i = -1;
-        linearLayout.addOnLayoutChangeListener((View.OnLayoutChangeListener)new vs((kt)((Object)object6), linearLayout));
-        object6.addOnLayoutChangeListener((View.OnLayoutChangeListener)new ws((kt)((Object)object6), this, (Button)layoutParams2, (Button)object, (Button)layoutParams, (ve2)object7, linearLayout, (ImageView)lm3, textView, (TextView)object5, (TextView)object2));
-        object2 = new xs((kt)((Object)object6), this, (Button)layoutParams2, (Button)object, (Button)layoutParams, (ve2)object7, linearLayout, (ImageView)lm3, textView, (TextView)object5, (TextView)object2);
+        object2.addOnLayoutChangeListener((View.OnLayoutChangeListener)new vs((kt)((Object)object5), (LinearLayout)object2));
+        object5.addOnLayoutChangeListener((View.OnLayoutChangeListener)new ws((kt)((Object)object5), this, (Button)layoutParams2, (Button)object, (Button)layoutParams, (ve2)object7, (LinearLayout)object2, imageView, textView, (TextView)object6, (TextView)ce4));
+        object2 = new xs((kt)((Object)object5), this, (Button)layoutParams2, (Button)object, (Button)layoutParams, (ve2)object7, (LinearLayout)object2, imageView, textView, (TextView)object6, (TextView)ce4);
         object = rb3.a;
-        lb3.b((View)object6, (jz1)object2);
-        object6.requestApplyInsets();
+        lb3.b((View)object5, (jz1)object2);
+        object5.requestApplyInsets();
         this.K = object4;
-        this.stageStatusView = object5;
-        this.connectionPanel = object6;
+        this.stageStatusView = object6;
+        this.connectionPanel = object5;
         this.b0();
         this.setContentView((View)object3);
         this.m();
         this.c().a(this, new pt(this, 0));
-        object4 = this.J(this.I0);
+        object3 = this.J(this.I0);
         object = this.H0 ? "wireless" : "wired";
-        object3 = new StringBuilder("Host started; MFI target=");
-        ((StringBuilder)object3).append((String)object4);
-        ((StringBuilder)object3).append("; transport=");
-        ((StringBuilder)object3).append((String)object);
-        this.k(((StringBuilder)object3).toString());
+        object4 = new StringBuilder("Host started; MFI target=");
+        ((StringBuilder)object4).append((String)object3);
+        ((StringBuilder)object4).append("; transport=");
+        ((StringBuilder)object4).append((String)object);
+        this.k(((StringBuilder)object4).toString());
         boolean bl4 = this.j();
         bl3 = this.checkSelfPermission("android.permission.RECORD_AUDIO") == 0;
         this.F0 = bl3;
@@ -3265,17 +3333,17 @@ lbl-1000:
             }
             this.P = null;
             object = nf.a;
-            to2 to22 = this.n1;
-            if (to22 != null) {
+            object2 = this.n1;
+            if (object2 != null) {
                 block32: {
                     block33: {
                         object = nf.a;
                         // MONITORENTER : object
-                        if (!nf.b.contains(to22) || !nf.c.add(to22)) break block32;
-                        object2 = nf.f;
+                        if (!nf.b.contains(object2) || !nf.c.add(object2)) break block32;
+                        lm lm3 = nf.f;
                         String string = kh0.a("Activity destroyed");
-                        h5 h54 = new h5(string, 6, to22);
-                        bl3 = ((lm)object2).b(h54);
+                        h5 h54 = new h5(string, 6, object2);
+                        bl3 = lm3.b(h54);
                         if (!bl3) break block33;
                         break block34;
                     }
@@ -3345,39 +3413,39 @@ lbl-1000:
             this.Y0 = object;
             this.Z0 = object2;
             this.a1 = 0;
-            object2 = this.D();
-            gu gu3 = this.Y0;
-            object3 = this.Z0;
+            iu iu3 = this.D();
+            object3 = this.Y0;
+            object2 = this.Z0;
             n14 = this.a1;
-            object2.getClass();
-            ((Object)((Object)gu3)).getClass();
+            iu3.getClass();
             object3.getClass();
-            ((iu)object2).c();
-            ((iu)object2).e = gu3;
-            ((iu)object2).f = bl4;
-            ((iu)object2).h = object3;
-            ((iu)object2).i = vc2.c(n14, 0, 60);
-            ((iu)object2).a();
+            object2.getClass();
+            iu3.c();
+            iu3.e = object3;
+            iu3.f = bl4;
+            iu3.h = object2;
+            iu3.i = vc2.c(n14, 0, 60);
+            iu3.a();
         }
-        object3 = this.D();
-        ((iu)object3).f = bl4;
-        ((iu)object3).j = true;
-        ((iu)object3).a();
-        object3 = this.Y0;
-        object2 = this.f1;
-        if (object3 == object) {
-            object = (f21)((sx2)object2).getValue();
-            if (((f21)object).d == null && q21.h()) {
-                object3 = new e21((f21)object);
-                ((e21)object3).a();
-                ((f21)object).d = object3;
+        object2 = this.D();
+        ((iu)object2).f = bl4;
+        ((iu)object2).j = true;
+        ((iu)object2).a();
+        object2 = this.Y0;
+        object3 = this.f1;
+        if (object2 == object) {
+            object2 = (f21)((sx2)object3).getValue();
+            if (((f21)object2).d == null && q21.h()) {
+                object = new e21((f21)object2);
+                ((e21)object).a();
+                ((f21)object2).d = object;
             }
         } else {
-            ((f21)((sx2)object2).getValue()).a();
-            object3 = this.D();
-            ((iu)object3).g = null;
-            if (((iu)object3).j && ((iu)object3).e == object) {
-                ((iu)object3).a();
+            ((f21)((sx2)object3).getValue()).a();
+            object2 = this.D();
+            ((iu)object2).g = null;
+            if (((iu)object2).j && ((iu)object2).e == object) {
+                ((iu)object2).a();
             }
         }
         this.l0 = 100;
@@ -3426,15 +3494,15 @@ lbl-1000:
         this.C();
         this.V = true;
         object = qq0.a;
-        object2 = this.Z;
+        object3 = this.Z;
         object = qq0.d;
         // MONITORENTER : object
-        qq0.b = object2;
-        object3 = qq0.a();
-        u11.l((i00)object3);
-        qq0.e = object3;
-        if (object2 != null) {
-            ((ms)object2).a(object3);
+        qq0.b = object3;
+        object2 = qq0.a();
+        u11.l((i00)object2);
+        qq0.e = object2;
+        if (object3 != null) {
+            ((ms)object3).a(object2);
         }
         object3 = this.Y;
         // MONITORENTER : object
@@ -3470,16 +3538,16 @@ lbl-1000:
         super.onStart();
         this.e0 = true;
         cr0.A(this);
-        Runnable runnable = new ps(this, 5);
-        Object object = fr0.a;
-        this.e1 = new dr0(this, runnable);
+        Object object = new ps(this, 5);
+        WeakHashMap weakHashMap = fr0.a;
+        this.e1 = new dr0(this, (Runnable)object);
         object = this.getResources().getConfiguration();
         object.getClass();
         this.H(u23.m, (Configuration)object);
-        object = this.p1;
-        runnable = this.t1;
-        object.removeCallbacks(runnable);
-        object.post(runnable);
+        weakHashMap = this.p1;
+        object = this.t1;
+        weakHashMap.removeCallbacks((Runnable)object);
+        weakHashMap.post((Runnable)object);
         uw.a.removeCallbacks((Runnable)uw.e);
         uw.b();
         object = this.c0;
@@ -3530,10 +3598,10 @@ lbl-1000:
         this.p1.removeCallbacks((Runnable)this.t1);
         super.onStop();
         if (!this.isFinishing() && !this.isChangingConfigurations()) {
-            Handler handler = uw.a;
-            object = uw.e;
-            handler.removeCallbacks((Runnable)object);
-            handler.postDelayed((Runnable)object, 600L);
+            object = uw.a;
+            g7 g74 = uw.e;
+            object.removeCallbacks((Runnable)g74);
+            object.postDelayed((Runnable)g74, 600L);
         }
     }
 
@@ -3684,14 +3752,14 @@ lbl-1000:
                             if (var5_6 == null) break block19;
                             var10_8 /* !! */  = fv2.N(f4.l((b5)var5_6), new String[]{":"}, 6);
                             var5_6 = new ArrayList<Byte>(n00.J0((Iterable)var10_8 /* !! */ ));
-                            var14_14 = var10_8 /* !! */ .iterator();
-                            while (var14_14.hasNext()) {
-                                var10_8 /* !! */  = (String)var14_14.next();
+                            var10_8 /* !! */  = var10_8 /* !! */ .iterator();
+                            while (var10_8 /* !! */ .hasNext()) {
+                                var14_14 = (String)var10_8 /* !! */ .next();
                                 rn1.B(16);
-                                var5_6.add((byte)Integer.parseInt((String)var10_8 /* !! */ , 16));
+                                var5_6.add((byte)Integer.parseInt((String)var14_14, 16));
                             }
-                            var14_14 = m00.j1(var5_6);
-                            var15_13 = this.getSharedPreferences("diplay", 0).getString("phone_address", null);
+                            var15_13 = m00.j1(var5_6);
+                            var14_14 = this.getSharedPreferences("diplay", 0).getString("phone_address", null);
                             var10_8 /* !! */  = this.H0 ? qv.j : qv.i;
                             var16_15 = this.N0;
                             AirPlayPersistence.INSTANCE.getClass();
@@ -3716,14 +3784,14 @@ lbl-1000:
                             var1_12 = 0;
                         }
                     }
-                    var18_16 = this.O0;
+                    var21_16 = this.O0;
                     var17_17 = this.R0;
-                    var20_18 = this.S0;
+                    var18_18 = this.S0;
                     var2_19 = this.T0;
-                    var19_20 = this.U0;
-                    var21_21 = this.P0;
-                    var5_6 = this.Q0;
-                    return new qu(var12_1, var6_2 /* !! */ , var7_3, var8_4, var9_5, (byte[])var14_14, (o41)var11_9 /* !! */ , var13_10, (qv)var10_8 /* !! */ , var16_15, var18_16, var17_17, var20_18, var2_19, var19_20, var15_13, this.D0, var1_12, var21_21, (String)var5_6);
+                    var20_20 = this.U0;
+                    var5_6 = this.P0;
+                    var19_21 = this.Q0;
+                    return new qu(var12_1, var6_2 /* !! */ , var7_3, var8_4, var9_5, (byte[])var15_13, (o41)var11_9 /* !! */ , var13_10, (qv)var10_8 /* !! */ , var16_15, var21_16, var17_17, var18_18, var2_19, var20_20, (String)var14_14, this.D0, var1_12, (String)var5_6, var19_21);
                 }
                 cb1.i0("airPlayIdentity");
                 throw null;
@@ -3741,19 +3809,21 @@ lbl-1000:
      * Enabled aggressive exception aggregation
      */
     public final void y() {
-        Object object3;
+        Object object;
         Object object2 = tz.a;
-        List list = m00.m1(m00.o1(m00.Z0(this.U.values(), wd1.Q((Object)this.Q))));
+        object2 = m00.m1(m00.o1(m00.Z0(this.U.values(), wd1.Q((Object)this.Q))));
         this.U.clear();
         this.Q = null;
-        object2 = this.R;
-        if (object2 != null && (object3 = this.N) != null) {
-            object3.b(111, (Surface)object2);
+        Surface surface = this.R;
+        if (surface != null && (object = this.N) != null) {
+            object.b(111, surface);
         }
         this.R = null;
-        for (Object object3 : list) {
+        object2 = object2.iterator();
+        while (object2.hasNext()) {
+            object = (c00)((Object)object2.next());
             try {
-                object3.dismiss();
+                object.dismiss();
             }
             catch (Throwable throwable) {}
         }

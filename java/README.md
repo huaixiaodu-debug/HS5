@@ -62,9 +62,12 @@ java -cp "dex-tools-v2.4/lib/*" com.googlecode.dex2jar.tools.Dex2jarCmd \
      dist/FAW-Play-patched.apk -o fawplay-patched.jar
 
 # 2) jar → java（约 4.5 分钟，4487 个文件）
-java -jar cfr.jar fawplay-patched.jar --outputdir java \
-     --silent true --comments false
+java -jar cfr.jar fawplay-patched.jar --outputdir java
 ```
+
+> 注意：`dex-tools-v2.4/d2j-dex2jar.sh` 在 Git Bash 下 classpath 拼装会失败
+> （`ClassNotFoundException: com.googlecode.dex2jar.tools.Dex2jarCmd`），
+> 需要用 `java -cp` 手动拼 `lib/*.jar`（`cygpath -w` 转成 Windows 路径，`;` 分隔）。
 
 产物质量：类与继承关系完整，控制流可读，`String` 字面量（含 `\uXXXX` 转义）可读；
 字段名与默认包类名保持混淆状态（`a`、`b0`…），这是 R8 全量混淆的必然结果，
@@ -96,3 +99,39 @@ smali 才是字节码的权威表示，可无损回编译。
 原版里授权子系统是混淆名 `jb2` / `xg1` / `yg1` / `ah1`…，
 补丁后重命名为 `license.LicenseManager` / `LicenseStatus` / `FeatureCatalog` / `LicenseCrypto`…，
 对照表见根 README「二、4」。
+
+---
+
+## 更新记录
+
+### 2026-10-12 · v1.3.0 仪表地图常开补丁
+
+补丁 B（见 [`../docs/CLUSTER-MAP.md`](../docs/CLUSTER-MAP.md)）改动了
+`smali/u11.smali` 与 `smali/com/shilapi/xcertplay/CarPlayHostActivity.smali`，
+因此下面两个类已按**新的** APK 重新反编译替换：
+
+- `u11.java`
+- `com/shilapi/xcertplay/CarPlayHostActivity.java`
+
+其余 4485 个 `.java` 沿用首批反编译结果（补丁 B 不影响它们）。
+
+替换后的 Java 呈现：
+
+```java
+// u11.java — a() 里 n15 / bl4 判定去掉了 i002 != null
+if ((n15 = l != null && u11.h("instrument-map") ? 1 : 0) == 0 && s && l != null) { ... }
+if (!(bl4 = u11.i(d) && f && g) && q && l != null && m != null) { ... }
+//                                 ↑ 原来还有 i002 != null
+// 并且删除了「i002 == null 时算完 h 就 return」的整块
+
+// u11.java — r() 的 alpha 判定去掉了 e != null
+bl3 = g && u11.i(d) && bl6 ? bl5 : false;
+
+// CarPlayHostActivity.java — 三指手势不再要求正在导航
+bl3 = u11.q();        // 原来是 u11.q() && u11.e != null
+```
+
+⚠️ **读 diff 时请注意**：CFR 对局部变量的命名在两次运行之间并不稳定
+（同一段代码可能一次叫 `object2`、另一次叫 `iterator`，`vu12` / `vu13` 之类同理），
+因此这两个文件的 diff 里包含相当一部分**纯命名噪声**。
+判断真实语义请以 `apk-source/smali/` 与 `patches/cluster-map.diff` 为准。

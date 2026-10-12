@@ -1,5 +1,21 @@
 /*
  * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.app.Presentation
+ *  android.content.ComponentName
+ *  android.content.Context
+ *  android.content.Intent
+ *  android.content.ServiceConnection
+ *  android.os.Build
+ *  android.os.Build$VERSION
+ *  android.os.Handler
+ *  android.os.IBinder
+ *  android.os.Looper
+ *  android.os.Parcel
+ *  android.os.RemoteException
+ *  android.util.Log
+ *  android.view.WindowManager$LayoutParams
  */
 import android.app.Presentation;
 import android.content.ComponentName;
@@ -65,17 +81,16 @@ public abstract class u11 {
 
     public static void a() {
         boolean bl3;
-        block15: {
+        block12: {
             int n14;
             Object object;
             i00 i002;
-            block17: {
-                block16: {
+            block14: {
+                block13: {
                     boolean bl4;
                     int n15;
                     i002 = e;
                     bl3 = true;
-                    boolean bl5 = true;
                     n14 = i002 != null && (object = d) != null && u11.h("hud") && object.getSharedPreferences("diplay_byd_outputs", 0).getBoolean("navigation_enabled", true) ? 1 : 0;
                     if (n14 == 0 && p && (object = k) != null) {
                         u11.c((IBinder)object, "ltd.qisi.adapterproxy.ICarHUDManager", 5, 0);
@@ -84,29 +99,18 @@ public abstract class u11 {
                         p = false;
                         Log.i((String)"DiPlay-HongqiNavi", (String)"HUD guidance cleared");
                     }
-                    if ((n15 = i002 != null && l != null && u11.h("instrument-map") ? 1 : 0) == 0 && s && l != null) {
+                    if ((n15 = l != null && u11.h("instrument-map") ? 1 : 0) == 0 && s && l != null) {
                         u11.o(null);
                         u11.c(l, "ltd.qisi.adapterproxy.ICarInstrumentRelatedManager", 5, 0);
                         s = false;
                     }
-                    if (!(bl4 = i002 != null && u11.i(d) && f && g) && q && l != null && m != null) {
+                    if (!(bl4 = u11.i(d) && f && g) && q && l != null && m != null) {
                         u11.g(0);
                         u11.c(m, "ltd.qisi.adapterproxy.ICarSystemControlManager", 69, 0, 0);
                         q = false;
                         t = true;
                         v = null;
                         Log.i((String)"DiPlay-HongqiNavi", (String)"instrument map cleared");
-                    }
-                    if (i002 == null) {
-                        boolean bl6 = bl5;
-                        if (!p) {
-                            bl6 = bl5;
-                            if (!q) {
-                                bl6 = s ? bl5 : false;
-                            }
-                        }
-                        h = bl6;
-                        return;
                     }
                     if (n15 != 0 && (!s || t)) {
                         s = true;
@@ -124,12 +128,12 @@ public abstract class u11 {
                     if (n15 != 0) {
                         u11.o(i002);
                     }
-                    if (n14 == 0 || (object = k) == null) break block15;
+                    if (n14 == 0 || (object = k) == null) break block12;
                     p = true;
                     n15 = i002.a;
-                    if (n15 < 0) break block16;
+                    if (n15 < 0) break block13;
                     n14 = n15;
-                    if (n15 <= 31) break block17;
+                    if (n15 <= 31) break block14;
                 }
                 n14 = 0;
             }
@@ -143,14 +147,14 @@ public abstract class u11 {
             }
             u11.c((IBinder)i002, "ltd.qisi.adapterproxy.ICarHUDManager", 6, n14);
         }
-        boolean bl7 = bl3;
+        boolean bl5 = bl3;
         if (!p) {
-            bl7 = bl3;
+            bl5 = bl3;
             if (!q) {
-                bl7 = s ? bl3 : false;
+                bl5 = s ? bl3 : false;
             }
         }
-        h = bl7;
+        h = bl5;
     }
 
     public static void b() {
@@ -362,7 +366,7 @@ public abstract class u11 {
      * WARNING - void declaration
      */
     public static void m() {
-        void var2_3;
+        void var2_6;
         u11.n();
         IBinder iBinder = m;
         long l14 = o;
@@ -381,7 +385,7 @@ public abstract class u11 {
         catch (RemoteException remoteException) {
             // empty catch block
         }
-        Log.w((String)"DiPlay-HongqiNavi", (String)"factory instrument exit listener unavailable: ".concat(var2_3.getClass().getSimpleName()));
+        Log.w((String)"DiPlay-HongqiNavi", (String)"factory instrument exit listener unavailable: ".concat(var2_6.getClass().getSimpleName()));
     }
 
     /*
@@ -539,7 +543,7 @@ lbl-1000:
             boolean bl6 = bl4 && ((Presentation)presentation.getKey()).isShowing();
             bl4 = bl3 | bl6;
             presentation = (Presentation)presentation.getKey();
-            bl3 = g && u11.i(d) && e != null && bl6 ? bl5 : false;
+            bl3 = g && u11.i(d) && bl6 ? bl5 : false;
             u11.p(presentation, bl3);
             bl3 = bl4;
         }
