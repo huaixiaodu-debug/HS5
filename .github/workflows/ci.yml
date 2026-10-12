@@ -1,0 +1,46 @@
+name: ci
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  lint-and-smoke:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Byte-compile all sources
+        run: python -m compileall -q src
+
+      - name: CLI help smoke test
+        run: |
+          python src/patch_smali.py --help
+          python src/repack_apk.py --help
+          python src/sign_apk.py --help
+          python src/verify_apk.py --help
+
+      - name: Bash syntax check
+        run: |
+          bash -n scripts/build.sh
+          bash -n scripts/setup_tools.sh
+
+  repack-roundtrip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 构造一个带 STORED 原生库的合成 APK 做往返测试
+        run: python tests/selftest_repack.py

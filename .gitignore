@@ -1,0 +1,46 @@
+# ---- 工具链与大体积中间产物（用 scripts/setup_tools.sh 重新拉取）----
+tools/
+*.jar
+*.zip
+*.tar.gz
+
+# ---- 反编译产物 ----
+decompile/
+verify-*/
+*-out/
+*.smali
+!src/**/*.smali
+
+# ---- 构建产物 ----
+build/
+dist/
+out/
+*.apk
+*.apk.idsig
+*.dex
+*.idsig
+
+# ---- 密钥：绝对不要提交 ----
+*.jks
+*.keystore
+*.p12
+*.pem
+keystore.properties
+KS_PASS
+KEY_PASS
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# ---- 编辑器 / 系统 ----
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini

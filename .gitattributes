@@ -1,0 +1,20 @@
+# 统一换行符：脚本必须 LF，否则在 Linux/macOS 上跑不起来
+*.sh            text eol=lf
+*.py            text eol=lf
+
+# Windows 脚本保留 CRLF
+*.bat           text eol=crlf
+*.cmd           text eol=crlf
+*.ps1           text eol=crlf
+
+# 二进制
+*.png           binary
+*.jpg           binary
+*.jar           binary
+*.apk           binary
+*.jks           binary
+*.keystore      binary
+
+# 让 GitHub 语言统计不要把这些算进去
+*.md            linguist-documentation
+docs/**         linguist-documentation
