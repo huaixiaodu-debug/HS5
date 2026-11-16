@@ -205,9 +205,12 @@ dex 里 4,227 个类被 R8 压进默认包（`a`、`a0`、`a1` …），业务�
 │   │   ├── patch_autplay_v2.py  # 最终补丁脚本（幂等，含 21 项自检）
 │   │   ├── audit_smali.py       # smali 静态审计（标签/跳转/寄存器）
 │   │   └── patch_autplay.py     # 初版脚本，已作废，仅作历史记录
-│   └── docs/
-│       ├── AUTPLAY-GESTURE.md   # 三指手势与 P1 修复记录
-│       └── CODE-AUDIT.md        # 全量代码审查报告
+│   ├── docs/
+│   │   ├── AUTPLAY-GESTURE.md   # 三指手势与 P1 修复记录
+│   │   └── CODE-AUDIT.md        # 全量代码审查报告
+│   └── patched-smali/       ★ 最终 APK 对应的真实改动源码（4 个文件）
+│       ├── i61.smali / e61.smali / e80.smali
+│       └── com/shilapi/xcertplay/ClusterGesture.smali
 ├── apk-source/            ★ APK 反编译源码树（4588 个 smali + 资源 + 原生库）
 │   ├── README.md          #   源码树说明：目标包信息 / 结构 / 改了什么 / 回编译
 │   ├── AndroidManifest.xml

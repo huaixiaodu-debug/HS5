@@ -29,3 +29,6 @@ docs/**         linguist-documentation
 *.pcm           binary
 *.p7b           binary
 *.pk8           binary
+
+# AutPlay 补丁后的 smali：强制 LF，保证 README 中记录的 sha256 与检出文件一致
+autplay-patch/patched-smali/** text eol=lf

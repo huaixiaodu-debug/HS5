@@ -185,3 +185,15 @@
 - 中控屏 CarPlay 画面由 iPhone 渲染进视频流，车机侧无可优化动画；用户已确认不做 P2 性能优化。
 - 尚未做 dex opcode 级反汇编回读与实车验证。
 
+## [2.0.1] - 2026-11-16
+
+### Added
+
+- `autplay-patch/patched-smali/`：补传最终产物 `…P1-audited.apk` 对应的真实 smali 源码（`i61` / `e61` / `e80` / `ClusterGesture`），此前只同步了补丁脚本和文档，补丁后的源码本身留在临时解码目录未入库。附文件清单、哈希与复现方式。
+- `.gitignore` 增加 `!autplay-patch/patched-smali/**` 例外，放行这 4 个 `.smali`（其余 `.smali` 仍按原规则忽略）。
+- 根目录 `README.md` 与 `autplay-patch/README.md` 目录树补入 `patched-smali/`。
+
+### Notes
+
+- `ClusterGesture.smali` 与 `patch_autplay_v2.py` 内嵌的 `GESTURE_CLASS` 逐字节一致；其余 3 个文件可用脚本从干净解码树复现，sha256 已逐项核对（`e80.smali` 仅换行由 CRLF 统一为 LF，语义与回编译结果不变）。
+

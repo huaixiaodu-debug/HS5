@@ -12,6 +12,13 @@ autplay-patch/
 │   ├── patch_autplay_v2.py      当前补丁脚本（最终版）
 │   ├── audit_smali.py           smali 静态审计工具
 │   └── patch_autplay.py         初版脚本（已作废，仅作历史记录）
+├── patched-smali/               ★ 最终产物对应的真实 smali 源码
+│   ├── README.md                文件清单 / 哈希 / 复现方式
+│   ├── i61.smali                机型门槛 + A 闩锁 + 3 秒退避
+│   ├── e61.smali                两处引导下发改走 r2
+│   ├── e80.smali                基类触摸事件 hook
+│   └── com/shilapi/xcertplay/
+│       └── ClusterGesture.smali 三指手势类
 └── docs/
     ├── AUTPLAY-GESTURE.md       三指手势说明与 P1 修复记录
     └── CODE-AUDIT.md            全量代码审查报告
@@ -43,6 +50,14 @@ autplay-patch/
 - `vN` 寄存器是否超出 `.locals`
 
 用法：`python audit_smali.py <smali目录或文件> [--strict] [--verbose] [--filter 关键字]`
+
+## 补丁后的 smali 源码
+
+`patched-smali/` 保存最终 APK 对应的**真实 smali 文件**（`i61` / `e61` / `e80` /
+`ClusterGesture`），即脚本写入解码树、被 apktool 回编译进 dex 的那一份。
+`ClusterGesture.smali` 与脚本内嵌的 `GESTURE_CLASS` 逐字节一致；其余三个可用
+`patch_autplay_v2.py` 从干净解码树复现。文件清单与哈希见
+[patched-smali/README.md](patched-smali/README.md)。
 
 ## 当前交付产物
 

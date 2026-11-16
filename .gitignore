@@ -15,6 +15,10 @@ verify-*/
 !apk-source/**
 !apk-source/**/*.smali
 
+# 例外：AutPlay 补丁后的 smali 源码（最终产物对应的真实改动）
+!autplay-patch/patched-smali/**
+!autplay-patch/patched-smali/**/*.smali
+
 # ---- 构建产物 ----
 build/
 build*/
