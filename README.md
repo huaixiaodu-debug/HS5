@@ -199,6 +199,15 @@ dex 里 4,227 个类被 R8 压进默认包（`a`、`a0`、`a1` …），业务�
 
 ```
 .
+├── autplay-patch/         ★ AutPlay 1.0.6 三指手势补丁 + 全量审查工具/文档
+│   ├── README.md          #   补丁内容、产物哈希、已知边界
+│   ├── src/
+│   │   ├── patch_autplay_v2.py  # 最终补丁脚本（幂等，含 21 项自检）
+│   │   ├── audit_smali.py       # smali 静态审计（标签/跳转/寄存器）
+│   │   └── patch_autplay.py     # 初版脚本，已作废，仅作历史记录
+│   └── docs/
+│       ├── AUTPLAY-GESTURE.md   # 三指手势与 P1 修复记录
+│       └── CODE-AUDIT.md        # 全量代码审查报告
 ├── apk-source/            ★ APK 反编译源码树（4588 个 smali + 资源 + 原生库）
 │   ├── README.md          #   源码树说明：目标包信息 / 结构 / 改了什么 / 回编译
 │   ├── AndroidManifest.xml
@@ -441,7 +450,31 @@ gh release create v1.0.0 dist/FAW-Play-patched.apk \
 
 ---
 
-## 十二、第三方说明
+## 十二、AutPlay 1.0.6 补丁（autplay-patch/）
+
+`autplay-patch/` 收录另一款车机应用 AutPlay（`com.autunn.carplay`，HS5）的补丁，
+与上面 FAW Play / DiPlay 的授权与仪表地图补丁相互独立：
+
+- **三指手势**：三指左滑打开仪表投屏、右滑关闭；单指/双指不触发，带密度换算阈值、
+  总开关、状态去重和 Toast/Log 反馈；hook 挂在 Activity 基类 `e80`，覆盖全部 6 个页面。
+- **仪表 A 闩锁修复**：`i61.r()` 失败后不再永久锁死，改为 3 秒退避后自动重试，
+  解决「高德导航一会儿后仪表退出、必须断电重连」的问题。
+- **机型门槛**：仅 `i61` 内部 4 处 `c12.C()` 放宽为恒真，不影响其它约 20 个调用点。
+- **全量审查**：新增 `audit_smali.py` 静态审计工具，修复 `ACTION_CANCEL` 状态残留与
+  脚本幂等性隐患，21 项结构化自检全绿。
+
+当前推荐产物：`AutPlay-1.0.6-HS5-patched-P1-audited.apk`
+（sha256 `fa00d67c27f65eead752eebcd6b2013bd2aeb64c30ff0989849c0b7667c99ed6`）。
+之前的 `patched-gesture` / `patched-P1` / `patched-P1-fixed` 均已作废。
+
+补丁包签名证书与官方不同，覆盖安装前须先卸载官方版；`allowBackup=false`，卸载会丢音频通道偏好。
+详情见 [autplay-patch/README.md](autplay-patch/README.md)、
+[AUTPLAY-GESTURE.md](autplay-patch/docs/AUTPLAY-GESTURE.md) 与
+[CODE-AUDIT.md](autplay-patch/docs/CODE-AUDIT.md)。APK 产物不入库，需要分发请走 GitHub Releases。
+
+---
+
+## 十三、第三方说明
 
 本项目包含的代码为独立实现，不含原应用任何代码或资源。分析对象 `com.shihab.diplay`
 及其商标、代码、资源版权归其权利人所有。使用者需自行确认在其所在法域内使用本项目的合法性，

@@ -158,3 +158,30 @@
   而「不导航也默认投屏」在 Apple 地图场景下反而多余（Apple 地图本就能自动开 / 自动关）。
   方案收益不足，回退到 `1.4.0` 的行为。
 
+## [2.0.0] - 2026-11-12
+
+### Added
+
+- **`autplay-patch/` —— AutPlay 1.0.6（`com.autunn.carplay`，HS5）补丁**
+  - `src/patch_autplay_v2.py`：最终补丁脚本（幂等，支持 `--dry-run`），一次性完成三指手势、基类挂载、机型门槛放宽、A 闩锁 + 3 秒退避，含 21 项结构化自检
+  - `src/audit_smali.py`：smali 静态审计工具（标签唯一性、跳转目标、寄存器越界；只从 `if-*` / `goto*` / `.catch*` 抽取标签引用，避免类型冒号误报）
+  - `src/patch_autplay.py`：初版脚本，已作废，仅作历史记录
+  - `docs/AUTPLAY-GESTURE.md`：三指手势说明、P1 修复、方向与三指门控 bug 复盘
+  - `docs/CODE-AUDIT.md`：全量代码审查报告（条件跳转总表、已修问题、不改边界、验证层级）
+  - `README.md`：目录说明、补丁内容、当前产物哈希与已知边界
+- 三指仪表投屏手势：左滑进入 / 右滑退出，`getPointerCount() >= 3` 才跟踪，单指/双指原样放行；180dp 密度换算阈值、`gesture_enabled` 总开关、状态去重、Toast + `Log.i("ClusterGesture", ...)` 反馈；`dispatchTouchEvent` 挂基类 `e80` 覆盖 6 个 Activity；处理 `ACTION_CANCEL` 清 tracking。
+- A 闩锁修复：`i61.r()` catch 保持 `A=true`，新增 `noteFailure()` / `shouldSkip()` / `r2(La60)` 做 3 秒退避，`e61` 两处引导下发改走 `r2`。
+- 机型门槛：仅 `i61` 内部 4 处 `Lc12;->C()Z` 放宽为恒真，其它调用点不动。
+
+### Changed
+
+- 根目录 `README.md` 仓库结构补入 `autplay-patch/`，新增「十二、AutPlay 1.0.6 补丁」章节，原「第三方说明」顺延为十三。
+
+### Notes
+
+- 当前推荐产物：`AutPlay-1.0.6-HS5-patched-P1-audited.apk`，sha256 `fa00d67c27f65eead752eebcd6b2013bd2aeb64c30ff0989849c0b7667c99ed6`，已过 APK 体检（CRC / 4KB 对齐 / v1+v2+v3 签名 / dex 特征串），0 警告；此前 `patched-gesture` / `patched-P1` / `patched-P1-fixed` 一律作废。
+- 补丁包签名证书 `CN=FAW Play Patched` 与官方 `CN=CarPlay, O=Autunn` 不同，覆盖安装会报 `INSTALL_FAILED_UPDATE_INCOMPATIBLE`，须先卸载官方版；`allowBackup=false`，卸载会丢音频通道偏好。
+- `a9.smali:12235` 保留一处 `c12.C()` 分支选择（非硬门槛），P1 未改动，意味着机型放宽只覆盖 `i61` 内部。
+- 中控屏 CarPlay 画面由 iPhone 渲染进视频流，车机侧无可优化动画；用户已确认不做 P2 性能优化。
+- 尚未做 dex opcode 级反汇编回读与实车验证。
+
